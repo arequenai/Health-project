@@ -79,10 +79,10 @@ date,meal,time,food,quant,calories,carbs,fat,protein,sodium,sugar
 2024-03-22,dinner,23:35:00,"Jamon Serrano - Jamon Serrano Bellota, 40 gr",40.0,97.0,0.0,6.0,11.0,0.0,0.0
 2024-03-22,dinner,23:35:00,"Aceite Oliva - Aceite Oliva 7ml, 2 cucharadita de café (7ml)",2.0,120.0,0.0,14.0,0.0,0.0,0.0
 2024-03-22,dinner,23:35:00,"Generic - Chopitos, 75 gr",75.0,146.0,7.0,7.0,13.0,348.0,1.0
-2024-03-22,dinner,23:35:00,"La Sirena - Almejas a la marinera, 100 gramo",100.0,103.0,4.0,7.0,7.0,1.0,1.0
 2024-03-22,dinner,09:30:00,"Patatas - Hervidas, 25 gr",25.0,20.0,4.0,0.0,1.0,0.0,0.0
 2024-03-22,dinner,15:14:00,"Patatas - Hervidas, 25 gr",25.0,20.0,4.0,0.0,1.0,0.0,0.0
 2024-03-22,dinner,23:35:00,"Patatas - Hervidas, 25 gr",25.0,20.0,4.0,0.0,1.0,0.0,0.0
+2024-03-22,dinner,23:35:00,"La Sirena - Almejas a la marinera, 100 gramo",100.0,103.0,4.0,7.0,7.0,1.0,1.0
 2024-03-22,dinner,23:35:00,"Generic - Vino Tinto, 1 Copa 150 Cc., 1 copa 150 gr.",1.0,107.0,0.0,0.0,0.0,6.0,0.0
 2024-03-22,dinner,23:35:00,"Botellin Mahou (20cl) - Cerveza, 40 cl",40.0,176.0,14.0,0.0,0.0,0.0,0.0
 2024-03-22,dinner,23:35:00,"Pan - Pan Blanco ✓, 50 g",50.0,131.0,25.0,1.0,4.0,300.0,3.0
@@ -512,3 +512,45 @@ date,meal,time,food,quant,calories,carbs,fat,protein,sodium,sugar
 2024-04-26,dinner,21:07:00,"Kfc - Ensalada De Col, 25 g",25.0,39.0,3.0,3.0,0.0,0.0,2.0
 2024-04-26,dinner,,"KFC - Original Recipe Chicken, Breast, 534 g",534.0,960.0,39.0,42.0,108.0,3390.0,0.0
 2024-04-26,snacks,21:06:00,"Chorizo - Chorizo Sausage, 0.5 oz",0.5,45.0,0.0,4.0,3.0,175.0,0.0
+2024-04-27,breakfast,08:23:00,"Plátano - Platano, 1 pieza",1.0,105.0,27.0,0.0,1.0,0.0,14.0
+2024-04-27,lunch,14:20:00,"Esparragos Trigueros - Esparragos Trigueros Verdes, 80 g",80.0,17.0,2.0,0.0,2.0,3.0,1.0
+2024-04-27,lunch,14:20:00,"Huevos De Codorniz, 1 egg",1.0,14.0,0.0,1.0,1.0,13.0,0.0
+2024-04-27,lunch,14:20:00,"Torreznos - Torreznos, 10 gr",10.0,30.0,0.0,2.0,3.0,0.0,0.0
+2024-04-27,lunch,14:20:00,"Smoked salmon, 60 gram",60.0,70.0,0.0,3.0,11.0,403.0,0.0
+2024-04-27,lunch,14:20:00,"Ensalada - Lechuga 123, 25 gr",25.0,5.0,1.0,0.0,0.0,3.0,0.0
+2024-04-27,lunch,14:20:00,"sardinas ubago - sardinas, 15 gramos",15.0,43.0,0.0,3.0,3.0,0.0,0.0
+2024-04-27,lunch,14:20:00,"Homemade - Steak Tartare, 80 gr",80.0,240.0,5.0,12.0,26.0,0.0,0.0
+2024-04-27,lunch,14:20:00,"Homemade - Patatas Fritas, 100 gr",100.0,260.0,18.0,20.0,3.0,150.0,0.0
+2024-04-27,lunch,14:20:00,"Unimar - Salpicón de pollo, 1 taza",1.0,191.0,8.0,9.0,19.0,70.0,3.0
+2024-04-27,lunch,14:20:00,"Punta picana - Punta picana, 450 g",450.0,635.0,0.0,32.0,87.0,0.0,0.0
+2024-04-27,dinner,22:04:00,"Supersol - Tortilla De Patatas, 100 g",100.0,135.0,15.0,6.0,4.0,0.0,0.0
+2024-04-27,dinner,22:04:00,"Generic - Ginebra, 150 ml",150.0,330.0,0.0,0.0,0.0,0.0,0.0
+2024-04-27,snacks,10:56:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-04-27,snacks,10:56:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-04-28,breakfast,10:27:00,"Viena Capellanes - Empanada atún hojaldre, 1 hojaldre",1.0,269.0,17.0,20.0,6.0,1.0,2.0
+2024-04-28,breakfast,10:27:00,"Sandwich blanco ensaladilla rusa Viena - Sandwich Ensaladilla rusa Viena, 150 g",150.0,353.0,30.0,22.0,7.0,1.0,3.0
+2024-04-28,lunch,14:19:00,"Fatsecret - Croqueta De Atun, 2 croqueta",2.0,160.0,16.0,7.0,7.0,154.0,3.0
+2024-04-28,lunch,14:19:00,"Txemika-lentejas Con Chorizo - Lentejas Con Chorizo, 400 g",400.0,484.0,38.0,25.0,25.0,0.0,0.0
+2024-04-28,dinner,21:17:00,"Home - Hamburguesa, 1.2 piece",1.2,594.0,48.0,30.0,32.0,0.0,0.0
+2024-04-28,dinner,21:17:00,"Homemade - Patatas Fritas, 100 gr",100.0,260.0,18.0,20.0,3.0,150.0,0.0
+2024-04-28,dinner,21:17:00,"mayonesa - Mayonesa, 1 cucharada",1.0,90.0,0.0,10.0,0.0,0.0,0.0
+2024-04-28,snacks,13:46:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-04-28,snacks,13:46:00,"Viena - Sandwich Integral Pollo-Curry Vegetal, 1 Sandwich",1.0,134.0,13.0,3.0,13.0,0.0,1.0
+2024-04-29,breakfast,07:23:00,"Carrefour - Salvado de Trigo Grueso (label) , 40 gram",40.0,104.0,7.0,2.0,6.0,0.0,2.0
+2024-04-29,breakfast,07:23:00,"Biotech Usa - Iso Whey Zero, 50 grammi",50.0,186.0,3.0,1.0,42.0,0.0,0.0
+2024-04-29,lunch,13:21:00,"naming - wrap atun, 270 gramos",270.0,726.0,70.0,38.0,30.0,0.0,18.0
+2024-04-29,dinner,21:20:00,"Casero - Sopa Criolla Peruana, 1 plato hondo",1.0,526.0,0.0,0.0,0.0,0.0,0.0
+2024-04-30,breakfast,08:24:00,"huevo - Huevo Entero, 1 pieza",1.0,78.0,1.0,5.0,6.0,0.0,0.0
+2024-04-30,breakfast,08:24:00,"Roig - Clara de huevo, 30 gr",30.0,15.0,0.0,0.0,3.0,0.0,0.0
+2024-04-30,breakfast,08:24:00,"Jumbo Carne picada - Carne picada, 100 grams",100.0,137.0,3.0,6.0,18.0,0.0,0.0
+2024-04-30,breakfast,08:24:00,"Aceite Oliva - Aceite Oliva 7ml, 0.5 cucharadita de café (7ml)",0.5,30.0,0.0,4.0,0.0,0.0,0.0
+2024-04-30,lunch,13:30:00,"Verduras salteadas - Verduras, 1 taza",1.0,63.0,8.0,2.0,2.0,0.0,0.0
+2024-04-30,lunch,13:30:00,"Jumbo Carne picada - Carne picada, 100 grams",100.0,137.0,3.0,6.0,18.0,0.0,0.0
+2024-04-30,lunch,13:30:00,"Aceite Oliva - Aceite Oliva 7ml, 0.5 cucharadita de café (7ml)",0.5,30.0,0.0,4.0,0.0,0.0,0.0
+2024-04-30,lunch,13:30:00,"tung - gyoza vapor, 6.99 unidades",6.99,433.0,51.0,16.0,17.0,6.0,6.0
+2024-04-30,dinner,20:59:00,"Arroz Frito Con Kimchi Y Jamón, 1 taza",1.0,305.0,28.0,17.0,11.0,708.0,1.0
+2024-04-30,dinner,20:59:00,"Chinese - Beef Chop Suey, 1 cup",1.0,284.0,25.0,12.0,19.0,0.0,0.0
+2024-04-30,dinner,20:59:00,"Supersol - Tortilla De Patatas, 70 g",70.0,95.0,11.0,4.0,3.0,0.0,0.0
+2024-04-30,dinner,20:59:00,"Korean Soonsal Fried Chicken - Boneless Fried Chicken, 50 g",50.0,107.0,7.0,5.0,7.0,152.0,4.0
+2024-04-30,snacks,12:24:00,"tung - gyoza vapor, 0.99 unidades",0.99,61.0,7.0,2.0,2.0,1.0,1.0
+2024-04-30,snacks,12:24:00,"Empanada carne - Empanada carne, 120 gramo",120.0,316.0,35.0,13.0,15.0,0.0,0.0

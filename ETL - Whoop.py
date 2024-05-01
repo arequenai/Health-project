@@ -92,3 +92,6 @@ df = pd.merge(df_s, df_r, on='sleep_id', how='left')
 
 # Write to csv
 df.to_csv('Data/Cleaned/Sleep_and_recovery.csv', index=False)
+
+# Print message
+print('Whoop data successfully extracted and cleaned')

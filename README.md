@@ -4,12 +4,9 @@ BACKLOG
 
 Input
  - Whoop Dataprocessing journal
- - Garmin
- - Peso
  - JeFit
  - Cambiar a Appends
  - Cambiar ETL a functiones, que revisen que sea data nueva
-
 
 Análisis
  - Correlacionar comportamientos con métricas de sueño
@@ -31,15 +28,17 @@ TrainingPeaks
 Apple Health (includes food)
  - iPhone app Salud, foto, Exportar todos los datos de salud
 
- Garmin
-  - Activities: run on terminal garmin-backup --backup-dir=Data/Garmin requenalberto@gmail.com
+ Garmin (not yet used)
+ - Direct from API
+- Activities: run on terminal garmin-backup --backup-dir=Data/Garmin requenalberto@gmail.com
 
 ### Process to generate clean data
 
 1. ETL - Whoop.py
 2. ETL - LibreView.py
 3. ETL - TrainingPeaks.py
-4. DataProcessing - MFP.py
-5. DataProcessing - MFP Api.ipynb
-6. DataProcessing - MFP data matching v2.ipynb
-7. IntegrateData.ipynb
+4. ETL - Garmin.py
+5. ETL - Apple Health.py
+6. DataProcessing - MFP Api.ipynb
+7. DataProcessing - MFP data matching v2.ipynb
+8. IntegrateData.ipynb

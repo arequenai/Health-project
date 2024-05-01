@@ -6,8 +6,6 @@ from datetime import datetime, timedelta
 
 # Path to your Apple Health XML export
 xml_file_path = 'Data/Apple health/exportacion.xml'
-# Path to the CSV file you want to create
-csv_file_path = 'Data/Cleaned/Food.csv'
 
 # Load and parse the XML file
 tree = ET.parse(xml_file_path)
@@ -70,5 +68,44 @@ for col in df.columns[3:]:
     df[col] = df[col].apply(lambda x: x if x.count('.') <= 1 else x[:x.find('.', x.find('.') + 1)])
 
 # Write the DataFrame to a CSV file
-df.to_csv(csv_file_path, index=False)
+df.to_csv('Data/Cleaned/Food.csv', index=False)
 print("Food CSV file has been created.")
+
+### Weight data
+
+# Create a mapping of xml names for MyFitnessPal to human-readable names
+weight_mapping = {
+    'HKQuantityTypeIdentifierBodyFatPercentage': 'fat_percentage',
+    'HKQuantityTypeIdentifierLeanBodyMass':'lean_body_mass',
+    'HKQuantityTypeIdentifierBodyMassIndex': 'BMI',
+    'HKQuantityTypeIdentifierBodyMass': 'weight'
+}
+
+# Get weight data parsing MyFitnessPal records from the xml
+data = []
+
+for record in root.findall('.//Record'):
+    if record.attrib.get('sourceName') == 'VeSync':
+        start_date = datetime.strptime(record.attrib['startDate'], '%Y-%m-%d %H:%M:%S %z').date()
+        if start_date >= min_date and start_date <= max_date:
+            data.append({
+                'date': start_date,
+                'type': weight_mapping.get(record.attrib.get('type'), 'Unknown'),
+                'value': record.attrib.get('value')
+         })
+
+# Create a DataFrame from the data
+df = pd.DataFrame(data)
+
+# Convert 'value' column to numeric
+df['value'] = pd.to_numeric(df['value'], errors='coerce')
+
+# Group by date
+df = df.groupby(['date', 'type'])['value'].mean().unstack().reset_index()
+
+# Remove type column
+df.columns.name = None
+
+# Write the DataFrame to a CSV file
+df.to_csv('Data/Cleaned/Weight.csv', index=False)
+print("Weight CSV file has been created.")

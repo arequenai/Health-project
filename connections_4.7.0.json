@@ -1,0 +1,9 @@
+{
+    "data": [],
+    "status": 0,
+    "ticket": {
+        "duration": 15552000000,
+        "expires": 1727965639,
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0NzVhNDhlLWU4N2MtMTFlZS1iYTIzLWVlNjY4YTAzZjE4MyIsImZpcnN0TmFtZSI6IkFsYmVydG8iLCJsYXN0TmFtZSI6IlJlcXVlbmEgSXphcmQiLCJjb3VudHJ5IjoiRVMiLCJyZWdpb24iOiJldSIsInJvbGUiOiJwYXRpZW50IiwidW5pdHMiOjEsInByYWN0aWNlcyI6W10sImMiOjEsInMiOiJsbHUuYW5kcm9pZCIsImV4cCI6MTcyNzk2NTYzOX0.ZuoE41CzBsG_COQlUwX2vQZtUkrtz4sIwptEXSEvch4"
+    }
+}

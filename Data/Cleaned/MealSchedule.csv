@@ -1,0 +1,514 @@
+date,meal,time,food,quant,calories,carbs,fat,protein,sodium,sugar
+2024-03-16,breakfast,10:51:00,"Galia - Melon, 80 g - 1/4 melon",80.0,30.0,7.0,0.0,1.0,15.0,7.0
+2024-03-16,breakfast,10:51:00,"Aquilea - Magnesio + Potasio, 1 Pastilla",1.0,10.0,0.0,0.0,0.0,0.0,0.0
+2024-03-16,lunch,16:37:00,"Arroz Blanco - Arroz Blanco Cocido, 120 gram",120.0,223.0,48.0,0.0,5.0,629.0,0.0
+2024-03-16,lunch,16:37:00,"Kimchi, 1 cup",1.0,23.0,4.0,1.0,2.0,747.0,2.0
+2024-03-16,lunch,16:37:00,"Tofu, 3 ounce",3.0,40.0,1.0,2.0,4.0,2.0,0.0
+2024-03-16,lunch,16:37:00,"Huevo Frito Mediano (50g) - Huevo Frito, 1 huevo",1.0,116.0,1.0,10.0,7.0,86.0,0.0
+2024-03-16,lunch,16:37:00,"Pollo Frito Dulce Y Picante Coreano, 1 medium drumstick",1.0,219.0,14.0,13.0,12.0,520.0,7.0
+2024-03-16,lunch,16:37:00,"hacendado - costilla vaca, 180 gramo",180.0,475.0,1.0,41.0,27.0,0.0,0.0
+2024-03-16,dinner,17:13:00,"Ensaladilla: - Ensaladilla Rusa, 100 gr",100.0,190.0,8.0,15.0,5.0,120.0,3.0
+2024-03-16,dinner,23:13:00,"Supersol - Tortilla De Patatas, 600 g",600.0,810.0,90.0,36.0,24.0,0.0,0.0
+2024-03-16,dinner,23:13:00,"Pan - Pan Blanco ✓, 40 g",40.0,104.0,20.0,1.0,3.0,240.0,2.0
+2024-03-16,snacks,23:13:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-03-16,snacks,23:13:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-03-17,breakfast,14:28:00,"Supersol - Tortilla De Patatas, 120 g",120.0,162.0,18.0,7.0,5.0,0.0,0.0
+2024-03-17,breakfast,13:46:00,"Picos Integrales - Dia Picos, 10 g. (6 uds)",10.0,38.0,8.0,0.0,1.0,0.0,0.0
+2024-03-17,lunch,13:46:00,"Generic - Chopitos, 75 gr",75.0,146.0,7.0,7.0,13.0,348.0,1.0
+2024-03-17,lunch,14:28:00,"Damm - Free Damm 0,0, 33 cl",33.0,63.0,15.0,0.0,1.0,0.0,5.0
+2024-03-17,lunch,13:46:00,"Homemade - Patatas Fritas, 75 gr",75.0,195.0,14.0,15.0,2.0,113.0,0.0
+2024-03-17,lunch,13:45:00,"Chistorra Gesalaga - Chistorra, 30 gramo",30.0,143.0,1.0,14.0,4.0,1.0,0.0
+2024-03-17,lunch,13:45:00,"Huevo Frito Mediano (50g) - Huevo Frito, 0.5 huevo",0.5,58.0,1.0,5.0,4.0,43.0,0.0
+2024-03-17,lunch,13:46:00,"Pan - Pan Blanco ✓, 40 g",40.0,104.0,20.0,1.0,3.0,240.0,2.0
+2024-03-17,lunch,14:28:00,"Casero - Paella De Marisco, 180 gr",180.0,252.0,47.0,4.0,10.0,0.0,0.0
+2024-03-17,lunch,13:46:00,"Chovi - Alioli, 8 gr",8.0,60.0,0.0,7.0,0.0,42.0,0.0
+2024-03-17,dinner,21:04:00,"Muslo Pollo - Muslo Pollo, 3 Cuarto",3.0,453.0,0.0,18.0,72.0,0.0,0.0
+2024-03-17,dinner,21:04:00,"Ensaladilla: - Ensaladilla Rusa, 100 gr",100.0,190.0,8.0,15.0,5.0,120.0,3.0
+2024-03-17,snacks,14:28:00,"226ers - Vegan Recovery Drink Vainilla, 50 gr",50.0,198.0,21.0,3.0,22.0,600.0,1.0
+2024-03-17,snacks,14:28:00,"Silueta - Pan integral cereales sin corteza, 28 gramo",28.0,68.0,11.0,1.0,4.0,0.0,0.0
+2024-03-17,snacks,14:28:00,"Ensaladilla: - Ensaladilla Rusa, 60 gr",60.0,114.0,5.0,9.0,3.0,72.0,2.0
+2024-03-17,snacks,14:28:00,"Supersol - Tortilla De Patatas, 120 g",120.0,162.0,18.0,7.0,5.0,0.0,0.0
+2024-03-18,breakfast,08:47:00,"Silueta - Pan integral cereales sin corteza, 56 gramo",56.0,136.0,22.0,2.0,7.0,0.0,0.0
+2024-03-18,breakfast,07:29:00,"Ensaladilla: - Ensaladilla Rusa, 100 gr",100.0,190.0,8.0,15.0,5.0,120.0,3.0
+2024-03-18,breakfast,07:29:00,"Biotech Usa - Iso Whey Zero, 50 grammi",50.0,186.0,3.0,1.0,42.0,0.0,0.0
+2024-03-18,breakfast,07:29:00,"creatina - monohidrato de creatina, 4 g",4.0,0.0,0.0,0.0,4.0,0.0,0.0
+2024-03-18,lunch,08:47:00,"Zanahorias Asadas, 1.5 taza",1.5,163.0,21.0,9.0,2.0,860.0,10.0
+2024-03-18,lunch,08:47:00,"crema calabaza - crema calabaza, 1 taza",1.0,212.0,5.0,20.0,21.0,0.0,3.0
+2024-03-18,lunch,07:29:00,"Homemade - Bonito A La Plancha, 180 gr",180.0,275.0,0.0,11.0,44.0,70.0,0.0
+2024-03-18,lunch,07:29:00,"piña - Piña, 60 gram",60.0,30.0,8.0,0.0,0.0,1.0,6.0
+2024-03-18,dinner,15:02:00,"Mahou - 0,0 Tostada, 330 ml",330.0,86.0,20.0,0.0,1.0,0.0,11.0
+2024-03-18,dinner,15:02:00,"Generic - Vino Tinto, 1 Copa 150 Cc., 0.8 copa 150 gr.",0.8,86.0,0.0,0.0,0.0,5.0,0.0
+2024-03-18,dinner,15:02:00,"Pan - Pan Blanco ✓, 25 g",25.0,65.0,13.0,0.0,2.0,150.0,1.0
+2024-03-18,dinner,15:02:00,"Piparras Amanida - Piparras dulces, 30 gramo",30.0,5.0,1.0,0.0,0.0,300.0,0.0
+2024-03-18,dinner,15:02:00,"Aceitunas - Aceitunas Pack 5, 3 olives",3.0,15.0,1.0,2.0,0.0,144.0,0.0
+2024-03-18,dinner,07:29:00,"alsur - ensalada de pimientos, 80 grs",80.0,41.0,8.0,0.0,1.0,0.0,0.0
+2024-03-18,dinner,15:02:00,"Casero - Paella De Marisco, 80 gr",80.0,112.0,21.0,2.0,4.0,0.0,0.0
+2024-03-18,dinner,15:02:00,"Rodaballo - Rodaballo A La Plancha, 170 gr",170.0,173.0,3.0,6.0,27.0,187.0,0.0
+2024-03-18,dinner,15:02:00,"Escarola Lucas - Escarola, 50 g",50.0,11.0,2.0,0.0,1.0,5.0,0.0
+2024-03-18,dinner,15:02:00,"Jamon Serrano - Jamon Serrano Bellota, 40 gr",40.0,97.0,0.0,6.0,11.0,0.0,0.0
+2024-03-18,dinner,15:02:00,"anchoa - conserva, 0.5 lata",0.5,31.0,0.0,2.0,4.0,0.0,0.0
+2024-03-19,breakfast,09:12:00,"oats - copos de avena, 50 g",50.0,185.0,28.0,4.0,6.0,0.0,0.0
+2024-03-19,breakfast,09:12:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-03-19,breakfast,09:12:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-03-19,lunch,15:15:00,"Ensalada Pollo Ofi, 1 serving",1.0,759.0,8.0,60.0,46.0,68.0,1.0
+2024-03-19,dinner,19:44:00,"Homemade - Bocadillo De Atún, 1 bocadillo",1.0,740.0,120.0,5.0,25.0,1440.0,0.0
+2024-03-19,snacks,07:32:00,"Maurten - Gel100, 80 gramos",80.0,200.0,50.0,0.0,0.0,170.0,50.0
+2024-03-19,snacks,19:44:00,"creatina - monohidrato de creatina, 4 g",4.0,0.0,0.0,0.0,4.0,0.0,0.0
+2024-03-20,breakfast,09:18:00,"Roig - Clara de huevo, 30 gr",30.0,15.0,0.0,0.0,3.0,0.0,0.0
+2024-03-20,breakfast,09:18:00,"huevo - Huevo Entero, 1 pieza",1.0,78.0,1.0,5.0,6.0,0.0,0.0
+2024-03-20,breakfast,09:18:00,"pan de semillas - pan semillas, 100 gramos",100.0,286.0,47.0,7.0,7.0,536.0,0.0
+2024-03-20,breakfast,09:18:00,"Jamon de pavo - Jamon, 5 rebanada",5.0,180.0,3.0,7.0,25.0,1580.0,2.0
+2024-03-20,breakfast,09:18:00,"Aceite oliva - Aceite, 0.4 cucharada (14gr)",0.4,50.0,0.0,6.0,0.0,0.0,0.0
+2024-03-20,breakfast,09:18:00,"tomate rallado natural - tomate rallado natural, 2 rebanada",2.0,38.0,7.0,1.0,0.0,0.0,0.0
+2024-03-20,lunch,15:53:00,"Galia - Melon, 80 g - 1/4 melon",80.0,30.0,7.0,0.0,1.0,15.0,7.0
+2024-03-20,lunch,15:53:00,"Estofado De Ternera - Estofado De Ternera, 0.75 plato (400g)",0.75,375.0,11.0,23.0,31.0,869.0,1.0
+2024-03-20,lunch,15:53:00,"DEHESAELMILAGRO.COM - Potaje De Garbanzos, 300 gramo",300.0,303.0,42.0,10.0,13.0,1.0,7.0
+2024-03-20,dinner,20:15:00,"Pans and Company - Bocadillo Jamon Serrano, 125 gr",125.0,600.0,70.0,20.0,34.0,0.0,0.0
+2024-03-20,dinner,20:15:00,"Jeff's Spaghetti Bolognese - Spaghetti Bolognese, 150 gm",150.0,293.0,22.0,15.0,15.0,212.0,0.0
+2024-03-21,breakfast,,"oats - copos de avena, 50 g",50.0,185.0,28.0,4.0,6.0,0.0,0.0
+2024-03-21,breakfast,,"Biotech Usa - Iso Whey Zero, 50 grammi",50.0,186.0,3.0,1.0,42.0,0.0,0.0
+2024-03-21,breakfast,,"Plátano - Platano, 1 pieza",1.0,105.0,27.0,0.0,1.0,0.0,14.0
+2024-03-21,breakfast,,"creatina - monohidrato de creatina, 4 g",4.0,0.0,0.0,0.0,4.0,0.0,0.0
+2024-03-21,lunch,07:28:00,"Ensalada Polllo Ofi Bain, 1.2 serving",1.2,667.0,29.0,42.0,45.0,80.0,8.0
+2024-03-21,dinner,07:28:00,"Quick Add, 1 serving(s)",1.0,1270.0,90.0,70.0,70.0,0.0,0.0
+2024-03-22,breakfast,,"oats - copos de avena, 50 g",50.0,185.0,28.0,4.0,6.0,0.0,0.0
+2024-03-22,breakfast,09:30:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-03-22,breakfast,00:09:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-03-22,breakfast,09:30:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-03-22,lunch,,"Ensalada Pollo Ofi, 1 serving",1.0,759.0,8.0,60.0,46.0,68.0,1.0
+2024-03-22,dinner,23:35:00,"Jamon Serrano - Jamon Serrano Bellota, 40 gr",40.0,97.0,0.0,6.0,11.0,0.0,0.0
+2024-03-22,dinner,23:35:00,"Aceite Oliva - Aceite Oliva 7ml, 2 cucharadita de café (7ml)",2.0,120.0,0.0,14.0,0.0,0.0,0.0
+2024-03-22,dinner,23:35:00,"Generic - Chopitos, 75 gr",75.0,146.0,7.0,7.0,13.0,348.0,1.0
+2024-03-22,dinner,23:35:00,"La Sirena - Almejas a la marinera, 100 gramo",100.0,103.0,4.0,7.0,7.0,1.0,1.0
+2024-03-22,dinner,09:30:00,"Patatas - Hervidas, 25 gr",25.0,20.0,4.0,0.0,1.0,0.0,0.0
+2024-03-22,dinner,15:14:00,"Patatas - Hervidas, 25 gr",25.0,20.0,4.0,0.0,1.0,0.0,0.0
+2024-03-22,dinner,23:35:00,"Patatas - Hervidas, 25 gr",25.0,20.0,4.0,0.0,1.0,0.0,0.0
+2024-03-22,dinner,23:35:00,"Generic - Vino Tinto, 1 Copa 150 Cc., 1 copa 150 gr.",1.0,107.0,0.0,0.0,0.0,6.0,0.0
+2024-03-22,dinner,23:35:00,"Botellin Mahou (20cl) - Cerveza, 40 cl",40.0,176.0,14.0,0.0,0.0,0.0,0.0
+2024-03-22,dinner,23:35:00,"Pan - Pan Blanco ✓, 50 g",50.0,131.0,25.0,1.0,4.0,300.0,3.0
+2024-03-22,dinner,23:35:00,"Tomato, 1.8 medium",1.8,40.0,9.0,0.0,2.0,11.0,6.0
+2024-03-22,dinner,09:30:00,"atun ventresca - ventresca atún, 25 gramo",25.0,21.0,0.0,0.0,5.0,0.0,0.0
+2024-03-22,dinner,15:14:00,"atun ventresca - ventresca atún, 25 gramo",25.0,21.0,0.0,0.0,5.0,0.0,0.0
+2024-03-22,dinner,23:35:00,"atun ventresca - ventresca atún, 25 gramo",25.0,21.0,0.0,0.0,5.0,0.0,0.0
+2024-03-22,dinner,23:35:00,"Chuletillas De Lechazo - Chuletillas De Lechazo, 0.7 (100gr)",0.7,270.0,0.0,19.0,10.0,0.0,0.0
+2024-03-22,dinner,23:35:00,"Casero - Paella De Marisco, 180 gr",180.0,252.0,47.0,4.0,10.0,0.0,0.0
+2024-03-23,breakfast,09:48:00,"creatina - monohidrato de creatina, 4 g",4.0,0.0,0.0,0.0,4.0,0.0,0.0
+2024-03-23,breakfast,09:48:00,"piña - Piña, 178 gram",178.0,89.0,23.0,0.0,1.0,2.0,18.0
+2024-03-23,lunch,15:13:00,"Pan - Pan Blanco ✓, 25 g",25.0,65.0,13.0,0.0,2.0,150.0,1.0
+2024-03-23,lunch,15:13:00,"Chuleton - Chuleton añojo, 75 gramo",75.0,121.0,0.0,6.0,17.0,42.0,0.0
+2024-03-23,lunch,15:13:00,"Arbizu - Chorizo a la sidra, 20 gramo",20.0,52.0,1.0,4.0,3.0,0.0,0.0
+2024-03-23,lunch,11:48:00,"Esparragos Trigueros - Esparragos Trigueros Verdes, 80 g",80.0,17.0,2.0,0.0,2.0,3.0,1.0
+2024-03-23,lunch,11:48:00,"Callos a la madrileña - Callos, 90 gramos",90.0,159.0,1.0,12.0,12.0,0.0,0.0
+2024-03-23,lunch,11:48:00,"Supersol - Tortilla De Patatas, 75 g",75.0,101.0,11.0,5.0,3.0,0.0,0.0
+2024-03-23,lunch,15:13:00,"Mahou - 0,0 Tostada, 330 ml",330.0,86.0,20.0,0.0,1.0,0.0,11.0
+2024-03-23,lunch,15:13:00,"alsur - ensalada de pimientos, 80 grs",80.0,41.0,8.0,0.0,1.0,0.0,0.0
+2024-03-23,dinner,22:07:00,"tomate rallado natural - tomate rallado natural, 2 rebanada",2.0,38.0,7.0,1.0,0.0,0.0,0.0
+2024-03-23,dinner,22:07:00,"Aceite Oliva - Aceite Oliva 7ml, 2 cucharadita de café (7ml)",2.0,120.0,0.0,14.0,0.0,0.0,0.0
+2024-03-23,dinner,22:07:00,"Frinosa atun lata - Atun lata, 16 gramos",16.0,41.0,0.0,3.0,3.0,30.0,0.0
+2024-03-23,dinner,22:07:00,"PRIMO Pastrami - Thinly sliced pastrami, 50 grams",50.0,47.0,1.0,1.0,9.0,367.0,0.0
+2024-03-23,dinner,22:07:00,"Pan - Pan Blanco ✓, 80 g",80.0,209.0,40.0,1.0,7.0,480.0,4.0
+2024-03-23,dinner,22:07:00,"Tomato, 1 medium",1.0,22.0,5.0,0.0,1.0,6.0,3.0
+2024-03-23,dinner,22:07:00,"Gambas - Gamba, 1.5 taza",1.5,53.0,0.0,1.0,11.0,0.0,0.0
+2024-03-23,dinner,22:07:00,"Jamon Serrano - Jamon Serrano Bellota, 20 gr",20.0,48.0,0.0,3.0,6.0,0.0,0.0
+2024-03-23,dinner,22:07:00,"Baklava - Baklava, 1 piece",1.0,334.0,29.0,23.0,5.0,253.0,10.0
+2024-03-23,snacks,15:13:00,"oats - copos de avena, 50 g",50.0,185.0,28.0,4.0,6.0,0.0,0.0
+2024-03-23,snacks,15:13:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-03-23,snacks,11:48:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-03-24,breakfast,08:29:00,"oats - copos de avena, 50 g",50.0,185.0,28.0,4.0,6.0,0.0,0.0
+2024-03-24,breakfast,08:29:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-03-24,lunch,15:14:00,"Mahou - Cerveza Mahou Tostada 0,0, 325 ml",325.0,34.0,8.0,0.0,0.0,0.0,4.0
+2024-03-24,lunch,15:14:00,"eroski - encurtidos , 30 gramo",30.0,17.0,1.0,2.0,0.0,0.0,0.0
+2024-03-24,lunch,15:14:00,"Pan - Pan Blanco ✓, 40 g",40.0,104.0,20.0,1.0,3.0,240.0,2.0
+2024-03-24,lunch,15:14:00,"Morcilla de arroz - Morcilla, 50 gramo",50.0,142.0,9.0,11.0,3.0,0.0,0.0
+2024-03-24,lunch,15:14:00,"Esparragos Trigueros - Esparragos Trigueros Verdes, 80 g",80.0,17.0,2.0,0.0,2.0,3.0,1.0
+2024-03-24,lunch,15:14:00,"Carrefour - Cochinillo asado, 400 gr",400.0,784.0,2.0,31.0,127.0,0.0,0.0
+2024-03-24,dinner,21:28:00,"Casero - Verduras Al Horno, 100 g",100.0,100.0,11.0,0.0,3.0,350.0,0.0
+2024-03-24,dinner,21:28:00,"Pan - Pan Blanco ✓, 25 g",25.0,65.0,13.0,0.0,2.0,150.0,1.0
+2024-03-24,dinner,21:28:00,"Jamon Serrano - Jamon Serrano Bellota, 50 gr",50.0,121.0,0.0,7.0,14.0,0.0,0.0
+2024-03-24,dinner,21:28:00,"Supersol - Tortilla De Patatas, 180 g",180.0,243.0,27.0,11.0,7.0,0.0,0.0
+2024-03-24,dinner,21:28:00,"Omakase - Tartar De atún, 180 gramis",180.0,241.0,1.0,17.0,22.0,0.0,0.0
+2024-03-24,snacks,13:58:00,"226ers - Vegan Recovery Drink Vainilla, 50 gr",50.0,198.0,21.0,3.0,22.0,600.0,1.0
+2024-03-25,breakfast,09:35:00,"oats - copos de avena, 50 g",50.0,185.0,28.0,4.0,6.0,0.0,0.0
+2024-03-25,breakfast,09:35:00,"Biotech Usa - Iso Whey Zero, 50 grammi",50.0,186.0,3.0,1.0,42.0,0.0,0.0
+2024-03-25,lunch,13:37:00,"Ensalada Polllo Ofi Bain, 1 serving",1.0,556.0,24.0,35.0,38.0,66.0,7.0
+2024-03-25,dinner,22:20:00,"Pan - Pan Blanco ✓, 100 g",100.0,255.0,56.0,1.0,7.0,500.0,5.0
+2024-03-25,dinner,22:20:00,"PRIMO Pastrami - Thinly sliced pastrami, 20 grams",20.0,19.0,0.0,0.0,4.0,147.0,0.0
+2024-03-25,dinner,22:20:00,"Supersol - Tortilla De Patatas, 150 g",150.0,203.0,23.0,9.0,6.0,0.0,0.0
+2024-03-25,dinner,22:20:00,"Mostaza Natura - mostaza, 0.5 cuchara de sopa",0.5,6.0,1.0,0.0,0.0,0.0,0.0
+2024-03-25,dinner,22:20:00,"Jamon Serrano - Jamon Serrano Bellota, 20 gr",20.0,48.0,0.0,3.0,6.0,0.0,0.0
+2024-03-25,dinner,22:20:00,"tomate rallado natural - tomate rallado natural, 1 rebanada",1.0,19.0,4.0,1.0,0.0,0.0,0.0
+2024-03-25,dinner,22:20:00,"Pepinillos  Miel - Pepinillos, 50 g",50.0,25.0,4.0,0.0,1.0,0.0,4.0
+2024-03-25,dinner,22:20:00,"probiotico - probiotico, 1 capsule1",1.0,0.0,0.0,0.0,0.0,0.0,0.0
+2024-03-26,breakfast,09:41:00,"oats - copos de avena, 50 g",50.0,185.0,28.0,4.0,6.0,0.0,0.0
+2024-03-26,breakfast,08:03:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-03-26,breakfast,09:41:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-03-26,lunch,13:38:00,"Ensalada Polllo Ofi Bain, 1.2 serving",1.2,667.0,29.0,42.0,45.0,80.0,8.0
+2024-03-26,dinner,22:29:00,"Generic - Vino Tinto, 1 Copa 150 Cc., 1 copa 150 gr.",1.0,107.0,0.0,0.0,0.0,6.0,0.0
+2024-03-26,dinner,22:29:00,"Mahou - Cerveza Mahou Tostada 0,0, 325 ml",325.0,34.0,8.0,0.0,0.0,0.0,4.0
+2024-03-26,dinner,22:29:00,"Homemade - Patatas Fritas, 150 gr",150.0,390.0,27.0,30.0,4.0,225.0,0.0
+2024-03-26,dinner,22:29:00,"Pulpos pequeños - Pulpo, 100 gram",100.0,47.0,1.0,1.0,10.0,0.0,1.0
+2024-03-26,dinner,22:29:00,"Chovi - Alioli, 12 gr",12.0,90.0,0.0,10.0,0.0,62.0,0.0
+2024-03-26,dinner,22:29:00,"Chuleton - Chuleton añojo, 450 gramo",450.0,725.0,3.0,36.0,99.0,252.0,0.0
+2024-03-26,snacks,09:41:00,"carrefour - cereales barre cacahuete, 1 barre",1.0,93.0,12.0,4.0,2.0,0.0,6.0
+2024-03-26,snacks,09:41:00,"creatina - monohidrato de creatina, 4 g",4.0,0.0,0.0,0.0,4.0,0.0,0.0
+2024-03-27,breakfast,07:58:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-03-27,breakfast,07:58:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-03-27,breakfast,07:58:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-03-27,lunch,13:15:00,"Sansala - Poke salmon, 265 gr",265.0,602.0,81.0,19.0,23.0,0.0,20.0
+2024-03-27,dinner,07:58:00,"Homemade - Patatas Fritas, 80 gr",80.0,208.0,14.0,16.0,2.0,120.0,0.0
+2024-03-27,dinner,07:56:00,"Filete empanado - Filete empanado, 200 g",200.0,264.0,36.0,2.0,25.0,0.0,0.0
+2024-03-27,dinner,09:18:00,"Rabo de Toro Hacendado - Rabo de toro, 80 g",80.0,134.0,0.0,8.0,16.0,0.0,0.0
+2024-03-27,dinner,09:18:00,"Pan - Pan Blanco ✓, 40 g",40.0,102.0,22.0,0.0,3.0,200.0,2.0
+2024-03-27,dinner,07:56:00,"Generic - Vino Tinto, 1 Copa 150 Cc., 2 copa 150 gr.",2.0,214.0,1.0,0.0,1.0,12.0,0.0
+2024-03-27,dinner,09:18:00,"Ensaladilla: - Ensaladilla Rusa, 70 gr",70.0,133.0,6.0,11.0,4.0,84.0,2.0
+2024-03-27,snacks,07:56:00,"Generico - Patatas Light, 100 gr",100.0,473.0,63.0,23.0,4.0,1.0,0.0
+2024-03-27,snacks,07:56:00,"pipas grefusa - pipas, 42 gramo",42.0,105.0,1.0,9.0,5.0,0.0,0.0
+2024-03-27,snacks,07:58:00,"Generic - Ginebra, 300 ml",300.0,660.0,0.0,0.0,0.0,0.0,0.0
+2024-03-28,breakfast,09:38:00,"Huevo Frito Mediano (50g) - Huevo Frito, 1 huevo",1.0,116.0,1.0,10.0,7.0,86.0,0.0
+2024-03-28,breakfast,09:38:00,"Pan - Pan Blanco ✓, 60 g",60.0,153.0,33.0,0.0,4.0,300.0,3.0
+2024-03-28,lunch,16:22:00,"Pan - Pan Blanco ✓, 40 g",40.0,102.0,22.0,0.0,3.0,200.0,2.0
+2024-03-28,lunch,16:22:00,"mayonesa - Mayonesa, 1 cucharada",1.0,90.0,0.0,10.0,0.0,0.0,0.0
+2024-03-28,lunch,16:22:00,"Chuleton - Chuleton añojo, 150 gramo",150.0,242.0,1.0,12.0,33.0,84.0,0.0
+2024-03-28,lunch,16:22:00,"Homemade - Patatas Fritas, 50 gr",50.0,130.0,9.0,10.0,1.0,75.0,0.0
+2024-03-28,lunch,16:22:00,"Guisantes - Guisantes, 70 gramos",70.0,62.0,10.0,0.0,4.0,0.0,4.0
+2024-03-28,lunch,16:22:00,"Morcilla de arroz - Morcilla, 40 gramo",40.0,114.0,7.0,8.0,2.0,0.0,0.0
+2024-03-28,lunch,16:22:00,"molleja - molleja, 80 gramo",80.0,63.0,0.0,1.0,13.0,0.0,0.0
+2024-03-28,lunch,16:22:00,"Aceite Oliva - Aceite Oliva 7ml, 0.5 cucharadita de café (7ml)",0.5,30.0,0.0,4.0,0.0,0.0,0.0
+2024-03-28,dinner,21:20:00,"Kiwi, 1 fruit",1.0,44.0,11.0,0.0,1.0,4.0,7.0
+2024-03-29,breakfast,09:10:00,"Pan - Pan Blanco ✓, 35 g",35.0,89.0,19.0,0.0,2.0,175.0,2.0
+2024-03-29,breakfast,09:10:00,"Hacendado mercadona - Pollo con tomate , 150 gramo",150.0,225.0,12.0,12.0,17.0,0.0,3.0
+2024-03-29,lunch,14:51:00,"Casero - Bacalao a Bras (P), 386 g",386.0,706.0,46.0,39.0,42.0,0.0,0.0
+2024-03-29,lunch,14:51:00,"Pan - Pan Blanco ✓, 35 g",35.0,89.0,19.0,0.0,2.0,175.0,2.0
+2024-03-29,lunch,14:51:00,"mayonesa - Mayonesa, 1 cucharada",1.0,90.0,0.0,10.0,0.0,0.0,0.0
+2024-03-29,lunch,14:51:00,"Espinaca Salteada Con Ajo, 1.5 taza",1.5,134.0,11.0,8.0,8.0,818.0,1.0
+2024-03-29,dinner,20:08:00,"Jamon Serrano - Jamon Serrano Bellota, 20 gr",20.0,48.0,0.0,3.0,6.0,0.0,0.0
+2024-03-29,dinner,20:08:00,"Pan - Pan Blanco ✓, 50 g",50.0,128.0,28.0,0.0,4.0,250.0,3.0
+2024-03-29,dinner,20:08:00,"Chorizo picante - Chorizo picante, 100 gramo",100.0,392.0,1.0,34.0,21.0,3.0,0.0
+2024-03-29,dinner,20:08:00,"Freia - Fresa, 100 gram",100.0,32.0,8.0,0.0,1.0,1.0,0.0
+2024-03-29,dinner,20:08:00,"Gallina Blanca (verificat) - Caldo casero de pollo, 250 ml",250.0,13.0,1.0,1.0,1.0,1.0,0.0
+2024-03-29,snacks,13:47:00,"Carne asada, 50 gram",50.0,76.0,1.0,4.0,8.0,161.0,0.0
+2024-03-29,snacks,13:47:00,"Pan - Pan Blanco ✓, 45 g",45.0,115.0,25.0,0.0,3.0,225.0,2.0
+2024-03-29,snacks,13:47:00,"Nuts - Macadamia, 5 nuts",5.0,100.0,2.0,11.0,1.0,28.0,1.0
+2024-03-29,snacks,13:47:00,"Chuleton - Chuleton añojo, 70 gramo",70.0,113.0,0.0,6.0,15.0,39.0,0.0
+2024-03-30,breakfast,09:04:00,"Casero - Bacalao a Bras (P), 130 g",130.0,238.0,15.0,13.0,14.0,0.0,0.0
+2024-03-30,breakfast,09:04:00,"Huevo Frito Mediano (50g) - Huevo Frito, 1 huevo",1.0,116.0,1.0,10.0,7.0,86.0,0.0
+2024-03-30,breakfast,09:04:00,"Roig - Clara de huevo, 30 gr",30.0,15.0,0.0,0.0,3.0,0.0,0.0
+2024-03-30,lunch,16:40:00,"Knoweats - Tacos de cochinita pibil, 280 g",280.0,666.0,39.0,43.0,31.0,1960.0,1.0
+2024-03-30,lunch,16:40:00,"# - Maiz, Mazorca, 50 gr",50.0,51.0,9.0,1.0,2.0,152.0,0.0
+2024-03-30,lunch,16:40:00,"Jleo's - Totopo & Guacamole, 40 g",40.0,227.0,28.0,3.0,3.0,3847.0,0.0
+2024-03-30,dinner,22:02:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-03-30,dinner,22:02:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-03-30,dinner,22:02:00,"Jamon Serrano - Jamon Serrano Bellota, 40 gr",40.0,97.0,0.0,6.0,11.0,0.0,0.0
+2024-03-30,dinner,22:02:00,"salchichon turon - salchichon, 40 gramo",40.0,191.0,2.0,17.0,7.0,0.0,0.0
+2024-03-30,dinner,22:02:00,"Picos Integrales - Dia Picos, 15 g. (6 uds)",15.0,57.0,12.0,0.0,2.0,0.0,0.0
+2024-03-30,snacks,12:52:00,"Supersol - Tortilla De Patatas, 120 g",120.0,162.0,18.0,7.0,5.0,0.0,0.0
+2024-03-30,snacks,12:52:00,"Patatas revolconas con torreznos - Patatas revolconas con torreznos, 75 gr",75.0,170.0,9.0,14.0,2.0,0.0,0.0
+2024-03-31,breakfast,12:59:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-03-31,breakfast,12:59:00,"Biotech Usa - Iso Whey Zero, 50 grammi",50.0,186.0,3.0,1.0,42.0,0.0,0.0
+2024-03-31,lunch,,"Aceitunas - Aceitunas Pack 5, 4 olives",4.0,20.0,1.0,2.0,0.0,192.0,0.0
+2024-03-31,lunch,12:59:00,"Patatas fritas - Patatas fritas, 35 g",35.0,187.0,20.0,11.0,2.0,0.0,0.0
+2024-03-31,lunch,12:59:00,"chipiron - chipirones, 80 g",80.0,175.0,0.0,10.0,7.0,0.0,14.0
+2024-03-31,lunch,12:59:00,"Ensaladilla: - Ensaladilla Rusa, 70 gr",70.0,133.0,6.0,11.0,4.0,84.0,2.0
+2024-03-31,lunch,12:59:00,"Propia - Sopa de Cocido, 250 gramo",250.0,227.0,17.0,10.0,15.0,116.0,4.0
+2024-03-31,lunch,12:59:00,"Homemade - Patatas Fritas, 35 gr",35.0,91.0,6.0,7.0,1.0,53.0,0.0
+2024-03-31,lunch,12:59:00,"entrecote - entrecote, 130 gram",130.0,215.0,0.0,10.0,30.0,0.0,0.0
+2024-03-31,dinner,12:59:00,"Ensalada - Mi Ensalada, 5.5 ración",5.5,385.0,50.0,6.0,6.0,0.0,0.0
+2024-03-31,dinner,12:59:00,"Chicken Wrap - Wrap, 1.5 wrap",1.5,375.0,9.0,19.0,28.0,1260.0,7.0
+2024-03-31,snacks,12:59:00,"226ers - Vegan Recovery Drink Vainilla, 50 gr",50.0,198.0,21.0,3.0,22.0,600.0,1.0
+2024-04-01,breakfast,05:36:00,"Mixed fruit, 1.8 cup",1.8,70.0,18.0,0.0,1.0,5.0,13.0
+2024-04-01,breakfast,05:36:00,"Roig - Clara de huevo, 100 gr",100.0,50.0,1.0,1.0,10.0,0.0,1.0
+2024-04-01,breakfast,05:36:00,"Kalamata - Olives, 15 g (3-5 olives)",15.0,45.0,2.0,4.0,0.0,230.0,0.0
+2024-04-01,breakfast,05:36:00,"Olive oil, 0.7 tablespoon",0.7,84.0,0.0,9.0,0.0,0.0,0.0
+2024-04-01,dinner,19:09:00,"Aladdin - Tabbouleh, 6 tablespoon",6.0,96.0,12.0,5.0,2.0,96.0,1.0
+2024-04-01,dinner,19:09:00,"Shrimp, 3 ounce",3.0,60.0,1.0,1.0,12.0,481.0,0.0
+2024-04-01,dinner,19:09:00,"Sauce - Marinara Sauce, 1 cup",1.0,70.0,10.0,2.0,2.0,0.0,0.0
+2024-04-01,dinner,19:09:00,"Bread farmhouse - Bread, 0.5 slice",0.5,60.0,11.0,1.0,2.0,110.0,2.0
+2024-04-01,dinner,19:09:00,"Chicken Biryani, 2 cup",2.0,584.0,62.0,19.0,39.0,838.0,6.0
+2024-04-02,breakfast,07:40:00,"Falafel - Falafel, 1 ball",1.0,57.0,5.0,3.0,2.0,50.0,0.0
+2024-04-02,breakfast,07:40:00,"Taste Shikran - Muhammara, 60 gram",60.0,84.0,3.0,6.0,3.0,1.0,1.0
+2024-04-02,breakfast,07:40:00,"Smoked salmon, 60 gram",60.0,70.0,0.0,3.0,11.0,403.0,0.0
+2024-04-02,breakfast,07:40:00,"Omelette - Omelette Nature, 100 g",100.0,173.0,0.0,13.0,15.0,245.0,0.0
+2024-04-02,breakfast,07:40:00,"Huevo: - Huevo Cocido Clara, 60 gr",60.0,34.0,0.0,0.0,7.0,110.0,0.0
+2024-04-02,breakfast,07:40:00,"Kalamata - Olives, 15 g (3-5 olives)",15.0,45.0,2.0,4.0,0.0,230.0,0.0
+2024-04-02,breakfast,07:40:00,"Tea & Oat Milk - Brewed Tea, Oatly Milk, 1 cup",1.0,22.0,3.0,1.0,1.0,0.0,2.0
+2024-04-02,dinner,19:07:00,"Chicken Biryani, 1.4 cup",1.4,409.0,43.0,13.0,28.0,587.0,4.0
+2024-04-02,dinner,19:07:00,"Coles - Chicken Sausages, 2.5 Sausage (70g)",2.5,220.0,10.0,8.0,27.0,1235.0,3.0
+2024-04-02,dinner,19:07:00,"Chicken Wrap - Wrap, 0.6 wrap",0.6,150.0,4.0,8.0,11.0,504.0,3.0
+2024-04-02,snacks,22:13:00,"Taste Shikran - Muhammara, 100 gram",100.0,140.0,6.0,10.0,6.0,2.0,2.0
+2024-04-02,snacks,22:13:00,"Hummus, 2 tablespoon",2.0,78.0,6.0,5.0,2.0,144.0,1.0
+2024-04-02,snacks,22:13:00,"stonefire - Naan, 1/2 naan",,190.0,30.0,5.0,5.0,430.0,2.0
+2024-04-02,snacks,22:13:00,"Beef Curry, 1 cup",1.0,266.0,11.0,13.0,29.0,243.0,6.0
+2024-04-02,snacks,22:13:00,"Thai Slaw - Slaw, 4 oz.",4.0,130.0,12.0,8.0,4.0,700.0,9.0
+2024-04-03,breakfast,08:17:00,"Salady - Mexican wrap, 168 g",168.0,452.0,43.0,26.0,12.0,0.0,8.0
+2024-04-03,lunch,14:25:00,"bacalao - plancha, 350 gram",350.0,221.0,2.0,2.0,55.0,0.0,2.0
+2024-04-03,lunch,14:25:00,"Supersol - Tortilla De Patatas, 250 g",250.0,338.0,38.0,15.0,10.0,0.0,0.0
+2024-04-03,dinner,19:55:00,"Pans and Company - Bocadillo Jamon Serrano, 125 gr",125.0,600.0,70.0,20.0,34.0,0.0,0.0
+2024-04-03,snacks,12:21:00,"Solnuts - Almendra tostada , 30 gramo",30.0,179.0,2.0,15.0,8.0,0.0,0.0
+2024-04-04,breakfast,07:51:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-04-04,breakfast,07:51:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-04-04,breakfast,07:51:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-04-04,lunch,14:23:00,"mortadela - Mortadela, 80 grama",80.0,226.0,4.0,19.0,10.0,0.0,0.0
+2024-04-04,lunch,14:23:00,"carrefour - empanada atun, 60 gramo",60.0,145.0,19.0,5.0,4.0,600.0,2.0
+2024-04-04,lunch,14:23:00,"Pan - Pan Blanco ✓, 50 g",50.0,128.0,28.0,0.0,4.0,250.0,3.0
+2024-04-04,lunch,14:23:00,"Supersol - Tortilla De Patatas, 100 g",100.0,135.0,15.0,6.0,4.0,0.0,0.0
+2024-04-04,dinner,23:46:00,"Pan - Pan Blanco ✓, 50 g",50.0,128.0,28.0,0.0,4.0,250.0,3.0
+2024-04-04,dinner,23:46:00,"Solomillo cerdo - Solomillo cerdo, 100 grams",100.0,101.0,4.0,3.0,0.0,0.0,0.0
+2024-04-04,dinner,23:46:00,"bacalao - plancha, 150 gram",150.0,95.0,1.0,1.0,24.0,0.0,1.0
+2024-04-04,dinner,23:46:00,"Jamon Serrano - Jamon Serrano Bellota, 80 gr",80.0,194.0,0.0,12.0,23.0,0.0,0.0
+2024-04-04,dinner,23:46:00,"Aceite Oliva - Aceite Oliva 7ml, 0.5 cucharadita de café (7ml)",0.5,30.0,0.0,4.0,0.0,0.0,0.0
+2024-04-04,dinner,23:46:00,"Generic - Vino Tinto, 1 Copa 150 Cc., 1 copa 150 gr.",1.0,107.0,0.0,0.0,0.0,6.0,0.0
+2024-04-04,dinner,23:46:00,"Patatas fritas - Patatas fritas, 50 g",50.0,267.0,29.0,16.0,3.0,0.0,0.0
+2024-04-04,snacks,06:31:00,"carrefour - empanada atun, 60 gramo",60.0,145.0,19.0,5.0,4.0,600.0,2.0
+2024-04-04,snacks,06:31:00,"Plátano - Platano, 1 pieza",1.0,105.0,27.0,0.0,1.0,0.0,14.0
+2024-04-05,breakfast,09:41:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-04-05,breakfast,09:41:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-04-05,breakfast,09:41:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-04-05,lunch,14:09:00,"Ensalada Pollo Ofi, 1 serving",1.0,759.0,8.0,60.0,46.0,68.0,1.0
+2024-04-05,dinner,19:33:00,"Chistorra Gesalaga - Chistorra, 30 gramo",30.0,143.0,1.0,14.0,4.0,1.0,0.0
+2024-04-05,dinner,22:39:00,"Mahou - Cerveza Mahou Tostada 0,0, 325 ml",325.0,34.0,8.0,0.0,0.0,0.0,4.0
+2024-04-05,dinner,22:39:00,"Ensalada - Lechuga 123, 100 gr",100.0,19.0,3.0,0.0,1.0,10.0,0.0
+2024-04-05,dinner,22:39:00,"Pan - Pan Blanco ✓, 40 g",40.0,102.0,22.0,0.0,3.0,200.0,2.0
+2024-04-05,dinner,22:39:00,"Casero - Verduras Al Horno, 140 g",140.0,140.0,15.0,0.0,4.0,490.0,0.0
+2024-04-05,dinner,22:39:00,"Chuleton - Chuleton añojo, 400 gramo",400.0,644.0,2.0,32.0,88.0,224.0,0.0
+2024-04-05,dinner,22:39:00,"Chovi - Alioli, 18 gr",18.0,134.0,0.0,15.0,0.0,94.0,0.0
+2024-04-05,dinner,22:39:00,"Homemade - Patatas Fritas, 100 gr",100.0,260.0,18.0,20.0,3.0,150.0,0.0
+2024-04-05,snacks,22:39:00,"salchichon turon - salchichon, 30 gramo",30.0,143.0,1.0,13.0,5.0,0.0,0.0
+2024-04-06,breakfast,08:18:00,"Hacendado - Salvado de Avena, 60 g",60.0,215.0,26.0,5.0,11.0,0.0,1.0
+2024-04-06,breakfast,08:18:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-04-06,lunch,13:50:00,"Homemade - Arroz Tapado, 2 cups",2.0,529.0,44.0,25.0,32.0,0.0,0.0
+2024-04-06,lunch,13:50:00,"Huevo Frito Mediano (50g) - Huevo Frito, 1 huevo",1.0,116.0,1.0,10.0,7.0,86.0,0.0
+2024-04-06,lunch,13:50:00,"Espinaca Salteada Con Ajo, 1 taza",1.0,89.0,8.0,5.0,5.0,545.0,1.0
+2024-04-06,dinner,20:50:00,"mollete - mollete, 1 mollete",1.0,79.0,16.0,0.0,4.0,0.0,0.0
+2024-04-06,dinner,20:50:00,"anchoa - conserva, 0.5 lata",0.5,31.0,0.0,2.0,4.0,0.0,0.0
+2024-04-06,dinner,20:50:00,"Pasta bolognese - Pasta bolognese, 560 gr",560.0,661.0,95.0,18.0,29.0,0.0,0.0
+2024-04-07,breakfast,06:27:00,"Yo Soy - Bebida De Avena, 250 ml",250.0,115.0,20.0,2.0,4.0,0.0,14.0
+2024-04-07,breakfast,06:27:00,"oats - copos de avena, 70 g",70.0,259.0,39.0,6.0,8.0,0.0,0.0
+2024-04-07,lunch,14:09:00,"mayonesa - Mayonesa, 1 cucharada",1.0,90.0,0.0,10.0,0.0,0.0,0.0
+2024-04-07,lunch,14:09:00,"canchita - canchita, 20 gr",20.0,73.0,16.0,1.0,1.0,2.0,0.0
+2024-04-07,lunch,14:09:00,"Natalie's Peruvian - Causa, 3 in by  in",3.0,262.0,18.0,17.0,13.0,330.0,0.0
+2024-04-07,lunch,14:09:00,"Peru - Arroz Chaufa De Pollo, 120 g",120.0,215.0,34.0,5.0,7.0,292.0,0.0
+2024-04-07,lunch,14:09:00,"Pardo's Chicken - Pollo A La Brasa, 1/4 de pollo",,510.0,11.0,21.0,67.0,0.0,0.0
+2024-04-07,lunch,14:09:00,"Homemade - Patatas Fritas, 35 gr",35.0,91.0,6.0,7.0,1.0,53.0,0.0
+2024-04-07,dinner,20:22:00,"Pollo Plancha - Pollo Plancha, 100 gr",100.0,98.0,1.0,1.0,20.0,705.0,0.0
+2024-04-07,dinner,20:22:00,"Cebollas Moradas, 0.5 medio",0.5,21.0,5.0,0.0,1.0,1.0,2.0
+2024-04-07,dinner,20:22:00,"Hacendado - Tortitas, Fajitas, Wraps de Avena, 60 gr",60.0,172.0,24.0,4.0,9.0,780.0,1.0
+2024-04-07,dinner,20:22:00,"Old El Paso - Chili con Carne Suave, 209 gram",209.0,217.0,19.0,6.0,18.0,0.0,5.0
+2024-04-07,snacks,11:44:00,"Maurten - Gel100, 40 gramos",40.0,100.0,25.0,0.0,0.0,85.0,25.0
+2024-04-07,snacks,11:44:00,"Maurten - Gel100, 40 gramos",40.0,100.0,25.0,0.0,0.0,85.0,25.0
+2024-04-07,snacks,11:44:00,"Maurten - Gel100, 40 gramos",40.0,100.0,25.0,0.0,0.0,85.0,25.0
+2024-04-07,snacks,11:44:00,"226ers - Vegan Recovery Drink Vainilla, 50 gr",50.0,198.0,21.0,3.0,22.0,600.0,1.0
+2024-04-07,snacks,11:44:00,"Maurten - Gel100, 40 gramos",40.0,100.0,25.0,0.0,0.0,85.0,25.0
+2024-04-07,snacks,11:44:00,"Maurten - Gel100, 40 gramos",40.0,100.0,25.0,0.0,0.0,85.0,25.0
+2024-04-07,snacks,11:44:00,"Maurten - Gel100, 40 gramos",40.0,100.0,25.0,0.0,0.0,85.0,25.0
+2024-04-07,snacks,11:44:00,"Maurten - Gel100, 40 gramos",40.0,100.0,25.0,0.0,0.0,85.0,25.0
+2024-04-07,snacks,11:44:00,"Maurten - Gel100, 40 gramos",40.0,100.0,25.0,0.0,0.0,85.0,25.0
+2024-04-07,snacks,11:44:00,"Maurten - Gel100, 40 gramos",40.0,100.0,25.0,0.0,0.0,85.0,25.0
+2024-04-07,snacks,11:44:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-04-07,snacks,11:44:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-04-08,breakfast,08:12:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-04-08,breakfast,08:12:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-04-08,lunch,15:59:00,"Genérico - Berenjena, 200 g",200.0,48.0,11.0,0.0,2.0,4.0,5.0
+2024-04-08,lunch,15:59:00,"Vegetalia - Hummus pimientos, 60 gr",60.0,139.0,8.0,11.0,1.0,0.0,0.0
+2024-04-08,lunch,15:59:00,"Casera Vegana - Paella De Verduras, 400 , gr",,648.0,98.0,21.0,16.0,0.0,0.0
+2024-04-08,lunch,15:59:00,"piña - Piña, 90 gram",90.0,45.0,12.0,0.0,0.0,1.0,9.0
+2024-04-08,dinner,20:28:00,"Zanahorias Asadas, 1.5 taza",1.5,163.0,21.0,9.0,2.0,860.0,10.0
+2024-04-08,dinner,20:28:00,"Pollo Plancha - Pollo Plancha, 250 gr",250.0,245.0,2.0,3.0,51.0,1763.0,0.0
+2024-04-08,snacks,21:34:00,"Cocteleo - Cocteleo, 30 g",30.0,157.0,10.0,10.0,6.0,0.0,0.0
+2024-04-09,breakfast,13:17:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-04-09,breakfast,,"Biotech Usa - Iso Whey Zero, 40 grammi",40.0,149.0,2.0,1.0,34.0,0.0,0.0
+2024-04-09,lunch,,"Ensalada Polllo Ofi Bain, 1.2 serving",1.2,667.0,29.0,42.0,45.0,80.0,8.0
+2024-04-09,dinner,20:03:00,"ensalada verde cuttings - ensalada, 100 gramo",100.0,88.0,2.0,6.0,2.0,469.0,1.0
+2024-04-09,dinner,20:03:00,"Tubokata - bocadillo de pollo empanado, 250 gramo",250.0,731.0,58.0,42.0,28.0,4.0,8.0
+2024-04-09,snacks,20:03:00,"Carrefour - Barritas Cereales Avellana, 1 barrita",1.0,85.0,13.0,3.0,2.0,120.0,5.0
+2024-04-10,breakfast,08:22:00,"Roig - Clara de huevo, 30 gr",30.0,15.0,0.0,0.0,3.0,0.0,0.0
+2024-04-10,breakfast,08:22:00,"huevo - Huevo Entero, 1 pieza",1.0,78.0,1.0,5.0,6.0,0.0,0.0
+2024-04-10,breakfast,08:22:00,"Aceite oliva - Aceite, 0.4 cucharada (14gr)",0.4,50.0,0.0,6.0,0.0,0.0,0.0
+2024-04-10,breakfast,08:22:00,"tomate rallado natural - tomate rallado natural, 2 rebanada",2.0,38.0,7.0,1.0,0.0,0.0,0.0
+2024-04-10,breakfast,08:22:00,"Jamon de pavo - Jamon, 3 rebanada",3.0,108.0,2.0,4.0,15.0,948.0,1.0
+2024-04-10,breakfast,08:22:00,"piña - Piña, 90 gram",90.0,45.0,12.0,0.0,0.0,1.0,9.0
+2024-04-10,breakfast,08:22:00,"Kiwi, 1 fruit",1.0,44.0,11.0,0.0,1.0,4.0,7.0
+2024-04-10,lunch,14:32:00,"lentejas de verduras - lentejas con verduras, 416 grs",416.0,313.0,33.0,10.0,16.0,0.0,0.0
+2024-04-10,lunch,14:32:00,"Bedca - Calabacín (Asado), 100 g",100.0,18.0,2.0,0.0,2.0,1.0,0.0
+2024-04-10,lunch,14:32:00,"Pollo Plancha - Pollo Plancha, 150 gr",150.0,147.0,1.0,2.0,31.0,1058.0,0.0
+2024-04-10,lunch,14:32:00,"Galia - Melon, 80 g - 1/4 melon",80.0,30.0,7.0,0.0,1.0,15.0,7.0
+2024-04-10,dinner,19:21:00,"Pans and Company - Bocadillo Jamon Serrano, 125 gr",125.0,600.0,70.0,20.0,34.0,0.0,0.0
+2024-04-10,snacks,18:49:00,"Hummus Sandwich - Hummus Sandwich, 0.5 Sandwich",0.5,120.0,16.0,5.0,7.0,210.0,3.0
+2024-04-10,snacks,18:49:00,"Empanada carne - Empanada carne, 120 gramo",120.0,316.0,35.0,13.0,15.0,0.0,0.0
+2024-04-11,breakfast,07:00:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-04-11,breakfast,08:07:00,"Biotech Usa - Iso Whey Zero, 50 grammi",50.0,186.0,3.0,1.0,42.0,0.0,0.0
+2024-04-11,lunch,14:03:00,"Ensalada Polllo Ofi Bain, 1.2 serving",1.2,667.0,29.0,42.0,45.0,80.0,8.0
+2024-04-11,dinner,21:59:00,"Home - Hamburguesa, 1.3 piece",1.3,644.0,52.0,33.0,35.0,0.0,0.0
+2024-04-11,dinner,21:59:00,"Homemade - Patatas Fritas, 120 gr",120.0,312.0,22.0,24.0,3.0,180.0,0.0
+2024-04-11,dinner,21:59:00,"mayonesa - Mayonesa, 1 cucharada",1.0,90.0,0.0,10.0,0.0,0.0,0.0
+2024-04-11,dinner,21:59:00,"Casera - Alita De Pollo Frita, 2 alita",2.0,178.0,0.0,13.0,15.0,240.0,0.0
+2024-04-11,snacks,08:07:00,"Plátano - Platano, 1 pieza",1.0,105.0,27.0,0.0,1.0,0.0,14.0
+2024-04-11,snacks,07:00:00,"salchichon turon - salchichon, 30 gramo",30.0,143.0,1.0,13.0,5.0,0.0,0.0
+2024-04-11,snacks,08:07:00,"Aji De Gallina, 50 gram(s)",50.0,74.0,5.0,4.0,5.0,54.0,1.0
+2024-04-12,breakfast,08:07:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-04-12,breakfast,08:07:00,"Biotech Usa - Iso Whey Zero, 50 grammi",50.0,186.0,3.0,1.0,42.0,0.0,0.0
+2024-04-12,lunch,19:57:00,"Ensalada Polllo Ofi Bain, 1.2 serving",1.2,667.0,29.0,42.0,45.0,80.0,8.0
+2024-04-12,dinner,23:32:00,"Generic - Nigiri Salmon , 600 g (1 piece)",600.0,1080.0,77.0,48.0,78.0,876.0,23.0
+2024-04-12,dinner,23:32:00,"Vodka soda, 3 drink",3.0,398.0,0.0,0.0,0.0,108.0,0.0
+2024-04-12,dinner,23:32:00,"Patatas fritas - Patatas fritas, 30 g",30.0,160.0,17.0,9.0,2.0,0.0,0.0
+2024-04-13,breakfast,08:45:00,"carrefour - empanada atun, 68 gramo",68.0,164.0,22.0,6.0,5.0,680.0,2.0
+2024-04-13,lunch,14:51:00,"Chistorra Gesalaga - Chistorra, 30 gramo",30.0,143.0,1.0,14.0,4.0,1.0,0.0
+2024-04-13,lunch,14:51:00,"Pan - Pan Blanco ✓, 40 g",40.0,102.0,22.0,0.0,3.0,200.0,2.0
+2024-04-13,lunch,14:51:00,"Pulpos pequeños - Pulpo, 70 gram",70.0,33.0,0.0,0.0,7.0,0.0,0.0
+2024-04-13,lunch,14:51:00,"Patatas revolconas con torreznos - Patatas revolconas con torreznos, 40 gr",40.0,90.0,5.0,7.0,1.0,0.0,0.0
+2024-04-13,lunch,14:51:00,"Giraldo - Preparado tortilla bacalao, 100 gr",100.0,91.0,4.0,6.0,6.0,0.0,0.0
+2024-04-13,lunch,14:51:00,"Homemade - Patatas Fritas, 40 gr",40.0,104.0,7.0,8.0,1.0,60.0,0.0
+2024-04-13,lunch,14:51:00,"Ali Oli Auchan - Salsa Ali Oli, 1 cucharadita",1.0,50.0,0.0,6.0,0.0,104.0,0.0
+2024-04-13,lunch,14:51:00,"tomahawk steak - tomahawk steak, 400 gram",400.0,456.0,0.0,26.0,86.0,0.0,0.0
+2024-04-13,lunch,14:51:00,"Ensalada De Cebolla Y Tomate, 1 taza",1.0,104.0,8.0,8.0,1.0,94.0,5.0
+2024-04-13,dinner,23:51:00,"Homemade - Patatas Fritas, 40 gr",40.0,104.0,7.0,8.0,1.0,60.0,0.0
+2024-04-13,dinner,23:51:00,"Patatas fritas - Patatas fritas, 40 g",40.0,213.0,23.0,12.0,2.0,0.0,0.0
+2024-04-13,dinner,23:51:00,"Vodka soda, 1 drink",1.0,133.0,0.0,0.0,0.0,36.0,0.0
+2024-04-13,dinner,23:51:00,"Generico - Orujo De Hierbas, 3 chupito normal (35 ml.)",3.0,270.0,0.0,0.0,0.0,0.0,0.0
+2024-04-13,dinner,23:51:00,"Home - Hamburguesa, 1.2 piece",1.2,594.0,48.0,30.0,32.0,0.0,0.0
+2024-04-13,snacks,12:03:00,"226ers - Vegan Recovery Drink Vainilla, 50 gr",50.0,198.0,21.0,3.0,22.0,600.0,1.0
+2024-04-14,breakfast,09:07:00,"Plátano - Platano, 1 pieza",1.0,105.0,27.0,0.0,1.0,0.0,14.0
+2024-04-14,lunch,14:19:00,"Patatas fritas - Patatas fritas, 80 g",80.0,426.0,46.0,25.0,5.0,0.0,0.0
+2024-04-14,lunch,14:19:00,"Ensalada De Cebolla Y Tomate, 1 taza",1.0,104.0,8.0,8.0,1.0,94.0,5.0
+2024-04-14,lunch,14:19:00,"Ensaladilla: - Ensaladilla Rusa, 50 gr",50.0,95.0,4.0,8.0,3.0,60.0,2.0
+2024-04-14,lunch,14:19:00,"maheso - fingers pollo, 70 7/10 g",70.0,158.0,14.0,7.0,9.0,910.0,1.0
+2024-04-14,lunch,14:19:00,"Milanesa - Milanesa De Carne Frita, 270 g",270.0,716.0,19.0,36.0,74.0,888.0,3.0
+2024-04-14,lunch,14:19:00,"Huevo Frito Mediano (50g) - Huevo Frito, 1 huevo",1.0,116.0,1.0,10.0,7.0,86.0,0.0
+2024-04-14,dinner,21:02:00,"Tandoori Naan - Garlic Naan, 0.3 naan",0.3,57.0,9.0,2.0,2.0,129.0,1.0
+2024-04-14,dinner,21:02:00,"Chicken Biryani, 300 gram(s)",300.0,427.0,45.0,14.0,29.0,613.0,5.0
+2024-04-14,dinner,21:02:00,"Indian curry - chicken, 1 cup",1.0,395.0,42.0,5.0,38.0,0.0,0.0
+2024-04-14,snacks,11:38:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-04-14,snacks,11:38:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-04-15,breakfast,07:06:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-04-15,breakfast,07:06:00,"Biotech Usa - Iso Whey Zero, 50 grammi",50.0,186.0,3.0,1.0,42.0,0.0,0.0
+2024-04-15,breakfast,07:06:00,"Arandanos Frescos - Arandanos real, 30 g",30.0,19.0,5.0,0.0,0.0,0.0,0.0
+2024-04-15,lunch,21:03:00,"Ensalada Polllo Ofi Bain, 1.2 serving",1.2,667.0,29.0,42.0,45.0,80.0,8.0
+2024-04-15,dinner,21:04:00,"Huevo Frito Mediano (50g) - Huevo Frito, 2 huevo",2.0,232.0,2.0,20.0,14.0,172.0,1.0
+2024-04-15,dinner,21:04:00,"Casero - Verduras Al Horno, 100 g",100.0,100.0,11.0,0.0,3.0,350.0,0.0
+2024-04-15,dinner,21:04:00,"Patatas - Hervidas, 60 gr",60.0,47.0,10.0,0.0,2.0,0.0,0.0
+2024-04-16,breakfast,07:59:00,"Roig - Clara de huevo, 40 gr",40.0,20.0,0.0,0.0,4.0,0.0,0.0
+2024-04-16,breakfast,07:59:00,"huevo - Huevo Entero, 1 pieza",1.0,78.0,1.0,5.0,6.0,0.0,0.0
+2024-04-16,breakfast,07:59:00,"Pechuga de Pollo - Pechuga De Pollo, 100 gram",100.0,145.0,0.0,6.0,22.0,66.0,0.0
+2024-04-16,breakfast,07:59:00,"pimientos - pimiento piquillo, 2 cucharada",2.0,15.0,3.0,0.0,1.0,0.0,0.0
+2024-04-16,breakfast,07:59:00,"Freia - Fresa, 100 gram",100.0,32.0,8.0,0.0,1.0,1.0,0.0
+2024-04-16,lunch,12:10:00,"Jamon Serrano - Jamon Serrano Bellota, 40 gr",40.0,97.0,0.0,6.0,11.0,0.0,0.0
+2024-04-16,lunch,12:10:00,"huevo - Huevo Entero, 0.5 pieza",0.5,39.0,0.0,3.0,3.0,0.0,0.0
+2024-04-16,lunch,12:10:00,"Macedonia - Frutas, 1 copa",1.0,68.0,15.0,0.0,1.0,0.0,0.0
+2024-04-16,lunch,12:10:00,"Salmorejo - Salmorejo, 1 taza",1.0,63.0,5.0,4.0,1.0,0.0,0.0
+2024-04-16,lunch,12:10:00,"Supersol - Tortilla De Patatas, 250 g",250.0,338.0,38.0,15.0,10.0,0.0,0.0
+2024-04-16,dinner,18:35:00,"Pans and Company - Bocadillo Jamon Serrano, 125 gr",125.0,600.0,70.0,20.0,34.0,0.0,0.0
+2024-04-16,dinner,18:35:00,"floristan - tortilla de patatas cebolla, 200 gramo",200.0,158.0,15.0,9.0,4.0,0.0,0.0
+2024-04-16,snacks,06:27:00,"Carrefour - barríta frutos rojos, 18 gramo",18.0,66.0,13.0,1.0,1.0,0.0,5.0
+2024-04-17,breakfast,07:31:00,"Roig - Clara de huevo, 30 gr",30.0,15.0,0.0,0.0,3.0,0.0,0.0
+2024-04-17,breakfast,07:31:00,"huevo - Huevo Entero, 1 pieza",1.0,78.0,1.0,5.0,6.0,0.0,0.0
+2024-04-17,breakfast,07:31:00,"pan de semillas - pan semillas, 100 gramos",100.0,286.0,47.0,7.0,7.0,536.0,0.0
+2024-04-17,breakfast,07:31:00,"Aceite oliva - Aceite, 0.4 cucharada (14gr)",0.4,50.0,0.0,6.0,0.0,0.0,0.0
+2024-04-17,breakfast,07:31:00,"tomate rallado natural - tomate rallado natural, 2 rebanada",2.0,38.0,7.0,1.0,0.0,0.0,0.0
+2024-04-17,breakfast,07:31:00,"Jamon de pavo - Jamon, 4 rebanada",4.0,144.0,2.0,5.0,20.0,1264.0,2.0
+2024-04-17,lunch,14:08:00,"Homemade - Bocadillo De Atún, 0.75 bocadillo",0.75,555.0,90.0,4.0,19.0,1080.0,0.0
+2024-04-17,lunch,14:08:00,"Sol del Alb - cóctel de frutos secos y snacks, 40 gramo",40.0,201.0,18.0,12.0,4.0,0.0,0.0
+2024-04-17,dinner,17:56:00,"Homemade - Bocadillo De Atún, 0.75 bocadillo",0.75,555.0,90.0,4.0,19.0,1080.0,0.0
+2024-04-17,snacks,11:28:00,"Solnuts - Almendra tostada , 30 gramo",30.0,179.0,2.0,15.0,8.0,0.0,0.0
+2024-04-17,snacks,11:28:00,"KFC - Original Recipe Chicken, Breast, 178 g",178.0,320.0,13.0,14.0,36.0,1130.0,0.0
+2024-04-18,breakfast,07:44:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-04-18,breakfast,07:44:00,"Biotech Usa - Iso Whey Zero, 50 grammi",50.0,186.0,3.0,1.0,42.0,0.0,0.0
+2024-04-18,lunch,12:09:00,"Productos de Nuestra Tierra - Oreja Picantona, 215 gramo",215.0,402.0,2.0,28.0,34.0,3.0,0.0
+2024-04-18,lunch,12:09:00,"KFC - Original Recipe Chicken, Breast, 178 g",178.0,320.0,13.0,14.0,36.0,1130.0,0.0
+2024-04-18,dinner,20:34:00,"Koko Roko - Pollo dürüm, 396 gramo",396.0,600.0,75.0,17.0,36.0,5.0,4.0
+2024-04-18,dinner,20:34:00,"Falafel - Falafel, 2 ball",2.0,114.0,11.0,6.0,5.0,100.0,0.0
+2024-04-18,snacks,20:23:00,"salchichon turon - salchichon, 20 gramo",20.0,96.0,1.0,9.0,4.0,0.0,0.0
+2024-04-19,breakfast,07:49:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-04-19,breakfast,07:49:00,"Biotech Usa - Iso Whey Zero, 50 grammi",50.0,186.0,3.0,1.0,42.0,0.0,0.0
+2024-04-19,lunch,15:40:00,"Gambas - Gamba, 1.5 taza",1.5,53.0,0.0,1.0,11.0,0.0,0.0
+2024-04-19,lunch,15:40:00,"Generic - Vino Tinto, 1 Copa 150 Cc., 1 copa 150 gr.",1.0,107.0,0.0,0.0,0.0,6.0,0.0
+2024-04-19,lunch,15:40:00,"Mahou - Cerveza Mahou Tostada 0,0, 325 ml",325.0,34.0,8.0,0.0,0.0,0.0,4.0
+2024-04-19,lunch,15:40:00,"Esparragos - Esparragos Blancos, 4 ,5",,29.0,3.0,1.0,2.0,0.0,0.0
+2024-04-19,lunch,15:40:00,"Chuleton - Chuleton añojo, 400 gramo",400.0,644.0,2.0,32.0,88.0,224.0,0.0
+2024-04-19,lunch,15:40:00,"Patatas - Hervidas, 100 gr",100.0,78.0,17.0,0.0,3.0,0.0,0.0
+2024-04-19,dinner,21:38:00,"Baija - Biang Biang Noodles, 1 pack",1.0,580.0,68.0,29.0,11.0,1670.0,8.0
+2024-04-19,dinner,21:38:00,"Won Ton - Won Ton, 90 g",90.0,176.0,22.0,5.0,12.0,2475.0,1.0
+2024-04-20,breakfast,09:09:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-04-20,breakfast,09:09:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-04-20,breakfast,09:09:00,"Hacendado - Salvado de Avena, 50 g",50.0,179.0,22.0,4.0,9.0,0.0,1.0
+2024-04-20,lunch,18:51:00,"Palacios - cuartos asados pollo, 1 racion",1.0,658.0,3.0,25.0,81.0,0.0,1.0
+2024-04-20,lunch,18:51:00,"Homemade - Patatas Fritas, 40 gr",40.0,104.0,7.0,8.0,1.0,60.0,0.0
+2024-04-20,lunch,18:51:00,"Supersol - Tortilla De Patatas, 180 g",180.0,243.0,27.0,11.0,7.0,0.0,0.0
+2024-04-20,lunch,18:51:00,"Ensalada - Lechuga 123, 100 gr",100.0,19.0,3.0,0.0,1.0,10.0,0.0
+2024-04-20,lunch,18:51:00,"Peru - Arroz Chaufa De Pollo, 40 g",40.0,72.0,11.0,2.0,2.0,97.0,0.0
+2024-04-20,lunch,18:51:00,"mayonesa - Mayonesa, 0.8 cucharada",0.8,72.0,0.0,8.0,0.0,0.0,0.0
+2024-04-20,lunch,18:51:00,"Freia - Fresa, 100 gram",100.0,32.0,8.0,0.0,1.0,1.0,0.0
+2024-04-20,dinner,21:26:00,"Epicured - Shrimp Chop Suey, 1 container",1.0,300.0,27.0,14.0,20.0,1270.0,10.0
+2024-04-20,dinner,21:26:00,"Essential Diet - Ternera con pimientos, 1 unidad",1.0,133.0,5.0,2.0,24.0,0.0,0.0
+2024-04-20,dinner,21:26:00,"Zanuy - Pan de Gambas, 6 panes",6.0,157.0,22.0,7.0,0.0,0.0,0.0
+2024-04-20,dinner,21:26:00,"Restaurante Chino - Sopa Agripicante, 1 Taza (233g)",1.0,91.0,10.0,3.0,6.0,876.0,1.0
+2024-04-20,dinner,21:26:00,"Peru - Arroz Chaufa De Pollo, 80 g",80.0,143.0,22.0,3.0,5.0,194.0,0.0
+2024-04-20,dinner,21:26:00,"Espárragos - Espárragos, 100 g",100.0,30.0,5.0,0.0,2.0,0.0,0.0
+2024-04-20,snacks,19:57:00,"mahou 5 estrellas - cerveza, 330 ml",330.0,162.0,12.0,0.0,1.0,0.0,0.0
+2024-04-21,breakfast,07:51:00,"Supersol - Tortilla De Patatas, 100 g",100.0,135.0,15.0,6.0,4.0,0.0,0.0
+2024-04-21,lunch,13:42:00,"Chorizo - Chorizo Sausage, 2 oz",2.0,180.0,1.0,14.0,12.0,700.0,0.0
+2024-04-21,lunch,13:42:00,"Palacios - cuartos asados pollo, 1 racion",1.0,658.0,3.0,25.0,81.0,0.0,1.0
+2024-04-21,lunch,13:42:00,"mayonesa - Mayonesa, 1 cucharada",1.0,90.0,0.0,10.0,0.0,0.0,0.0
+2024-04-21,lunch,13:42:00,"Homemade - Patatas Fritas, 80 gr",80.0,208.0,14.0,16.0,2.0,120.0,0.0
+2024-04-21,lunch,13:42:00,"Peru - Arroz Chaufa De Pollo, 80 g",80.0,143.0,22.0,3.0,5.0,194.0,0.0
+2024-04-21,dinner,21:27:00,"Epicured - Shrimp Chop Suey, 1 container",1.0,300.0,27.0,14.0,20.0,1270.0,10.0
+2024-04-21,dinner,21:27:00,"Peru - Arroz Chaufa De Pollo, 120 g",120.0,215.0,34.0,5.0,7.0,292.0,0.0
+2024-04-21,snacks,10:51:00,"Carrefour - Salvado de Trigo Grueso (label) , 40 gram",40.0,104.0,7.0,2.0,6.0,0.0,2.0
+2024-04-21,snacks,10:51:00,"226ers - Vegan Recovery Drink Vainilla, 25 gr",25.0,99.0,11.0,1.0,11.0,300.0,0.0
+2024-04-21,snacks,10:51:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-04-21,snacks,10:51:00,"Zumo Maracuya - Zumo, 200 ml",200.0,40.0,125.0,0.0,1.0,0.0,110.0
+2024-04-21,snacks,10:51:00,"Casero - Pato Asado /pato Pekin, 0.5 porción",0.5,158.0,0.0,14.0,7.0,33.0,0.0
+2024-04-22,breakfast,07:26:00,"Casero - Pierna Pollo Asado, 80 gramos",80.0,160.0,1.0,8.0,18.0,79.0,0.0
+2024-04-22,breakfast,07:26:00,"huevo - Huevo Entero, 2 pieza",2.0,156.0,1.0,11.0,13.0,0.0,0.0
+2024-04-22,breakfast,07:26:00,"Aceite Oliva - Aceite Oliva 7ml, 0.5 cucharadita de café (7ml)",0.5,30.0,0.0,4.0,0.0,0.0,0.0
+2024-04-22,lunch,14:11:00,"Ensalada Polllo Ofi Bain, 1 serving",1.0,556.0,24.0,35.0,38.0,66.0,7.0
+2024-04-22,dinner,21:59:00,"Wu's Ramen - Gyoza, 6 pieces",6.0,309.0,41.0,11.0,12.0,870.0,0.0
+2024-04-22,dinner,21:59:00,"Mahou - Cerveza Mahou Tostada 0,0, 325 ml",325.0,34.0,8.0,0.0,0.0,0.0,4.0
+2024-04-22,dinner,21:59:00,"Patatas fritas - Patatas fritas, 40 g",40.0,213.0,23.0,12.0,2.0,0.0,0.0
+2024-04-22,dinner,21:59:00,"Homemade Ceviche - Seafood Ceviche, 256.2 g",256.2,156.0,12.0,1.0,25.0,190.0,2.0
+2024-04-22,dinner,21:59:00,"Nigiri De Atún Blanco, 200 gram(s)",200.0,235.0,24.0,1.0,30.0,52.0,0.0
+2024-04-22,dinner,21:59:00,"Vodka soda, 1 drink",1.0,133.0,0.0,0.0,0.0,36.0,0.0
+2024-04-22,dinner,21:59:00,"Solnuts - Almendra tostada , 30 gramo",30.0,179.0,2.0,15.0,8.0,0.0,0.0
+2024-04-23,breakfast,07:43:00,"oats - copos de avena, 50 g",50.0,185.0,28.0,4.0,6.0,0.0,0.0
+2024-04-23,breakfast,07:43:00,"Biotech Usa - Iso Whey Zero, 40 grammi",40.0,149.0,2.0,1.0,34.0,0.0,0.0
+2024-04-23,lunch,22:07:00,"Wu's Ramen - Gyoza, 4 pieces",4.0,206.0,28.0,7.0,8.0,580.0,0.0
+2024-04-23,lunch,22:07:00,"Restaurant Ramen - Ramen, 1 bowl",1.0,750.0,55.0,15.0,25.0,2000.0,0.0
+2024-04-23,dinner,22:06:00,"Aji De Gallina, 250 gram(s)",250.0,368.0,25.0,19.0,24.0,271.0,6.0
+2024-04-23,dinner,22:06:00,"Arroz Blanco - Arroz Blanco Cocido, 60 gram",60.0,111.0,24.0,0.0,2.0,315.0,0.0
+2024-04-23,dinner,22:06:00,"Ensalada - Lechuga 123, 25 gr",25.0,5.0,1.0,0.0,0.0,3.0,0.0
+2024-04-23,snacks,06:22:00,"Carrefour - barríta frutos rojos, 18 gramo",18.0,66.0,13.0,1.0,1.0,0.0,5.0
+2024-04-24,breakfast,08:17:00,"oats - copos de avena, 50 g",50.0,185.0,28.0,4.0,6.0,0.0,0.0
+2024-04-24,breakfast,08:17:00,"Biotech Usa - Iso Whey Zero, 50 grammi",50.0,186.0,3.0,1.0,42.0,0.0,0.0
+2024-04-24,lunch,19:12:00,"Ensalada De Tomate Y Atún - Ensalada, 150 gr.",150.0,277.0,16.0,9.0,20.0,0.0,0.0
+2024-04-24,lunch,19:12:00,"Jamon Serrano - Jamon Serrano Bellota, 40 gr",40.0,97.0,0.0,6.0,11.0,0.0,0.0
+2024-04-24,lunch,19:12:00,"Casero - Pan Con Tomate, 180 gr",180.0,315.0,36.0,5.0,0.0,972.0,0.0
+2024-04-24,lunch,19:12:00,"Supersol - Tortilla De Patatas, 200 g",200.0,270.0,30.0,12.0,8.0,0.0,0.0
+2024-04-24,dinner,19:11:00,"Ketogourmet - Pollo a la mostaza, 1 envase",1.0,376.0,26.0,55.0,25.0,121.0,25.0
+2024-04-24,dinner,19:11:00,"Supersol - Tortilla De Patatas, 100 g",100.0,135.0,15.0,6.0,4.0,0.0,0.0
+2024-04-24,dinner,19:11:00,"menestra verduras LC - menestra de verduras, 100 gramo",100.0,34.0,5.0,0.0,3.0,0.0,0.0
+2024-04-24,snacks,06:28:00,"Carrefour - barríta frutos rojos, 18 gramo",18.0,66.0,13.0,1.0,1.0,0.0,5.0
+2024-04-25,breakfast,08:11:00,"Roig - Clara de huevo, 30 gr",30.0,15.0,0.0,0.0,3.0,0.0,0.0
+2024-04-25,breakfast,08:11:00,"huevo - Huevo Entero, 1 pieza",1.0,78.0,1.0,5.0,6.0,0.0,0.0
+2024-04-25,breakfast,08:11:00,"Aceite oliva - Aceite, 0.4 cucharada (14gr)",0.4,50.0,0.0,6.0,0.0,0.0,0.0
+2024-04-25,breakfast,08:11:00,"tomate rallado natural - tomate rallado natural, 2 rebanada",2.0,38.0,7.0,1.0,0.0,0.0,0.0
+2024-04-25,breakfast,08:11:00,"Jamon de pavo - Jamon, 4 rebanada",4.0,144.0,2.0,5.0,20.0,1264.0,2.0
+2024-04-25,breakfast,08:11:00,"pan de semillas - pan semillas, 80 gramos",80.0,229.0,38.0,5.0,5.0,429.0,0.0
+2024-04-25,lunch,14:55:00,"Mercadona - Merluza A La Plancha, 300 gr",300.0,342.0,0.0,8.0,66.0,0.0,0.0
+2024-04-25,lunch,14:55:00,"lentejas de verduras - lentejas con verduras, 416 grs",416.0,313.0,33.0,10.0,16.0,0.0,0.0
+2024-04-25,lunch,14:55:00,"Galia - Melon, 80 g - 1/4 melon",80.0,30.0,7.0,0.0,1.0,15.0,7.0
+2024-04-25,dinner,23:28:00,"butifarra - butifarra, 20 gram",20.0,39.0,0.0,3.0,4.0,0.0,0.0
+2024-04-25,dinner,23:28:00,"Hacendado - Pan Integral, 50 gram",50.0,115.0,22.0,1.0,4.0,0.0,1.0
+2024-04-25,dinner,23:28:00,"Martini - Dry Martini, 4 oz",4.0,250.0,50.0,1.0,0.0,74.0,0.0
+2024-04-25,dinner,23:28:00,"Generic - Vino Tinto, 1 Copa 150 Cc., 2 copa 150 gr.",2.0,214.0,1.0,0.0,1.0,12.0,0.0
+2024-04-25,dinner,23:28:00,"Ensaladilla: - Ensaladilla Rusa, 50 gr",50.0,95.0,4.0,8.0,3.0,60.0,2.0
+2024-04-25,dinner,23:28:00,"Allegro - Tar-tar, 60 gr",60.0,81.0,2.0,5.0,6.0,0.0,0.0
+2024-04-25,dinner,23:28:00,"Bocadillo De Calamares, 80 gram(s)",80.0,225.0,28.0,9.0,8.0,266.0,1.0
+2024-04-25,snacks,11:56:00,"Solnuts - Almendra tostada , 30 gramo",30.0,179.0,2.0,15.0,8.0,0.0,0.0
+2024-04-26,breakfast,08:19:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-04-26,breakfast,18:13:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-04-26,breakfast,21:06:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-04-26,breakfast,,"Empanada carne - Empanada carne, 120 gramo",120.0,316.0,35.0,13.0,15.0,0.0,0.0
+2024-04-26,lunch,18:13:00,"Supersol - Tortilla De Patatas, 300 g",300.0,405.0,45.0,18.0,12.0,0.0,0.0
+2024-04-26,lunch,,"Ensalada Polllo Ofi Bain, 1 serving",1.0,556.0,24.0,35.0,38.0,66.0,7.0
+2024-04-26,dinner,21:06:00,"Homemade - Patatas Fritas, 50 gr",50.0,130.0,9.0,10.0,1.0,75.0,0.0
+2024-04-26,dinner,21:07:00,"Kfc - Ensalada De Col, 25 g",25.0,39.0,3.0,3.0,0.0,0.0,2.0
+2024-04-26,dinner,,"KFC - Original Recipe Chicken, Breast, 534 g",534.0,960.0,39.0,42.0,108.0,3390.0,0.0
+2024-04-26,snacks,21:06:00,"Chorizo - Chorizo Sausage, 0.5 oz",0.5,45.0,0.0,4.0,3.0,175.0,0.0

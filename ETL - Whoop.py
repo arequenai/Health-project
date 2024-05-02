@@ -94,4 +94,61 @@ df = pd.merge(df_s, df_r, on='sleep_id', how='left')
 df.to_csv('Data/Cleaned/Sleep_and_recovery.csv', index=False)
 
 # Print message
-print('Whoop data successfully extracted and cleaned')
+print('Whoop sleep and recovery data successfully extracted to Data/Cleaned/Sleep_and_recovery.csv')
+
+### Now journal data ###
+
+# Initialize
+import csv
+from datetime import datetime, timedelta
+
+# Read in the data
+df = pd.read_csv('Data/Whoop/journal_entries.csv')
+
+# Set as date the cycle start time. If date is before 12:00, set as the day before
+def set_date(row):
+    date = row['Cycle start time']
+    date = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
+    if date.hour < 12:
+        date = date - timedelta(days=1)
+    return date.date()
+
+df['date'] = df.apply(set_date, axis=1)
+
+# Get only key columns
+df = df[['date', 'Question text', 'Answered yes']]
+
+# Set the option to opt-in to the future behavior
+pd.set_option('future.no_silent_downcasting', True)
+
+# Substitute true/false with 1/0
+df['Answered yes'] = df['Answered yes'].replace({True: 1, False: 0}).infer_objects(copy=False)
+
+# Pivot the DataFrame to unstack the "Question text" column
+df_u = df.pivot_table(index='date', columns='Question text', values='Answered yes', aggfunc='sum')
+
+# Reset the index to make "date" a column again
+df_u.reset_index(inplace=True)
+
+# Keep only relevant columns
+df_u = df_u[['date', 'Avoid consuming processed foods?', 'Eat any food close to bedtime?',
+             'Feeling sick or ill?','Have an injury or wound','Have any alcoholic drinks?',
+             'Read (non-screened device) while in bed?','Spend time stretching?',
+              'Viewed a screen device in bed?']]
+
+# Rename columns using a map
+df_u.rename(columns={'Avoid consuming processed foods?': 'avoid_processed_foods',
+                     'Eat any food close to bedtime?': 'bed_full',
+                     'Feeling sick or ill?': 'sick_or_ill',
+                     'Have an injury or wound': 'injury',
+                     'Have any alcoholic drinks?': 'alcohol',
+                     'Read (non-screened device) while in bed?': 'read_bed',
+                     'Spend time stretching?': 'stretch',
+                     'Viewed a screen device in bed?': 'screen_bed'}, inplace=True)
+
+# Drop the question text column
+df_u.columns.name = None
+
+# Write to csv
+df_u.to_csv('Data/Cleaned/Journal.csv', index=False)
+print('Journal data cleaned and saved to Data/Cleaned/Journal.csv')

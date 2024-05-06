@@ -63,9 +63,12 @@ df = pd.DataFrame(data)
 # Group by date, time and type
 df = df.groupby(['date', 'time', 'type'])['food'].sum().unstack().reset_index()
 
-# Handle situations in which a variable has two decimal dots. In that case it should just keep the first one
+# Handle situations in which a variable has two decimal dots. In that case, it should just keep the first one
 for col in df.columns[3:]:
-    df[col] = df[col].apply(lambda x: x if x.count('.') <= 1 else x[:x.find('.', x.find('.') + 1)])
+    df[col] = df[col].apply(lambda x: x if x is None or (isinstance(x, str) and x.count('.') <= 1) else x[:x.find('.', x.find('.') + 1)] if isinstance(x, str) else x)
+
+# Remove files in which only the unknown column has data
+df = df.dropna(subset=df.columns[3:], how='all')
 
 # Write the DataFrame to a CSV file
 df.to_csv('Data/Cleaned/Food.csv', index=False)

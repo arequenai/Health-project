@@ -554,3 +554,47 @@ date,meal,time,food,quant,calories,carbs,fat,protein,sodium,sugar
 2024-04-30,dinner,20:59:00,"Korean Soonsal Fried Chicken - Boneless Fried Chicken, 50 g",50.0,107.0,7.0,5.0,7.0,152.0,4.0
 2024-04-30,snacks,12:24:00,"tung - gyoza vapor, 0.99 unidades",0.99,61.0,7.0,2.0,2.0,1.0,1.0
 2024-04-30,snacks,12:24:00,"Empanada carne - Empanada carne, 120 gramo",120.0,316.0,35.0,13.0,15.0,0.0,0.0
+2024-05-01,breakfast,09:06:00,"Korean - Omelette, 100 g",100.0,150.0,2.0,10.0,12.0,0.0,0.0
+2024-05-01,breakfast,09:06:00,"Mandu  gs - Mandu, 1 Mandu",1.0,128.0,14.0,6.0,5.0,0.0,0.0
+2024-05-01,lunch,13:59:00,"Mar - Nueces - Nueces, 10 grs.",10.0,65.0,0.0,6.0,0.0,0.0,0.0
+2024-05-01,lunch,13:59:00,"Potaje de alubias mamía - Potaje de alubias , 200 gramo",200.0,760.0,15.0,9.0,8.0,0.0,1.0
+2024-05-01,dinner,22:49:00,"Quick Add, 1 serving(s)",1.0,965.0,90.0,45.0,50.0,0.0,0.0
+2024-05-01,dinner,22:49:00,"Generic - Vino Tinto, 1 Copa 150 Cc., 2 copa 150 gr.",2.0,214.0,1.0,0.0,1.0,12.0,0.0
+2024-05-01,dinner,22:49:00,"Vodka soda, 1 drink",1.0,133.0,0.0,0.0,0.0,36.0,0.0
+2024-05-02,breakfast,09:02:00,"empanada de pollo - empanada de pollo, 1 un",1.0,282.0,10.0,9.0,7.0,0.0,0.0
+2024-05-02,lunch,15:17:00,"Ensaladilla: - Ensaladilla Rusa, 50 gr",50.0,95.0,4.0,8.0,3.0,60.0,2.0
+2024-05-02,lunch,15:17:00,"Homemade - Patatas Fritas, 60 gr",60.0,156.0,11.0,12.0,2.0,90.0,0.0
+2024-05-02,lunch,15:17:00,"pollo empanado - pollo empanado , 100 gramos",100.0,104.0,9.0,1.0,16.0,0.0,0.0
+2024-05-02,lunch,15:17:00,"Supersol - Tortilla De Patatas, 280 g",280.0,378.0,42.0,17.0,11.0,0.0,0.0
+2024-05-02,dinner,21:34:00,"Home - Hamburguesa, 1.2 piece",1.2,594.0,48.0,30.0,32.0,0.0,0.0
+2024-05-02,dinner,21:34:00,"Air Frier - Fritas Air Frier, 120 g",120.0,141.0,23.0,5.0,1.0,96.0,0.0
+2024-05-02,dinner,21:34:00,"Mahou - Lata cerveza sin alcohol, 331 ml",331.0,83.0,15.0,0.0,1.0,0.0,5.0
+2024-05-02,dinner,21:34:00,"mayonesa - Mayonesa, 1 cucharada",1.0,90.0,0.0,10.0,0.0,0.0,0.0
+2024-05-02,snacks,18:16:00,"Ensaladilla: - Ensaladilla Rusa, 50 gr",50.0,95.0,4.0,8.0,3.0,60.0,2.0
+2024-05-02,snacks,18:16:00,"Pan - Pan Blanco ✓, 40 g",40.0,102.0,22.0,0.0,3.0,200.0,2.0
+2024-05-02,snacks,18:16:00,"Hacendado - Bebida soja baunilha 0%, 250 ml",250.0,80.0,4.0,4.0,8.0,0.0,0.0
+2024-05-03,breakfast,07:06:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-05-03,breakfast,07:06:00,"Ensaladilla: - Ensaladilla Rusa, 70 gr",70.0,133.0,6.0,11.0,4.0,84.0,2.0
+2024-05-03,breakfast,07:06:00,"Silueta - Pan integral cereales sin corteza, 56 gramo",56.0,136.0,22.0,2.0,7.0,0.0,0.0
+2024-05-03,lunch,14:25:00,"Restaurant Ramen - Ramen, 1 bowl",1.0,750.0,55.0,15.0,25.0,2000.0,0.0
+2024-05-03,lunch,14:25:00,"Wu's Ramen - Gyoza, 4 pieces",4.0,206.0,28.0,7.0,8.0,580.0,0.0
+2024-05-03,dinner,21:46:00,"mayonesa - Mayonesa, 1 cucharada",1.0,90.0,0.0,10.0,0.0,0.0,0.0
+2024-05-03,dinner,21:46:00,"Pimiento Morrón, 1 pepper",1.0,32.0,8.0,0.0,1.0,2.0,4.0
+2024-05-03,dinner,21:46:00,"Morcilla de arroz - Morcilla, 40 gramo",40.0,114.0,7.0,8.0,2.0,0.0,0.0
+2024-05-03,dinner,21:46:00,"Pan - Pan Blanco ✓, 60 g",60.0,153.0,33.0,0.0,4.0,300.0,3.0
+2024-05-03,dinner,21:46:00,"Supersol - Tortilla De Patatas, 200 g",200.0,270.0,30.0,12.0,8.0,0.0,0.0
+2024-05-03,dinner,21:46:00,"Chuleton - Chuleton añojo, 300 gramo",300.0,483.0,2.0,24.0,66.0,168.0,0.0
+2024-05-03,dinner,21:46:00,"Generic - Vino Tinto, 1 Copa 150 Cc., 2 copa 150 gr.",2.0,214.0,1.0,0.0,1.0,12.0,0.0
+2024-05-03,dinner,21:46:00,"Ensalada De Tomate Y Atún - Ensalada, 75 gr.",75.0,139.0,8.0,5.0,10.0,0.0,0.0
+2024-05-03,dinner,21:46:00,"Homemade - Patatas Fritas, 80 gr",80.0,208.0,14.0,16.0,2.0,120.0,0.0
+2024-05-03,snacks,19:32:00,"Supersol - Tortilla De Patatas, 80 g",80.0,108.0,12.0,5.0,3.0,0.0,0.0
+2024-05-04,breakfast,08:26:00,"Supersol - Tortilla De Patatas, 120 g",120.0,162.0,18.0,7.0,5.0,0.0,0.0
+2024-05-04,lunch,14:17:00,"Estofado De Ternera - Estofado De Ternera, 300 gram",300.0,375.0,11.0,23.0,31.0,869.0,1.0
+2024-05-04,lunch,14:17:00,"Arroz Blanco - Arroz Blanco Cocido, 100 gram",100.0,185.0,40.0,0.0,4.0,525.0,0.0
+2024-05-04,dinner,20:27:00,"Heineken - Cerveza Sin Alcohol 00, 59.4 cl",59.4,124.0,0.0,0.0,0.0,0.0,0.0
+2024-05-04,dinner,20:27:00,"Knoweats - Tacos de cochinita pibil, 400 g",400.0,952.0,55.0,61.0,44.0,2800.0,1.0
+2024-05-04,dinner,20:27:00,"Consum - Enpanadillas, 20 gramo",20.0,81.0,8.0,5.0,2.0,0.0,0.0
+2024-05-04,dinner,20:27:00,"Wholly Guacamole - Homestyle Guacamole, 80 gram",80.0,120.0,5.0,11.0,0.0,307.0,0.0
+2024-05-04,dinner,20:27:00,"Totopos, 25 chip",25.0,448.0,67.0,18.0,9.0,362.0,1.0
+2024-05-04,snacks,11:54:00,"Biotech Usa - Iso Whey Zero, 40 grammi",40.0,149.0,2.0,1.0,34.0,0.0,0.0
+2024-05-04,snacks,11:54:00,"Apple, 0.5 medium",0.5,52.0,14.0,0.0,0.0,1.0,10.0

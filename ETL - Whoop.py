@@ -68,7 +68,7 @@ df_s.rename(columns=columns_map, inplace=True)
 # Reorder columns
 df_s = df_s[['date', 'sleep_time', 'sleep_id', 'nap', 'sleep_score_performance',
              'sleep_score_consistency', 'sleep_score_efficiency', 'sleep_duration',
-             'sleep_rem', 'sleep_deep', 'sleep_light', 'sleep_awake', 'sleep_unspecified']]
+             'sleep_rem', 'sleep_deep', 'sleep_light', 'sleep_awake']]
 
 # Eliminate naps
 df_s = df_s[df_s['nap'] == False]
@@ -89,6 +89,9 @@ df_r.rename(columns=columns_map, inplace=True)
 
 # Merge sleep and recovery dataframes
 df = pd.merge(df_s, df_r, on='sleep_id', how='left')
+
+# Drop 'sleep_id' column
+df.drop(columns=['sleep_id'], inplace=True)
 
 # Write to csv
 df.to_csv('Data/Cleaned/Sleep_and_recovery.csv', index=False)
@@ -121,8 +124,8 @@ df = df[['date', 'Question text', 'Answered yes']]
 # Set the option to opt-in to the future behavior
 pd.set_option('future.no_silent_downcasting', True)
 
-# Substitute true/false with 1/0
-df['Answered yes'] = df['Answered yes'].replace({True: 1, False: 0}).infer_objects(copy=False)
+# Substitute true/false with Yes/No
+df['Answered yes'] = df['Answered yes'].replace({True: "Yes", False: "No"}).infer_objects(copy=False)
 
 # Pivot the DataFrame to unstack the "Question text" column
 df_u = df.pivot_table(index='date', columns='Question text', values='Answered yes', aggfunc='sum')

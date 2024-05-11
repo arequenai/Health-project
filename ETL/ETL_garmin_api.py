@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 load_dotenv("Credentials.env")
 
 import datetime
+import pandas as pd
 import json
 import logging
 import os
@@ -26,26 +27,17 @@ logger = logging.getLogger(__name__)
 # Load environment variables if defined
 email = os.getenv("USERNAME_G")
 password = os.getenv("PASSWORD_G")
-tokenstore = os.getenv("GARMINTOKENS") or "~/.garminconnect"
-tokenstore_base64 = os.getenv("GARMINTOKENS_BASE64") or "~/.garminconnect_base64"
-api = None
 
-def init_api(email, password):
+def init_garmin(email, password):
     """Initialize Garmin API with your credentials."""
+    tokenstore = os.getenv("GARMINTOKENS") or "~/.garminconnect"
+    tokenstore_base64 = os.getenv("GARMINTOKENS_BASE64") or "~/.garminconnect_base64"
 
     try:
         # Using Oauth1 and OAuth2 token files from directory
         print(
-            f"Trying to login to Garmin Connect using token data from directory '{tokenstore}'...\n"
+            f"Logging in to Garmin Connect'\n"
         )
-
-        # Using Oauth1 and Oauth2 tokens from base64 encoded string
-        # print(
-        #     f"Trying to login to Garmin Connect using token data from file '{tokenstore_base64}'...\n"
-        # )
-        # dir_path = os.path.expanduser(tokenstore_base64)
-        # with open(dir_path, "r") as token_file:
-        #     tokenstore = token_file.read()
 
         garmin = Garmin()
         garmin.login(tokenstore)
@@ -82,43 +74,46 @@ def init_api(email, password):
 
     return garmin
 
-api = init_api(email, password)
+def get_garmin_data(garmin_client):
+    api = garmin_client
 
-import datetime
-import pandas as pd
+    print('Getting Garmin data')
+    # Initialize empty list to store data
+    data_list = []
 
-# Initialize empty list to store data
-data_list = []
+    # Define start date and today's date
+    start_date = datetime.date(2024, 3, 16)  # Update with your desired start date
+    end_date = datetime.date.today()
 
-# Define start date and today's date
-start_date = datetime.date(2024, 3, 16)  # Update with your desired start date
-end_date = datetime.date.today()
+    # Loop through dates
+    current_date = start_date
+    while current_date <= end_date:
+        # Get data for current date
+        stats = api.get_stats(current_date)
+        
+        # Create dictionary with date and stats data
+        data_dict = {'date': current_date}
+        data_dict.update(stats)
 
-# Loop through dates
-current_date = start_date
-while current_date <= end_date:
-    # Get data for current date
-    stats = api.get_stats(current_date)
-    
-    # Create dictionary with date and stats data
-    data_dict = {'date': current_date}
-    data_dict.update(stats)
+        # Append data to list
+        data_list.append(data_dict)
+        
+        # Move to next date
+        current_date += datetime.timedelta(days=1)
 
-    # Append data to list
-    data_list.append(data_dict)
-    
-    # Move to next date
-    current_date += datetime.timedelta(days=1)
+    # Convert list of dictionaries to DataFrame
+    df = pd.DataFrame(data_list)
 
-# Convert list of dictionaries to DataFrame
-df = pd.DataFrame(data_list)
+    # Keep only relevant columns
+    df = df[['date',
+            'averageStressLevel','restStressPercentage', 'lowStressPercentage', 'mediumStressPercentage', 'highStressPercentage', 'stressQualifier',
+            'bodyBatteryHighestValue', 'bodyBatteryLowestValue', 'bodyBatteryDuringSleep'
+                ]]
 
-# Keep only relevant columns
-df = df[['date',
-        'averageStressLevel','restStressPercentage', 'lowStressPercentage', 'mediumStressPercentage', 'highStressPercentage', 'stressQualifier',
-        'bodyBatteryHighestValue', 'bodyBatteryLowestValue', 'bodyBatteryDuringSleep'
-            ]]
+    # Write DataFrame to CSV file
+    df.to_csv('Data/Cleaned/Garmin_daily.csv', index=False)
+    print('Garmin data saved to CSV file')
 
-# Write DataFrame to CSV file
-df.to_csv('Data/Cleaned/Garmin_daily.csv', index=False)
-print('Data saved to CSV file')
+if __name__ == "__main__":
+    garmin_client = init_garmin(email, password)
+    get_garmin_data(garmin_client)

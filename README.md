@@ -2,17 +2,23 @@
 
 BACKLOG
 
+Short next steps
+ - Integrate data API
+ - Hosting
+ - Dashboards
+
 Input
  - JeFit
  - Cambiar a Appends
- - Cambiar ETL a functiones, que revisen que sea data nueva
+ - Cambiar ad-hoc fechas food con issues
+ - MFP function using environment variables, to be able to host
 
 Análisis
- - Nutrition score
  - Correlacionar comportamientos con métricas de sueño
  - Correlar TSS con Whoop Strain, por si vale esa
 
-Charts
+Engineering
+ - Hosting online, batch
 
 
 ### Export process

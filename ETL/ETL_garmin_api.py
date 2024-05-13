@@ -35,10 +35,7 @@ def init_garmin(email, password):
 
     try:
         # Using Oauth1 and OAuth2 token files from directory
-        print(
-            f"Logging in to Garmin Connect'\n"
-        )
-
+        print(f"Logging in to Garmin Connect'")
         garmin = Garmin()
         garmin.login(tokenstore)
 
@@ -74,7 +71,7 @@ def init_garmin(email, password):
 
     return garmin
 
-def get_garmin_data(garmin_client):
+def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
     api = garmin_client
 
     print('Getting Garmin data')
@@ -82,7 +79,6 @@ def get_garmin_data(garmin_client):
     data_list = []
 
     # Define start date and today's date
-    start_date = datetime.date(2024, 3, 16)  # Update with your desired start date
     end_date = datetime.date.today()
 
     # Loop through dates

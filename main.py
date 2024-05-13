@@ -32,5 +32,7 @@ def main():
     
     print("Garmin, Whoop and MFP API data updates completed successfully.")
 
+    ### Update everything else ###
+
 if __name__ == "__main__":
     main()

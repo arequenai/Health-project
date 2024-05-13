@@ -11,8 +11,9 @@ def init_whoop(un, pw):
     profile = client.get_profile()
     return client
 
-def get_journal_data():
-    df = pd.read_csv('Data/Whoop/journal_entries.csv')
+def get_journal_data(input_file, output_file):
+    
+    df = pd.read_csv(input_file)
 
     def set_date(row):
         date = datetime.strptime(row['Cycle start time'], '%Y-%m-%d %H:%M:%S')
@@ -39,10 +40,10 @@ def get_journal_data():
                          'Spend time stretching?': 'stretch',
                          'Viewed a screen device in bed?': 'screen_bed'}, inplace=True)
     df_u.columns.name = None
-    df_u.to_csv('Data/Cleaned/Journal.csv', index=False)
+    df_u.to_csv(output_file, index=False)
     print('Journal data cleaned and saved to Data/Cleaned/Journal.csv')
 
-def get_sleep_recovery_data(client):
+def get_sleep_recovery_data(client, filename):
     sleep = client.get_sleep_collection(start_date="2024-01-01")
     df_s = pd.json_normalize(sleep)
     recovery = client.get_recovery_collection(start_date="2024-01-01")
@@ -89,8 +90,7 @@ def get_sleep_recovery_data(client):
     df_r.rename(columns=columns_map, inplace=True)
     df = pd.merge(df_s, df_r, on='sleep_id', how='left')
     df.drop(columns=['sleep_id'], inplace=True)
-    df.to_csv('Data/Cleaned/Sleep_and_recovery.csv', index=False)
-    print('Whoop sleep and recovery data successfully extracted to Data/Cleaned/Sleep_and_recovery.csv')
+    df.to_csv(filename, index=False)
 
 def main():
    
@@ -100,8 +100,13 @@ def main():
     pw = os.getenv("PASSWORD_W")
    
     client = init_whoop(un, pw)
-    get_sleep_recovery_data(client)
-    get_journal_data()
+
+    whoop_file = 'Data/Cleaned/Sleep_and_recovery.csv'
+    get_sleep_recovery_data(client, whoop_file)
+   
+    journal_file_raw = 'Data/Whoop/journal_entries.csv'
+    journal_file = 'Data/Cleaned/Journal.csv'
+    get_journal_data(journal_file_raw, journal_file)
 
 if __name__ == "__main__":
     main()

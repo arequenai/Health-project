@@ -1,114 +1,110 @@
-# Initialize
 import pandas as pd
 import xml.etree.ElementTree as ET
-import csv
-from datetime import datetime, timedelta
+from datetime import datetime, date
 
-# Path to your Apple Health XML export
-xml_file_path = 'Data/Apple health/exportacion.xml'
+def get_food_time_data(xml_file_path, start_date):
+    tree = ET.parse(xml_file_path)
+    root = tree.getroot()
+    max_date = date.today()
 
-# Load and parse the XML file
-tree = ET.parse(xml_file_path)
-root = tree.getroot()
+    # Create a mapping of xml names for MyFitnessPal to human-readable names
+    food_mapping = {
+        'HKQuantityTypeIdentifierDietaryCalcium': 'calcium',
+        'HKQuantityTypeIdentifierDietaryCarbohydrates': 'carbs',
+        'HKQuantityTypeIdentifierDietaryCholesterol': 'cholesterol',
+        'HKQuantityTypeIdentifierDietaryEnergyConsumed': 'calories',
+        'HKQuantityTypeIdentifierDietaryFatMonounsaturated': 'monounsaturated fat',
+        'HKQuantityTypeIdentifierDietaryFatPolyunsaturated': 'polyunsaturated fat',
+        'HKQuantityTypeIdentifierDietaryFatSaturated': 'saturated fat',
+        'HKQuantityTypeIdentifierDietaryFatTotal': 'fat',
+        'HKQuantityTypeIdentifierDietaryFiber': 'fiber',
+        'HKQuantityTypeIdentifierDietaryIron': 'iron',
+        'HKQuantityTypeIdentifierDietaryPotassium': 'potassium',
+        'HKQuantityTypeIdentifierDietaryProtein': 'protein',
+        'HKQuantityTypeIdentifierDietarySodium': 'sodium',
+        'HKQuantityTypeIdentifierDietarySugar': 'sugar',
+        'HKQuantityTypeIdentifierDietaryVitaminC': 'vitamin_c'
+    }
 
-# Initialize variables for date range
-min_date, max_date = None, None
+    # Collect data
+    data = []
+    for record in root.findall('.//Record'):
+        if record.attrib.get('sourceName') == 'MyFitnessPal':
+            record_date = datetime.strptime(record.attrib['startDate'], '%Y-%m-%d %H:%M:%S %z').date()
+            if start_date <= record_date <= max_date:
+                data.append({
+                    'date': record_date,
+                    'time': datetime.strptime(record.attrib['startDate'], '%Y-%m-%d %H:%M:%S %z').time(),
+                    'type': food_mapping.get(record.attrib['type'], 'Unknown'),
+                    'value': record.attrib.get('value'),
+                    'unit': record.attrib.get('unit')
+                })
 
-# Determine the date range
-for record in root.findall('.//Record'):
-    if record.attrib.get('sourceName') == 'MyFitnessPal':
-        start_date = datetime.strptime(record.attrib['startDate'], '%Y-%m-%d %H:%M:%S %z').date()
-        if min_date is None or start_date < min_date:
-            min_date = start_date
-        if max_date is None or start_date > max_date:
-            max_date = start_date
+    # Create DataFrame
+    df = pd.DataFrame(data)
+    df = df.groupby(['date', 'time', 'type'])['value'].sum().unstack().reset_index()
 
-# Create a mapping of xml names for MyFitnessPal to human-readable names
-food_mapping = {
-    'HKQuantityTypeIdentifierDietaryCalcium': 'calcium',
-    'HKQuantityTypeIdentifierDietaryCarbohydrates':'carbs',
-    'HKQuantityTypeIdentifierDietaryCholesterol': 'cholesterol',
-    'HKQuantityTypeIdentifierDietaryEnergyConsumed': 'calories',
-    'HKQuantityTypeIdentifierDietaryFatMonounsaturated': 'monounsaturated fat',
-    'HKQuantityTypeIdentifierDietaryFatPolyunsaturated': 'polyunsaturated fat',
-    'HKQuantityTypeIdentifierDietaryFatSaturated': 'saturated fat',
-    'HKQuantityTypeIdentifierDietaryFatTotal': 'fat',
-    'HKQuantityTypeIdentifierDietaryFiber': 'fiber',
-    'HKQuantityTypeIdentifierDietaryIron': 'iron',
-    'HKQuantityTypeIdentifierDietaryPotassium': 'potassium',
-    'HKQuantityTypeIdentifierDietaryProtein': 'protein',
-    'HKQuantityTypeIdentifierDietarySodium': 'sodium',
-    'HKQuantityTypeIdentifierDietarySugar': 'sugar',
-    'HKQuantityTypeIdentifierDietaryVitaminC': 'vitamin_c'
-}
+    # Handle situations in which a variable has two decimal dots. In that case, it should just keep the first one
+    for col in df.columns[3:]:
+        df[col] = df[col].apply(lambda x: x if x is None or (isinstance(x, str) and x.count('.') <= 1) else x[:x.find('.', x.find('.') + 1)] if isinstance(x, str) else x)
 
-# Get food data parsing MyFitnessPal records from the xml
-data = []
+    # Remove files in which only the unknown column has data
+    df = df.dropna(subset=df.columns[3:], how='all')
 
-for record in root.findall('.//Record'):
-    if record.attrib.get('sourceName') == 'MyFitnessPal':
-        start_date = datetime.strptime(record.attrib['startDate'], '%Y-%m-%d %H:%M:%S %z').date()
-        if start_date >= min_date and start_date <= max_date:
-            data.append({
-                'date': start_date,
-                'time': datetime.strptime(record.attrib['startDate'], '%Y-%m-%d %H:%M:%S %z').time(),
-                'type': food_mapping.get(record.attrib.get('type'), 'Unknown'),
-                'food': record.attrib.get('value'),
-                'unit': record.attrib.get('unit'),
-         })
+   
+    return df
 
-# Create a DataFrame from the data
-df = pd.DataFrame(data)
+def get_weight_data(xml_file_path, start_date):
+    tree = ET.parse(xml_file_path)
+    root = tree.getroot()
+    max_date = date.today()
 
-# Group by date, time and type
-df = df.groupby(['date', 'time', 'type'])['food'].sum().unstack().reset_index()
+    # Create a mapping of xml names for MyFitnessPal to human-readable names
+    weight_mapping = {
+        'HKQuantityTypeIdentifierBodyFatPercentage': 'fat_percentage',
+        'HKQuantityTypeIdentifierLeanBodyMass': 'lean_body_mass',
+        'HKQuantityTypeIdentifierBodyMassIndex': 'BMI',
+        'HKQuantityTypeIdentifierBodyMass': 'weight'
+    }
 
-# Handle situations in which a variable has two decimal dots. In that case, it should just keep the first one
-for col in df.columns[3:]:
-    df[col] = df[col].apply(lambda x: x if x is None or (isinstance(x, str) and x.count('.') <= 1) else x[:x.find('.', x.find('.') + 1)] if isinstance(x, str) else x)
+    # Collect data
+    data = []
+    for record in root.findall('.//Record'):
+        if record.attrib.get('sourceName') == 'VeSync':
+            record_date = datetime.strptime(record.attrib['startDate'], '%Y-%m-%d %H:%M:%S %z').date()
+            if start_date <= record_date <= max_date:
+                data.append({
+                    'date': record_date,
+                    'type': weight_mapping.get(record.attrib['type'], 'Unknown'),
+                    'value': record.attrib.get('value')
+                })
 
-# Remove files in which only the unknown column has data
-df = df.dropna(subset=df.columns[3:], how='all')
+    # Check if data list is empty
+    if not data:
+        return None  # Return None if no data is collected
 
-# Write the DataFrame to a CSV file
-df.to_csv('Data/Cleaned/Food.csv', index=False)
-print("Food CSV file has been created.")
+    # Create DataFrame
+    df = pd.DataFrame(data)
+    df['value'] = pd.to_numeric(df['value'], errors='coerce')
+    df = df.groupby(['date', 'type'])['value'].mean().unstack().reset_index()
 
-### Weight data
+    return df
 
-# Create a mapping of xml names for MyFitnessPal to human-readable names
-weight_mapping = {
-    'HKQuantityTypeIdentifierBodyFatPercentage': 'fat_percentage',
-    'HKQuantityTypeIdentifierLeanBodyMass':'lean_body_mass',
-    'HKQuantityTypeIdentifierBodyMassIndex': 'BMI',
-    'HKQuantityTypeIdentifierBodyMass': 'weight'
-}
 
-# Get weight data parsing MyFitnessPal records from the xml
-data = []
+def main():
+   
+    start_date = datetime.strptime('2024-01-01', '%Y-%m-%d').date()
 
-for record in root.findall('.//Record'):
-    if record.attrib.get('sourceName') == 'VeSync':
-        start_date = datetime.strptime(record.attrib['startDate'], '%Y-%m-%d %H:%M:%S %z').date()
-        if start_date >= min_date and start_date <= max_date:
-            data.append({
-                'date': start_date,
-                'type': weight_mapping.get(record.attrib.get('type'), 'Unknown'),
-                'value': record.attrib.get('value')
-         })
+    food_df = get_food_time_data('Data/Apple health/exportacion.xml', start_date)
+    if food_df is not None:
+        food_df.to_csv('Data/Cleaned/Food.csv', index=False)
+        print("Food CSV file has been created.")
 
-# Create a DataFrame from the data
-df = pd.DataFrame(data)
+    weight_df = get_weight_data('Data/Apple health/exportacion.xml', start_date)
+    # Only if data is available
+    if weight_df is not None:
+        weight_df.to_csv('Data/Cleaned/Weight.csv', index=False)
+        print("Weight CSV file has been created.")
 
-# Convert 'value' column to numeric
-df['value'] = pd.to_numeric(df['value'], errors='coerce')
-
-# Group by date
-df = df.groupby(['date', 'type'])['value'].mean().unstack().reset_index()
-
-# Remove type column
-df.columns.name = None
-
-# Write the DataFrame to a CSV file
-df.to_csv('Data/Cleaned/Weight.csv', index=False)
-print("Weight CSV file has been created.")
+if __name__ == "__main__":
+    main()

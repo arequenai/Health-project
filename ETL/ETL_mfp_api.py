@@ -7,8 +7,8 @@ def init_mfp():
     """Initialize and return a MyFitnessPal client."""
     return myfitnesspal.Client()
 
+# Function to get the most recent date from a CSV file
 def get_most_recent_date(filename):
-    """Get the most recent date from a CSV file."""
     try:
         with open(filename, 'r', newline='', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
@@ -20,8 +20,8 @@ def get_most_recent_date(filename):
     except FileNotFoundError:
         return None
 
+# Function to delete the last day's data from a CSV file
 def delete_last_day_data(filename, date):
-    """Delete data for a specific date from the CSV file."""
     temp_filename = filename + '.tmp'
     with open(filename, 'r', newline='', encoding='utf-8') as csvfile, open(temp_filename, 'w', newline='', encoding='utf-8') as tmpfile:
         reader = csv.reader(csvfile)
@@ -33,9 +33,10 @@ def delete_last_day_data(filename, date):
                 writer.writerow(row)
     os.replace(temp_filename, filename)
 
-def get_meal_data(client, start_date, end_date):
-    """Scrape meal data from MyFitnessPal and append it to a CSV file."""
-    filename = 'Data/Cleaned/MFP meals scrapped.csv'
+# Function to get meal data from MyFitnessPal and append to a CSV file
+def get_meal_data(client, filename):
+    start_date = datetime.datetime.strptime('2024-03-16', '%Y-%m-%d')
+    end_date = datetime.datetime.now()
     most_recent_date = get_most_recent_date(filename)
     if most_recent_date and most_recent_date >= start_date:
         delete_last_day_data(filename, most_recent_date)
@@ -65,12 +66,13 @@ def get_meal_data(client, start_date, end_date):
                         'sugar': food.nutrition_information['sugar']
                     }
                     writer.writerow(row_data)
-            print(f'Data per meal finished {current_date.strftime("%Y-%m-%d")}')
+            print(f'MPF data per meal finished {current_date.strftime("%Y-%m-%d")}')
             current_date += datetime.timedelta(days=1)
 
-def get_meal_daily(client, start_date, end_date):
-    """Scrape daily summary data from MyFitnessPal and append it to a CSV file."""
-    filename = 'Data/Cleaned/MFP per day scrapped.csv'
+# Function to get daily summary data from MyFitnessPal and append to a CSV file
+def get_meal_daily(client, filename):
+    start_date = datetime.datetime.strptime('2024-03-16', '%Y-%m-%d')
+    end_date = datetime.datetime.now()
     most_recent_date = get_most_recent_date(filename)
     if most_recent_date and most_recent_date >= start_date:
         delete_last_day_data(filename, most_recent_date)
@@ -105,15 +107,15 @@ def get_meal_daily(client, start_date, end_date):
                 'calories_consumed_dinner': calories_meal['dinner'],
                 'calories_consumed_snacks': calories_meal['snacks']
             })
-            print(f'Data per day finished {current_date.strftime("%Y-%m-%d")}')
+            print(f'MFP data per day finished {current_date.strftime("%Y-%m-%d")}')
             current_date += datetime.timedelta(days=1)
 
 def main():
     client = init_mfp()
     start_date = datetime.datetime.strptime('2024-03-16', '%Y-%m-%d')
-    end_date = datetime.datetime.now() - datetime.timedelta(days=1)
-    get_meal_data(client, start_date, end_date)
-    get_meal_daily(client, start_date, end_date)
+
+    get_meal_data(client, start_date)
+    get_meal_daily(client, start_date)
 
 if __name__ == "__main__":
     main()

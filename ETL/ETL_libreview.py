@@ -1,72 +1,7 @@
 import pandas as pd
-import numpy as np
-
-DATA_GLUCOSE = '2024-03-23'
-
-# Read the CSV
-df = pd.read_csv('Data/LibreLink/AlbertoRequena Izard_glucose.csv', skiprows=1)
-
-# Keep only columns we need
-df = df[['Sello de tiempo del dispositivo', 'Historial de glucosa mg/dL', 'Escaneo de glucosa mg/dL']]
-
-# Rename columns
-df.columns = ['timestamp', 'glucose', 'scan_glucose']
-
-# Combine rows 2 and 3, taking whichever is not NaN
-df['glucose'] = df['glucose'].combine_first(df['scan_glucose'])
-# Drop the scan_glucose column
-df = df.drop(columns=['scan_glucose'])
-# Convert timestamp to datetime
-df['timestamp'] = pd.to_datetime(df['timestamp'], dayfirst=True)
-# Separate date and time
-df['date'] = df['timestamp'].dt.date
-df['time'] = df['timestamp'].dt.time
-# Drop the timestamp column
-df = df.drop(columns=['timestamp'])
-# Change columns order
-df = df[['date', 'time', 'glucose']]
-
-# Filter for only where glucose isn't NaN
-df = df[df['glucose'].notna()]
-
-# Save to CSV
-df.to_csv('Data/Cleaned/Glucose.csv', index=False)
-print('Glucose data extracted and saved to Data/Cleaned/Glucose.csv')
-
-### Continues to create daily data
-
-# Create datetime from date and time
-df['datetime'] = pd.to_datetime(df['date'].astype(str) + ' ' + df['time'].astype(str))
-
-# Filter data for since the first date we tracked glucose data
-df = df[df['datetime'] >= DATA_GLUCOSE]
-df = df.sort_values('datetime')
-
-# Calculate the average glucose and standard deviation for each day
-df = df.dropna(subset=['glucose'])
-df_d = df.groupby('date').agg({'glucose': ['mean', 'std', 'max']}).reset_index()
-
-# Transform the multi-index columns to single index
-df_d.columns = ['date', 'mean_glucose', 'std_glucose', 'max_glucose']
-
-# Get wake up time from Whoop API
 import os
 from dotenv import load_dotenv
 from whoop import WhoopClient
-
-# Initialize
-load_dotenv("Credentials.env")
-un = os.getenv("USERNAME_W")
-pw = os.getenv("PASSWORD_W")
-client = WhoopClient(un, pw)
-profile = client.get_profile()
-
-# Get sleep as pandas dataframe
-sleep = client.get_sleep_collection(start_date="2024-01-01")
-df_s = pd.json_normalize(sleep)
-
-# Select for not naps
-df_s = df_s[df_s['nap'] == False]
 
 # Apply timezone offset
 def apply_timezone_offset(row):
@@ -75,50 +10,119 @@ def apply_timezone_offset(row):
     timezone_offset = pd.Timedelta(hours=hours, minutes=minutes)
     return start_time + timezone_offset
 
-df_s['end'] = df_s.apply(apply_timezone_offset, axis=1)
+# Function to extract and clean glucose data from a CSV file
+def get_glucose_time(file_path, start_date):
+    # Read the glucose data file
+    df = pd.read_csv(file_path, skiprows=1)
+    
+    # Select necessary columns and rename them
+    df = df[['Sello de tiempo del dispositivo', 'Historial de glucosa mg/dL', 'Escaneo de glucosa mg/dL']]
+    df.columns = ['timestamp', 'glucose', 'scan_glucose']
+    
+    # Combine glucose readings from two columns into one, prioritizing non-NaN values
+    df['glucose'] = df['glucose'].combine_first(df['scan_glucose'])
+    df = df.drop(columns=['scan_glucose'])
+    
+    # Convert timestamps into Python datetime format
+    df['timestamp'] = pd.to_datetime(df['timestamp'], dayfirst=True)
+    
+    # Extract date and time from the timestamp
+    df['date'] = df['timestamp'].dt.date
+    df['time'] = df['timestamp'].dt.time
+    df = df.drop(columns=['timestamp'])
+    
+    # Reorder columns for clarity
+    df = df[['date', 'time', 'glucose']]
+    
+    # Remove rows where glucose data is missing
+    df = df[df['glucose'].notna()]
+    
+    # Create a full datetime column to enable filtering
+    df['datetime'] = pd.to_datetime(df['date'].astype(str) + ' ' + df['time'].astype(str))
+    
+    # Filter the dataframe for entries on or after the start date
+    df = df[df['datetime'] >= pd.to_datetime(start_date)]
+    df = df.sort_values('datetime')
+    
+    # Ensure 'date' is in datetime format
+    df['date'] = pd.to_datetime(df['date'])
+    
+    return df
 
-# Adjust datetime format
-df_s['end'] = pd.to_datetime(df_s['end'])
+# Function to aggregate daily glucose data and fetch wake-up times
+def get_glucose_daily(file_path, start_date):
+    df = get_glucose_time(file_path, start_date)
 
-# Separate date and time
-df_s['day'], df_s['time'] = df_s['end'].dt.date, df_s['end'].dt.time
-df_s = df_s[['day', 'time'] + [col for col in df_s.columns if col not in ['day', 'time']]]
+    # Load environment variables for API credentials
+    load_dotenv("Credentials.env")
+    un = os.getenv("USERNAME_W")
+    pw = os.getenv("PASSWORD_W")
+    
+    # Authenticate with Whoop API
+    client = WhoopClient(un, pw)
+    
+    # Fetch sleep data from Whoop
+    sleep = client.get_sleep_collection(start_date="2024-01-01")
+    df_s = pd.json_normalize(sleep)
+    
+    # Filter out nap entries
+    df_s = df_s[df_s['nap'] == False]
+    
+    # Adjust for timezone differences in the data
+    df_s['end'] = df_s.apply(apply_timezone_offset, axis=1)
+    df_s['end'] = pd.to_datetime(df_s['end'])
+    
+    # Extract date and wake-up time from the adjusted end time
+    df_s['day'], df_s['time'] = df_s['end'].dt.date, df_s['end'].dt.time
+    df_s = df_s[['day', 'time']]
+    df_s = df_s.rename(columns={'time': 'wakeuptime'})
+    df_s['wakeuptime'] = df_s['wakeuptime'].astype(str).str[:-7]
+    df_s['wakeuptime'] = df_s['wakeuptime'].replace('0', '07:00:00')
+    
+    # Ensure 'day' is in datetime format before merging
+    df_s['day'] = pd.to_datetime(df_s['day'])
+    
+    # Merge the glucose data with the wake-up times
+    df = pd.merge(df, df_s, left_on='date', right_on='day', how='left')
+    
+    # Specify the time format to avoid the warning
+    df['wakeuptime'] = pd.to_datetime(df['wakeuptime'], format='%H:%M:%S').dt.time
+    
+    # Filter glucose readings to only include those after the wake-up time
+    df = df[df['time'] >= df['wakeuptime']]
+    df = df.dropna(subset=['glucose'])
+    df = df.sort_values('datetime')
+    
+    # Group by date and calculate wake-up glucose and daily statistics
+    # Get the first reading for each day as the wake-up glucose
+    wake_up_glucose = df.groupby('date').first().reset_index()[['date', 'glucose']]
+    wake_up_glucose = wake_up_glucose.rename(columns={'glucose': 'wake_up_glucose'})
 
-# Keep only date and time, rename time to wakeuptime, and drop miliseconds from it
-df_s = df_s[['day', 'time']]
-df_s = df_s.rename(columns={'time': 'wakeuptime'})
-df_s['wakeuptime'] = df_s['wakeuptime'].astype(str).str[:-7]
+    # Calculate max, mean, and std of glucose for each day
+    daily_stats = df.groupby('date')['glucose'].agg(['mean', 'std', 'max']).reset_index()
+    daily_stats = daily_stats.rename(columns={'mean': 'mean_glucose', 'std': 'std_glucose', 'max': 'max_glucose'})
 
-# If wakeuptime is 0, set 7am
-df_s['wakeuptime'] = df_s['wakeuptime'].replace('0', '07:00:00')
+    # Merge wake-up glucose with daily stats
+    daily_glucose_data = pd.merge(daily_stats, wake_up_glucose, on='date', how='left')
 
-# Ensure both dataframes have the date on the same format
-df['date'] = pd.to_datetime(df['date'])
-df_s['day'] = pd.to_datetime(df_s['day'])
+    return daily_glucose_data
 
-# merge df and df_s dataframes by date
-df = pd.merge(df, df_s, left_on='date', right_on='day', how='left')
+def main():
+    
+    file_path = 'Data/LibreLink/AlbertoRequena Izard_glucose.csv'
+    start_date = '2024-03-23'
 
-# Create a new dataframe where we only keep the glucose data from the time right after wakeuptime
-df['wakeuptime'] = pd.to_datetime(df['wakeuptime']).dt.time
-df = df[df['time'] >= df['wakeuptime']]
+    # Process time-specific glucose data
+    df_time = get_glucose_time(file_path, start_date)
+    # Aggregate daily data and integrate wake-up times
+    df_daily = get_glucose_daily(file_path, start_date)
 
-df = df.dropna(subset=['glucose'])
-df = df.sort_values('datetime')
+    # Save the cleaned and processed data to CSV files
+    df_time.to_csv('Data/Cleaned/Glucose.csv', index=False)
+    print('Glucose data extracted and saved to Data/Cleaned/Glucose.csv')
 
-# Keep only the latest reading for each day
-df_w = df.groupby('date').first().reset_index()
-df_w = df_w[['date', 'glucose']]
-df_w = df_w.rename(columns={'date': 'day', 'glucose': 'wake_up_glucose'})
+    df_daily.to_csv('Data/Cleaned/Glucose_daily.csv', index=False)
+    print('Glucose data aggregated and saved to Data/Cleaned/Glucose_daily.csv')
 
-# Make sure both dataframes have the same format for date
-df_d['date'] = pd.to_datetime(df_d['date'])
-df_w['day'] = pd.to_datetime(df_w['day'])
-
-# Merge dt_w back to df_d merging by day/date
-df_d = pd.merge(df_d, df_w, left_on='date', right_on='day', how='left')
-df_d = df_d.drop(columns=['day'])
-
-# Save the data to a csv file
-df_d.to_csv('Data/Cleaned/Glucose_daily.csv', index=False)
-print('Glucose data aggregated and saved to Data/Cleaned/Glucose_daily.csv')
+if __name__ == "__main__":
+    main()

@@ -3,15 +3,15 @@
 BACKLOG
 
 Short next steps
- - Integrate data API
- - Hosting
+ - DataProcessing de MealSchedule
+ - Integrate data
  - Dashboards
 
 Input
- - JeFit
- - Cambiar a Appends
+ - In the middle of the datamaching file dataprocessing. it's on wip notebook. need to eliminate warnings and make it so that it doesn't just fill the latest file
  - Cambiar ad-hoc fechas food con issues
  - MFP function using environment variables, to be able to host
+ - JeFit
 
 Análisis
  - Correlacionar comportamientos con métricas de sueño

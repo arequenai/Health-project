@@ -105,6 +105,9 @@ def get_glucose_daily(file_path, start_date):
     # Merge wake-up glucose with daily stats
     daily_glucose_data = pd.merge(daily_stats, wake_up_glucose, on='date', how='left')
 
+    # Change date from datetime to date
+    daily_glucose_data['date'] = daily_glucose_data['date'].dt.date
+
     return daily_glucose_data
 
 def main():

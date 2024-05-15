@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-def get_tp_data(file_path, start_date):
+def get_tp_data(file_path, start_date = '2022-01-01'):
     # Load workout data from CSV
     df = pd.read_csv(file_path, parse_dates=['WorkoutDay'])
     
@@ -50,10 +50,9 @@ def get_tp_data(file_path, start_date):
 
 def main():
     file_path = 'Data/TrainingPeaks/workouts.csv'
-    start_date = '2022-01-01'  # Example start date, adjust as needed
 
     # Get the processed TrainingPeaks data
-    tp_data = get_tp_data(file_path, start_date)
+    tp_data = get_tp_data(file_path)
 
     # Save the data to a CSV file
     tp_data.to_csv('Data/Cleaned/TSS metrics.csv', index=False)

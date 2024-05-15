@@ -8,7 +8,7 @@ Short next steps
  - Dashboards
 
 Input
- - In the middle of the datamaching file dataprocessing. it's on wip notebook. need to eliminate warnings and make it so that it doesn't just fill the latest file
+ - In the middle of the datamaching file dataprocessing. not working. need to check dates of input files too
  - Cambiar ad-hoc fechas food con issues
  - MFP function using environment variables, to be able to host
  - JeFit

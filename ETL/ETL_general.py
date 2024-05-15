@@ -1,86 +1,107 @@
 # Function to obtain incremental data since the timestamps
 import pandas as pd
 import os
+import csv
 import datetime
+
+# Function to get the most recent date from a CSV file
+def get_most_recent_date(filename):
+    if filename.endswith('.csv'):
+        try:
+            # Using pandas to handle headers and date parsing more robustly
+            df = pd.read_csv(filename, nrows=0)  # Read only headers
+            first_column_name = df.columns[0]
+            if first_column_name.lower() == 'date':
+                # If first column is indeed called 'date', read dates from this column
+                df = pd.read_csv(filename, usecols=[first_column_name])
+                df[first_column_name] = pd.to_datetime(df[first_column_name], errors='coerce')
+                most_recent_date = df[first_column_name].dropna().max()
+                return most_recent_date.date() if most_recent_date else None
+            else:
+                # If not, use the file's last modification time
+                return datetime.datetime.fromtimestamp(os.path.getmtime(filename)).date()
+        except (FileNotFoundError, pd.errors.EmptyDataError):
+            return None
+    else:
+        # For non-csv files or if any other error occurred
+        try:
+            return datetime.datetime.fromtimestamp(os.path.getmtime(filename)).date()
+        except OSError:
+            return None
+
+# Function to delete all data from that date onwards
+def delete_data_from_date(filename, date):
+    temp_filename = filename + '.tmp'
+    with open(filename, 'r', newline='', encoding='utf-8') as csvfile, open(temp_filename, 'w', newline='', encoding='utf-8') as tmpfile:
+        reader = csv.reader(csvfile)
+        writer = csv.writer(tmpfile)
+        headers = next(reader)
+        writer.writerow(headers)
+        for row in reader:
+            if row[0] < date.strftime('%Y-%m-%d'):
+                writer.writerow(row)
+    os.replace(temp_filename, filename)
 
 # Function to obtain incremental data since the timestamps
 def get_incremental_data(input_file, output_file, get_data_function):
     
-    input_date = datetime.datetime.fromtimestamp(os.path.getmtime(input_file)).date()
-    output_date = datetime.datetime.fromtimestamp(os.path.getmtime(output_file)).date()
+    input_date = get_most_recent_date(input_file)
+    start_date = get_most_recent_date(output_file) + datetime.timedelta(days=1) # Start from first new day
     today = datetime.datetime.today().date()
 
-    # Check if the output file's data is older than the input file's data
-    if output_date != today:
-        if input_date != today:
-            print(f"Wanted to update data from '{input_file}', but input data is not up to date")
-            return None
-        else:
-            df = get_data_function(input_file, output_date)
-            if df is not None: print(f"Data from '{input_file}' to update '{output_file}' obtained")
-            else: print(f"No data was found on '{input_file}' to update '{output_file}'")
-            return df
-    else:
-        print(f"Data from '{input_file}' is already up to date")
+    # Always rewrite the last day
+    if input_date != today:
+        print(f"{output_file}: Tried to update, but input '{input_file}' is not up to date")
         return None
+    else:
+        df = get_data_function(input_file, start_date)
+        if df is not None: print(f"{output_file}: Data from '{input_file}' from {start_date} obtained")
+        else: print(f"{output_file}: No data was found on '{input_file}' to update")
+        return df
+
     
 # Function to obtain incremental data since the timestamps, from API
 def get_incremental_data_api(client, output_file, get_data_function):
     
-    output_date = datetime.datetime.fromtimestamp(os.path.getmtime(output_file)).date()
-    today = datetime.datetime.today().date()
+    start_date = get_most_recent_date(output_file) + datetime.timedelta(days=1) # Start from first new day
 
-    # Check if the output file's data is older than the input file's data
-    if output_date != today:
-        df = get_data_function(client, output_date)
-        if df is not None: print(f"Data from API to update '{output_file}' obtained")
-        else: print(f"No data was found on API to update '{output_file}'")
-        return df
-    else:
-        print(f"Data for '{output_file}' is already up to date")
-        return None
-
-# Updates file with new data, substituting the days found in df_incremental and adding new days
-def write_incremental_data(df_incremental, file_path):
-    
-    import os, datetime
-    import pandas as pd
-
-    df_existing = pd.read_csv(file_path)
-
-    # If df_existing is not empty and has date column, proceed to remove overlapping dates
-    if not df_existing.empty and 'date' in df_existing.columns and 'date' in df_incremental.columns:
-        # Convert date columns to datetime to ensure matching formats
-        df_existing['date'] = pd.to_datetime(df_existing['date'])
-        df_incremental['date'] = pd.to_datetime(df_incremental['date'])
-        
-        # Find dates to remove from the existing DataFrame
-        dates_to_remove = df_incremental['date'].unique()
-        
-        # Filter out the rows with these dates
-        df_existing = df_existing[~df_existing['date'].isin(dates_to_remove)]
-
-    # Append new data
-    updated_df = pd.concat([df_existing, df_incremental], ignore_index=True)
-    
-    # Save the updated DataFrame back to the CSV
-    updated_df.to_csv(file_path, index=False)
-    
-    # Print the file path and the dates added
-    print(f"Updated to '{file_path}' from: {df_incremental['date'].min().strftime('%Y-%m-%d')} to {df_incremental['date'].max().strftime('%Y-%m-%d')}")
+    df = get_data_function(client, start_date)
+    if df is not None: print(f"{output_file}: Data from API from {start_date} obtained")
+    else: print(f"{output_file}: No data was found on API to update")
+    return df
 
 # Function to get and write the incremental data
 def update_incremental(input_file, output_file, get_data_function):
     
+    # Delete the last date
+    last_date = get_most_recent_date(output_file)
+    delete_data_from_date(output_file, last_date)
+
+    # Get the incremental data
     df_incremental = get_incremental_data(input_file, output_file, get_data_function)
 
+    # Write the incremental data to the output file
     if df_incremental is not None and not df_incremental.empty:
-        write_incremental_data(df_incremental, output_file)
-
+        with open(output_file, 'a', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile)
+            for _, row in df_incremental.iterrows():
+                writer.writerow(row)
+        print(f"{output_file}: Data from {last_date} (re-)written")
 
 # Function to get and write the incremental data
 def update_incremental_api(client, output_file, get_data_function):
-    
+
+    # Delete the last date
+    last_date = get_most_recent_date(output_file)
+    delete_data_from_date(output_file, last_date)
+
+    # Get the incremental data
     df_incremental = get_incremental_data_api(client, output_file, get_data_function)
+    
+    # Write the incremental data to the output file
     if df_incremental is not None and not df_incremental.empty:
-        write_incremental_data(df_incremental, output_file)
+        with open(output_file, 'a', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile)
+            for _, row in df_incremental.iterrows():
+                writer.writerow(row)
+        print(f"{output_file}: Data from {last_date} (re-)written")

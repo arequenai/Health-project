@@ -1,11 +1,19 @@
 import pandas as pd
 import pulp
 import datetime as dt
+from ETL.ETL_general import get_most_recent_date, delete_data_from_date
 
 def schedule_meals(start_date, food_t_path, items_path, tolerance=2):
-    # Import data
-    food_t = pd.read_csv(food_t_path, parse_dates=['date', 'time'])
-    items = pd.read_csv(items_path, parse_dates=['date'])
+    # Define custom parser functions using the specified formats
+    date_parser = lambda x: pd.to_datetime(x, format='%Y-%m-%d')
+    time_parser = lambda x: pd.to_datetime(x, format='%H:%M:%S')
+
+    # Import data using custom parsers
+    food_t = pd.read_csv(food_t_path, converters={
+        'date': date_parser,
+        'time': time_parser
+    })
+    items = pd.read_csv(items_path, converters={'date': date_parser})
 
     # Filter the data starting from start_date
     food_t = food_t[food_t['date'] >= pd.to_datetime(start_date)]
@@ -17,13 +25,14 @@ def schedule_meals(start_date, food_t_path, items_path, tolerance=2):
     results_df = pd.DataFrame()
     unique_dates = pd.Series(pd.unique(food_t['date']))
     for current_date in unique_dates:
-        daily_food_t = food_t[food_t['date'] == current_date]
+        daily_food_t = food_t[food_t['date'] == current_date].copy()  # Explicit copy to avoid SettingWithCopyWarning
         daily_items = items[items['date'] == current_date]
         
-        daily_food_t.index = range(len(daily_food_t))
-        daily_items.index = range(len(daily_items))
+        daily_food_t.reset_index(drop=True, inplace=True)
+        daily_items.reset_index(drop=True, inplace=True)
         
-        daily_food_t['time_hours'] = daily_food_t['time'].dt.hour
+        # Use .loc to safely assign time_hours without causing SettingWithCopyWarning
+        daily_food_t.loc[:, 'time_hours'] = daily_food_t['time'].dt.hour
 
         prob = pulp.LpProblem("FoodScheduling", pulp.LpMinimize)
         x = pulp.LpVariable.dicts("assignment", ((i, j) for i in range(len(daily_items)) for j in range(len(daily_food_t))),
@@ -45,8 +54,12 @@ def schedule_meals(start_date, food_t_path, items_path, tolerance=2):
             prob += total_calories >= (target_calories - tolerance)
             prob += total_calories <= (target_calories + tolerance)
 
-        prob.solve()
-        
+        # Use the PULP_CBC_CMD solver with output suppressed
+        solver = pulp.PULP_CBC_CMD(msg=0)
+        status = prob.solve(solver)
+
+        print(f"Meal schedule matching: Status on {current_date.date()}: {pulp.LpStatus[status]}")
+
         daily_results = []
         for i in range(len(daily_items)):
             for j in range(len(daily_food_t)):
@@ -66,29 +79,36 @@ def schedule_meals(start_date, food_t_path, items_path, tolerance=2):
     merged_results = merged_results[['date', 'meal', 'time', 'food', 'quant', 'calories', 'carbs', 'fat', 'protein', 'sodium', 'sugar']]
     return merged_results
 
-### Main Function
+def update_meal_schedule(food_t_path, items_path, output_file):
+    # Get the most recent date from the output file
+    most_recent_date_output = get_most_recent_date(output_file)
+    # Get the most recent date from the input files
+    most_recent_food_t = get_most_recent_date(food_t_path)
+    most_recent_items = get_most_recent_date(items_path)
+    
+    # Only perform update if we have input data (at least to redo the last day)
+    min_date_input = min(most_recent_food_t, most_recent_items)
+    if most_recent_date_output <= min_date_input:
+        # Delete from output the last day
+        delete_data_from_date(output_file, most_recent_date_output)
+        # Calculate from the most recent day (which we just deleted) onwards
+        start_date = most_recent_date_output
+        scheduled_meals = schedule_meals(start_date, food_t_path, items_path)
+        # Append the scheduled meals to the output file
+        scheduled_meals.to_csv(output_file, mode='a', header=False, index=False)
+        print(f"{output_file}: Incremental meal scheduling results updated and (re-)written from {start_date}")
+    else:
+        print(f"{output_file}: No new input data to update the meal schedule")
 
 def main():
+
+    import pandas as pd
+    ### Main Function
     output_file = 'Data/Cleaned/MealSchedule.csv'
     food_t_path = 'Data/Cleaned/Food.csv'
     items_path = 'Data/Cleaned/MFP meals scrapped.csv'
     
-    try:
-        existing_data = pd.read_csv(output_file)
-        existing_data['date'] = pd.to_datetime(existing_data['date'])
-        latest_date = existing_data['date'].max()
-    except (FileNotFoundError, pd.errors.EmptyDataError):
-        latest_date = '2024-03-16'  # Default start date if file is not found or empty
-
-    start_date = latest_date + pd.Timedelta(days=1)  # Increment one day to avoid duplication
-
-    # Get the scheduled meals DataFrame for incremental dates
-    scheduled_meals = schedule_meals(start_date, food_t_path, items_path)
-
-    # Delete existing entries from start_date onwards and append new results
-    updated_data = pd.concat([existing_data[existing_data['date'] < start_date], scheduled_meals], ignore_index=True)
-    updated_data.to_csv(output_file, index=False)
-    print(f"Incremental meal scheduling results updated and saved to '{output_file}'")
+    update_meal_schedule(food_t_path, items_path, output_file)
 
 if __name__ == "__main__":
     main()

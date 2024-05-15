@@ -35,7 +35,6 @@ def init_garmin(email, password):
 
     try:
         # Using Oauth1 and OAuth2 token files from directory
-        print(f"Logging in to Garmin Connect'")
         garmin = Garmin()
         garmin.login(tokenstore)
 
@@ -74,7 +73,6 @@ def init_garmin(email, password):
 def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
     api = garmin_client
 
-    print('Getting Garmin data')
     # Initialize empty list to store data
     data_list = []
 
@@ -106,10 +104,11 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
             'bodyBatteryHighestValue', 'bodyBatteryLowestValue', 'bodyBatteryDuringSleep'
                 ]]
 
-    # Write DataFrame to CSV file
-    df.to_csv('Data/Cleaned/Garmin_daily.csv', index=False)
-    print('Garmin data saved to CSV file')
+    return df
 
 if __name__ == "__main__":
     garmin_client = init_garmin(email, password)
-    get_garmin_data(garmin_client)
+    df = get_garmin_data(garmin_client)
+    # Write DataFrame to CSV file
+    df.to_csv('Data/Cleaned/Garmin_daily.csv', index=False)
+    print('Garmin data saved to CSV file')

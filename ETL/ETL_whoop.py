@@ -41,12 +41,12 @@ def get_journal_data(input_file, output_file):
                          'Viewed a screen device in bed?': 'screen_bed'}, inplace=True)
     df_u.columns.name = None
     df_u.to_csv(output_file, index=False)
-    print('Journal data cleaned and saved to Data/Cleaned/Journal.csv')
+    print(f"{output_file}: Journal data obtained and rewritten'")
 
-def get_sleep_recovery_data(client, filename):
-    sleep = client.get_sleep_collection(start_date="2024-01-01")
+def get_sleep_recovery_data(client, start_date):
+    sleep = client.get_sleep_collection(start_date.strftime('%Y-%m-%d'))
     df_s = pd.json_normalize(sleep)
-    recovery = client.get_recovery_collection(start_date="2024-01-01")
+    recovery = client.get_recovery_collection(start_date.strftime('%Y-%m-%d'))
     df_r = pd.json_normalize(recovery)
 
     def apply_timezone_offset(row):
@@ -90,7 +90,8 @@ def get_sleep_recovery_data(client, filename):
     df_r.rename(columns=columns_map, inplace=True)
     df = pd.merge(df_s, df_r, on='sleep_id', how='left')
     df.drop(columns=['sleep_id'], inplace=True)
-    df.to_csv(filename, index=False)
+    df.sort_values(by='date', inplace=True)
+    return df
 
 def main():
    
@@ -99,10 +100,14 @@ def main():
     un = os.getenv("USERNAME_W")
     pw = os.getenv("PASSWORD_W")
    
+    print("Logging in to Whoop")
     client = init_whoop(un, pw)
 
     whoop_file = 'Data/Cleaned/Sleep_and_recovery.csv'
-    get_sleep_recovery_data(client, whoop_file)
+    start_date = datetime(2024, 1, 1)
+    df = get_sleep_recovery_data(client, start_date)
+    df.to_csv(whoop_file, index=False)
+    print('Sleep and recovery data cleaned and saved to Data/Cleaned/Sleep_and_recovery.csv')
    
     journal_file_raw = 'Data/Whoop/journal_entries.csv'
     journal_file = 'Data/Cleaned/Journal.csv'

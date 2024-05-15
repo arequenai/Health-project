@@ -713,7 +713,9 @@ date,meal,time,food,quant,calories,carbs,fat,protein,sodium,sugar
 2024-05-14,dinner,20:48:00,"Pescado - Tilapia, 250 gram",250.0,240.0,0.0,4.0,50.0,130.0,0.0
 2024-05-14,dinner,,"Patatas - Hervidas, 100 gr",100.0,78.0,17.0,0.0,3.0,0.0,0.0
 2024-05-15,breakfast,,"Plátano - Platano, 0.8 pieza",0.8,84.0,22.0,0.0,1.0,0.0,12.0
-2024-05-15,breakfast,08:32:00,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
-2024-05-15,breakfast,08:32:00,"oats - copos de avena, 50 g",50.0,185.0,28.0,4.0,6.0,0.0,0.0
+2024-05-15,breakfast,,"Biotech Usa - Iso Whey Zero, 25 grammi",25.0,93.0,1.0,0.0,21.0,0.0,0.0
+2024-05-15,breakfast,,"oats - copos de avena, 50 g",50.0,185.0,28.0,4.0,6.0,0.0,0.0
 2024-05-15,breakfast,,"Yo Soy - Bebida De Avena, 100 ml",100.0,46.0,8.0,1.0,1.0,0.0,5.0
 2024-05-15,breakfast,,"Pasa - Pasa, 12 g",12.0,28.0,6.0,0.0,0.0,0.0,0.0
+2024-05-15,lunch,08:32:00,"Air Frier Asian Chicken, 1.5 serving",1.5,447.0,14.0,14.0,63.0,1249.0,8.0
+2024-05-15,lunch,,"Arroz Blanco - Arroz Blanco Cocido, 130 gram",130.0,241.0,52.0,1.0,5.0,682.0,0.0

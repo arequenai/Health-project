@@ -91,6 +91,9 @@ def get_sleep_recovery_data(client, start_date):
     df = pd.merge(df_s, df_r, on='sleep_id', how='left')
     df.drop(columns=['sleep_id'], inplace=True)
     df.sort_values(by='date', inplace=True)
+    # Turn date from datetime to date
+    df['date'] = pd.to_datetime(df['date']).dt.date
+
     return df
 
 def main():

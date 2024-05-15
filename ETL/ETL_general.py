@@ -105,3 +105,43 @@ def update_incremental_api(client, output_file, get_data_function):
             for _, row in df_incremental.iterrows():
                 writer.writerow(row)
         print(f"{output_file}: Data from {last_date} (re-)written")
+
+
+def export_to_gsheets(df, sheet_name):
+
+    import pandas as pd
+    from googleapiclient.discovery import build
+    from google.oauth2 import service_account
+
+    # Load service account credentials
+    creds = service_account.Credentials.from_service_account_file('gsheets key.json')
+    scoped_credentials = creds.with_scopes(['https://www.googleapis.com/auth/spreadsheets'])
+
+    # Authenticate with Google Sheets API
+    service = build('sheets', 'v4', credentials=scoped_credentials, cache_discovery=False)
+
+    # Spreadsheet ID and range for Health Dashboards
+    SPREADSHEET_ID_input = '197VfZCekvBev0m1vsi8kUHpuO0IoTRA90_bQRGBYYSM'
+
+    # Specify the range including the sheet name
+    range_name = f"{sheet_name}!A1:ZA1000"
+    
+    # Fill NaN values with empty strings
+    df_filled = df.fillna('')
+    
+    # Get DataFrame headers and values
+    headers = [df_filled.columns.tolist()]
+    values = df_filled.values.tolist()
+    
+    # Concatenate headers with values
+    data = headers + values
+    
+    # Update the spreadsheet with DataFrame values including headers
+    response = service.spreadsheets().values().update(
+        spreadsheetId=SPREADSHEET_ID_input,
+        valueInputOption='RAW',
+        range=range_name,
+        body=dict(
+            majorDimension='ROWS',
+            values=data)
+    ).execute()

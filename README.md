@@ -3,13 +3,10 @@
 BACKLOG
 
 Short next steps
- - DataProcessing de MealSchedule
- - Integrate data
  - Dashboards
 
 Input
- - In the middle of the datamaching file dataprocessing. not working. need to check dates of input files too
- - Cambiar ad-hoc fechas food con issues
+ - Revisar food schedule matching
  - MFP function using environment variables, to be able to host
  - JeFit
 

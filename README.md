@@ -4,6 +4,7 @@ BACKLOG
 
 Short next steps
  - Dashboards
+ - algo de data rara. dias duplicados?
 
 Input
  - Revisar food schedule matching
@@ -18,9 +19,8 @@ Engineering
  - Hosting online, batch
 
 
-### Export process
+### Manual export process
 Whoop
-  - Direct through API
   - Journal from app: More/App Settings/Data export
 
 LibreLink
@@ -32,10 +32,7 @@ TrainingPeaks
 Apple Health (food times and weight)
  - iPhone app Salud, foto, Exportar todos los datos de salud
 
- Garmin (activities not yet used)
- - Direct from API
- - Activities: run on terminal garmin-backup --backup-dir=Data/Garmin requenalberto@gmail.com
-
+ 
 ### Process to generate clean data
 
 1. All ETL

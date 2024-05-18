@@ -2,9 +2,9 @@
 
 BACKLOG
 
-Short next steps
- - Dashboards
- - algo de data rara. dias duplicados?
+Dashboard
+ - Chante ATL for another metric. Strenght and stretch?
+ - Add TSS, hours of run, hours of strength
 
 Input
  - Revisar food schedule matching

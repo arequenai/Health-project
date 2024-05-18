@@ -1,72 +1,98 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
-from datetime import datetime, timedelta
+from Dashboard.config import status_thresholds, column_name_mapping
+from Dashboard.helpers import get_status_color, format_value, format_trend
+from Dashboard.metrics import calculate_summary
+from Dashboard.charts import create_performance_chart, create_recovery_charts, create_nutrition_chart
 
-# Load data from CSV
-data = pd.read_csv('Data/Integrated_data.csv')
+# Custom CSS to make the entire dashboard wider, increase the font size, and enlarge the colored dots
+st.markdown(
+    """
+    <style>
+    .main .block-container {
+        max-width: 90%;
+        padding: 2rem;
+    }
+    .summary-container {
+        font-size: 1.2rem;
+    }
+    .colored-dot {
+        font-size: 1.5rem;
+        margin-left: 5px;  /* Adjust the margin as needed */
+    }
+    .value-dot {
+        display: flex;
+        justify-content: flex-end;  /* Align to the right */
+        align-items: center;
+    }
+    .header-right {
+    text-align: right;  /* Align header text to the right */
+    }
+    .column-margin {
+        margin-right: 30px;  /* Add margin between columns */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-# Convert 'date' column to datetime
+
+# Load data
+data = pd.read_csv('Data/Cleaned/Integrated_data.csv')
 data['date'] = pd.to_datetime(data['date'])
 
-# Define status thresholds (these can be modified)
-status_thresholds = {
-    'TSS': {'low': 40, 'high': 70},
-    'CTL': {'low': 30, 'high': 60},
-    'ATL': {'low': 40, 'high': 70},
-    'sleep_score_performance': {'low': 50, 'high': 80},
-    'sleep_score_consistency': {'low': 50, 'high': 80},
-    'sleep_score_efficiency': {'low': 70, 'high': 90},
-    'BMI': {'low': 18.5, 'high': 24.9},
-    'fat_percentage': {'low': 10, 'high': 20},
-    'lean_body_mass': {'low': 50, 'high': 70}
-}
-
-# Define function to get status color
-def get_status_color(value, metric):
-    if value < status_thresholds[metric]['low']:
-        return 'red'
-    elif value > status_thresholds[metric]['high']:
-        return 'green'
-    else:
-        return 'yellow'
+# Map column names to human-readable names
+data.rename(columns=column_name_mapping, inplace=True)
 
 # Calculate metrics for summary page
-last_2_weeks = data[data['date'] >= datetime.now() - timedelta(days=14)]
-previous_month = data[(data['date'] < datetime.now() - timedelta(days=14)) & (data['date'] >= datetime.now() - timedelta(days=44))]
-
-metrics = {
-    'training': ['TSS', 'CTL', 'ATL'],
-    'recovery': ['sleep_score_performance', 'sleep_score_consistency', 'sleep_score_efficiency'],
-    'nutrition': ['BMI', 'fat_percentage', 'lean_body_mass']
-}
-
-summary = {block: {} for block in metrics}
-
-for block, metric_list in metrics.items():
-    for metric in metric_list:
-        summary[block][metric] = {
-            'value': last_2_weeks[metric].mean(),
-            'trend': last_2_weeks[metric].mean() - previous_month[metric].mean(),
-            'status': get_status_color(last_2_weeks[metric].mean(), metric),
-            'trend_status': get_status_color(last_2_weeks[metric].mean() - previous_month[metric].mean(), metric)
-        }
+try:
+    summary = calculate_summary(data, status_thresholds)
+except KeyError as e:
+    st.error(f"KeyError: {e}. Please check if the column exists in the data.")
+    st.stop()
 
 # Streamlit app
 st.title('Health Metrics Dashboard')
 
-# Summary Page
-st.header('Summary')
+# Create tabs
+tabs = st.tabs(["Summary", "Training", "Recovery", "Nutrition"])
 
-for block, metric_list in summary.items():
-    st.subheader(block.capitalize())
-    for metric, details in metric_list.items():
-        st.markdown(f"**{metric}:** {details['value']:.2f} [{details['status']}]")
-        st.markdown(f"**Trend (last 2 weeks vs previous month):** {details['trend']:.2f} [{details['trend_status']}]")
+# Summary Tab
+with tabs[0]:
+    st.header('Summary')
+    col1, col2, col3 = st.columns([1, 1, 1], gap="large")  # Adjusted column gap
 
-# Detailed Pages
-for block, metric_list in metrics.items():
-    st.header(f"{block.capitalize()} Details")
-    for metric in metric_list:
-        fig = px.line(data, x='date', y=metric, title=f"{metric} Over Time")
-        st.plotly_chart(fig)
+    for col, block in zip([col1, col2, col3], ['training', 'recovery', 'nutrition']):
+        with col:
+            st.subheader(block.capitalize())
+            sub_col1, sub_col2, sub_col3 = st.columns([2, 1, 1])
+            with sub_col2:
+                st.markdown("<div class='header-right'><strong>L2W</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>", unsafe_allow_html=True)
+            with sub_col3:
+                st.markdown("<div class='header-right'><strong>Δ vs 1m</strong>&nbsp;&nbsp;&nbsp;&nbsp;</div>", unsafe_allow_html=True)
+            for metric, details in summary[block].items():
+                sub_col1, sub_col2, sub_col3 = st.columns([2, 1, 1])
+                with sub_col1:
+                    st.markdown(f"<div class='summary-container'><strong>{metric}</strong></div>", unsafe_allow_html=True)
+                with sub_col2:
+                    st.markdown(f"<div class='summary-container value-dot'>{format_value(metric, details['value'])} <span class='colored-dot'>{details['status']}</span></div>", unsafe_allow_html=True)
+                with sub_col3:
+                    st.markdown(f"<div class='summary-container value-dot'>{format_trend(metric, details['trend'])} <span class='colored-dot'>{details['trend_status']}</span></div>", unsafe_allow_html=True)
+
+# Training Tab
+with tabs[1]:
+    st.header('Training')
+    fig = create_performance_chart(data)
+    st.plotly_chart(fig, use_container_width=True)
+
+# Recovery Tab
+with tabs[2]:
+    st.header('Recovery')
+    for fig in create_recovery_charts(data):
+        st.plotly_chart(fig, use_container_width=True)
+
+# Nutrition Tab
+with tabs[3]:
+    st.header('Nutrition')
+    fig = create_nutrition_chart(data)
+    st.plotly_chart(fig, use_container_width=True)

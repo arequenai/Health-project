@@ -3,7 +3,7 @@
 BACKLOG
 
 Dashboard
- - Chante ATL for another metric. Strenght and stretch?
+ - Change ATL for another metric. Strenght and stretch?
  - Add TSS, hours of run, hours of strength
 
 Input

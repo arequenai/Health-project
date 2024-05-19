@@ -25,3 +25,4 @@ def format_trend(metric, trend):
         return f"+{trend:.0f}"
     else:
         return f"{trend:.0f}"
+

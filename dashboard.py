@@ -1,9 +1,12 @@
 import streamlit as st
 import pandas as pd
+from transformers import AutoModelForCausalLM, AutoTokenizer
+import torch
 from Dashboard.config import status_thresholds, column_name_mapping
 from Dashboard.helpers import get_status_color, format_value, format_trend
 from Dashboard.metrics import calculate_summary
 from Dashboard.charts import create_performance_chart, create_recovery_charts, create_nutrition_chart
+from Dashboard.llm import load_model, generate_insights
 
 # Custom CSS to make the entire dashboard wider, increase the font size, and enlarge the colored dots
 st.markdown(
@@ -26,7 +29,7 @@ st.markdown(
         align-items: center;
     }
     .header-right {
-    text-align: right;  /* Align header text to the right */
+        text-align: right;  /* Align header text to the right */
     }
     .column-margin {
         margin-right: 30px;  /* Add margin between columns */
@@ -35,7 +38,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
 
 # Load data
 data = pd.read_csv('Data/Cleaned/Integrated_data.csv')
@@ -62,6 +64,8 @@ with tabs[0]:
     st.header('Summary')
     col1, col2, col3 = st.columns([1, 1, 1], gap="large")  # Adjusted column gap
 
+    summary_text = ""
+
     for col, block in zip([col1, col2, col3], ['training', 'recovery', 'nutrition']):
         with col:
             st.subheader(block.capitalize())
@@ -78,6 +82,15 @@ with tabs[0]:
                     st.markdown(f"<div class='summary-container value-dot'>{format_value(metric, details['value'])} <span class='colored-dot'>{details['status']}</span></div>", unsafe_allow_html=True)
                 with sub_col3:
                     st.markdown(f"<div class='summary-container value-dot'>{format_trend(metric, details['trend'])} <span class='colored-dot'>{details['trend_status']}</span></div>", unsafe_allow_html=True)
+                summary_text += f"{metric}: {format_value(metric, details['value'])} ({format_trend(metric, details['trend'])})\n"
+
+    # Button to generate insights
+    if st.button('Generate Insights'):
+        # Load the model and tokenizer
+        tokenizer, model = load_model()
+        insights = generate_insights(summary_text, tokenizer, model)
+        st.subheader("Key Insights")
+        st.write(insights)
 
 # Training Tab
 with tabs[1]:

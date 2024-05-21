@@ -1,4 +1,5 @@
 from datetime import timedelta
+import pandas as pd
 from Dashboard.helpers import get_status_color
 
 def calculate_summary(data, status_thresholds):
@@ -21,11 +22,17 @@ def calculate_summary(data, status_thresholds):
         for metric in metric_list:
             if metric not in data.columns:
                 raise KeyError(f"Column '{metric}' not found in data.")
+            
+            # Filter out NaN values for the specific metric
+            valid_last_2_weeks = last_2_weeks[last_2_weeks[metric].notna()]
+            valid_previous_month = previous_month[previous_month[metric].notna()]
+
             if metric in status_thresholds:
                 summary[block][metric] = {
-                    'value': last_2_weeks[metric].mean(),
-                    'trend': last_2_weeks[metric].mean() - previous_month[metric].mean(),
-                    'status': get_status_color(last_2_weeks[metric].mean(), metric, type='L2W'),
-                    'trend_status': get_status_color(last_2_weeks[metric].mean() - previous_month[metric].mean(), metric, type='delta')
+                    'value': valid_last_2_weeks[metric].mean(),
+                    'trend': valid_last_2_weeks[metric].mean() - valid_previous_month[metric].mean(),
+                    'status': get_status_color(valid_last_2_weeks[metric].mean(), metric, type='L2W'),
+                    'trend_status': get_status_color(valid_last_2_weeks[metric].mean() - valid_previous_month[metric].mean(), metric, type='delta')
                 }
+
     return summary

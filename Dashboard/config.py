@@ -1,12 +1,12 @@
 # Define status thresholds and colors for each metric
 status_thresholds = {
     'CTL': {
-        'L2W': {'levels': [0, 30, 60], 'colors': ['🔴', '🟡', '🟢']},
+        'L2W': {'levels': [0, 30, 50], 'colors': ['🔴', '🟡', '🟢']},
         'delta': {'levels': [-float('inf'), -5, 0], 'colors': ['🔴', '🟡', '🟢']}
     },
     'TSB': {
         'L2W': {'levels': [-float('inf'), -20, -5, 10, float('inf')], 'colors': ['🔴', '🟢', '🟡', '🔴']},
-        'delta': {'levels': [-float('inf'), -5, 0, 5, float('inf')], 'colors': ['🔴', '🟡', '🟢', '🔴']}
+        'delta': {'levels': [-float('inf'), 0, 5, float('inf')], 'colors': ['🟢', '🟡', '🔴']},
     },
     'ATL': {
         'L2W': {'levels': [0, 40, 70, 100], 'colors': ['🔴', '🟡', '🟢', '🔴']},

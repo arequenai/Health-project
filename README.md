@@ -1,6 +1,10 @@
-# Health-git
+### Health-project
 
 BACKLOG
+ - Dashboard: Get front screen with the right metrics
+ - Processing: Fix time matching
+ - Dashboard: Add glucose visualizations: Curves day vs. meal. Ranking of worse meals and situations
+
 
 Dashboard
  - Change ATL for another metric. Strenght and stretch?
@@ -31,11 +35,3 @@ TrainingPeaks
 
 Apple Health (food times and weight)
  - iPhone app Salud, foto, Exportar todos los datos de salud
-
- 
-### Process to generate clean data
-
-1. All ETL
-2. DataProcessing - MFP Api.ipynb
-3. DataProcessing - MFP data matching v2.ipynb
-4. IntegrateData.ipynb

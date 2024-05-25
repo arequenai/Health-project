@@ -742,4 +742,70 @@ date,meal,food,quant,calories,carbs,fat,protein,sodium,sugar
 2024-05-19,breakfast,"Arroz Blanco - Arroz Blanco Cocido, 75 gram",75,139.0,30.0,0.0,3.0,393.0,0.0
 2024-05-19,breakfast,"Air Frier Asian Chicken, 1 serving",1,298.0,9.0,9.0,42.0,833.0,5.0
 2024-05-19,lunch,"Novilho Rodizio - Rodizio Carne E Japones, 1.3 cup",1.3,1300.0,156.0,104.0,104.0,1300.0,0.0
+2024-05-19,dinner,"Hacendado - Tortitas, Fajitas, Wraps de Avena, 60 gr",60,172.0,24.0,4.0,9.0,780.0,1.0
+2024-05-19,dinner,"Carrefour - Cebolla Blanca, 165 g (1 unidad)",165,66.0,15.0,0.0,2.0,7.0,7.0
+2024-05-19,dinner,"Air Frier Asian Chicken, 1.8 serving",1.8,536.0,16.0,17.0,76.0,1499.0,10.0
+2024-05-19,dinner,"Aguacate - Aguacate, 40 gram",40,64.0,3.0,6.0,1.0,3.0,0.0
+2024-05-19,dinner,"Aceite Oliva - Aceite Oliva 7ml, 2 cucharadita de café (7ml)",2,120.0,0.0,14.0,0.0,0.0,0.0
 2024-05-19,snacks,"Carrefour - Barritas Cereales Avellana, 1 barrita",1,85.0,13.0,3.0,2.0,120.0,5.0
+2024-05-20,breakfast,"Hacendado - Salvado de Avena, 50 g",50,179.0,22.0,4.0,9.0,0.0,1.0
+2024-05-20,breakfast,"Biotech Usa - Iso Whey Zero, 25 grammi",25,93.0,1.0,0.0,21.0,0.0,0.0
+2024-05-20,breakfast,"Elma - Canela em pó, 2.5 gr",2.5,7.0,2.0,0.0,0.0,1.0,0.0
+2024-05-20,lunch,"Ensalada Polllo Ofi Bain, 1.2 serving",1.2,667.0,29.0,42.0,45.0,80.0,8.0
+2024-05-20,dinner,"Vino Blanco - vino blanco, 375 ml",375,363.0,11.0,0.0,0.0,0.0,0.0
+2024-05-20,dinner,"Thermomix - Arroz Con Costillas, 1.5 PLATO",1.5,632.0,98.0,17.0,33.0,17.0,0.0
+2024-05-21,breakfast,"Roig - Clara de huevo, 125 gr",125,63.0,1.0,1.0,13.0,0.0,1.0
+2024-05-21,breakfast,"huevo - Huevo Entero, 1 pieza",1,78.0,1.0,5.0,6.0,0.0,0.0
+2024-05-21,breakfast,"Smoked salmon, 60 gram",60,70.0,0.0,3.0,11.0,403.0,0.0
+2024-05-21,breakfast,"pan cristal mercadona - pan cristal mercadona, 70 gramo",70,210.0,35.0,4.0,7.0,0.0,2.0
+2024-05-21,lunch,"Gazpacho - Gazpacho Andaluz (Sin Pan), 250 ml",250,88.0,5.0,7.0,2.0,0.0,0.0
+2024-05-21,lunch,"Pollo Plancha - Pollo Plancha, 250 gr",250,245.0,2.0,3.0,51.0,1763.0,0.0
+2024-05-21,lunch,"Patatas - Hervidas, 170 gr",170,133.0,29.0,0.0,4.0,0.0,0.0
+2024-05-21,lunch,"Fruta: Sandia C&T - Sandia, 130 g.",130,39.0,10.0,0.0,1.0,1.0,8.0
+2024-05-21,dinner,"Sushi Combo Sudbury Farms - Sushi, 252 g",252,918.0,49.0,8.0,22.0,2754.0,9.0
+2024-05-21,snacks,"Carrefour - Barritas Cereales Avellana, 1 barrita",1,85.0,13.0,3.0,2.0,120.0,5.0
+2024-05-22,breakfast,"Roig - Clara de huevo, 30 gr",30,15.0,0.0,0.0,3.0,0.0,0.0
+2024-05-22,breakfast,"huevo - Huevo Entero, 1 pieza",1,78.0,1.0,5.0,6.0,0.0,0.0
+2024-05-22,breakfast,"Aceite oliva - Aceite, 0.4 cucharada (14gr)",0.4,50.0,0.0,6.0,0.0,0.0,0.0
+2024-05-22,breakfast,"tomate rallado natural - tomate rallado natural, 2 rebanada",2,38.0,7.0,1.0,0.0,0.0,0.0
+2024-05-22,breakfast,"Jamon de pavo - Jamon, 4 rebanada",4,144.0,2.0,5.0,20.0,1264.0,2.0
+2024-05-22,breakfast,"Hacendado - Pan Integral, 100 gram",100,229.0,43.0,1.0,8.0,0.0,3.0
+2024-05-22,lunch,"Salmorejo - Salmorejo, 1.5 taza",1.5,95.0,8.0,6.0,1.0,1.0,0.0
+2024-05-22,lunch,"Cerdo Estofado, 0.75 bowl (2 cups)",0.75,425.0,48.0,12.0,33.0,411.0,4.0
+2024-05-22,lunch,"Zanahorias Asadas, 0.8 taza",0.8,87.0,11.0,5.0,1.0,459.0,6.0
+2024-05-22,dinner,"Mahou - Cerveza Mahou Tostada 0,0, 325 ml",325,34.0,8.0,0.0,0.0,0.0,4.0
+2024-05-22,dinner,"Patatas - Hervidas, 90 gr",90,70.0,15.0,0.0,2.0,0.0,0.0
+2024-05-22,dinner,"Wings - Wings air   Frier, 336 g",336,630.0,0.0,42.0,60.0,0.0,0.0
+2024-05-22,snacks,"Solnuts - Almendra tostada , 25 gramo",25,150.0,1.0,13.0,6.0,0.0,0.0
+2024-05-22,snacks,"Mollete antequerano - Mollete, 1 u",1,168.0,32.0,1.0,7.0,0.0,2.0
+2024-05-22,snacks,"Jamon Serrano - Jamon Serrano Bellota, 20 gr",20,48.0,0.0,3.0,6.0,0.0,0.0
+2024-05-22,snacks,"tomate rallado natural - tomate rallado natural, 1 rebanada",1,19.0,4.0,1.0,0.0,0.0,0.0
+2024-05-22,snacks,"Aceite Oliva - Aceite Oliva 7ml, 1.5 cucharadita de café (7ml)",1.5,90.0,0.0,11.0,0.0,0.0,0.0
+2024-05-23,breakfast,"Hacendado - Salvado de Avena, 50 g",50,179.0,22.0,4.0,9.0,0.0,1.0
+2024-05-23,breakfast,"Biotech Usa - Iso Whey Zero, 50 grammi",50,186.0,3.0,1.0,42.0,0.0,0.0
+2024-05-23,lunch,"Pan - Pan Blanco ✓, 60 g",60,153.0,33.0,0.0,4.0,300.0,3.0
+2024-05-23,lunch,"Ensalada Polllo Ofi Bain, 0.8 serving",0.8,444.0,19.0,28.0,30.0,53.0,5.0
+2024-05-23,lunch,"Supersol - Tortilla De Patatas, 150 g",150,203.0,23.0,9.0,6.0,0.0,0.0
+2024-05-23,dinner,"Whiskey, 1.8 shot/jigger",1.8,175.0,0.0,0.0,0.0,1.0,0.0
+2024-05-23,dinner,"Vino Blanco - vino blanco, 250 ml",250,242.0,8.0,0.0,0.0,0.0,0.0
+2024-05-23,dinner,"Quick Add, 1 serving(s)",1,1085.0,170.0,25.0,45.0,0.0,0.0
+2024-05-23,snacks,"Patatas - Hervidas, 40 gr",40,31.0,7.0,0.0,1.0,0.0,0.0
+2024-05-23,snacks,"Freia - Fresa, 100 gram",100,32.0,8.0,0.0,1.0,1.0,0.0
+2024-05-24,breakfast,"Huevo Frito Mediano (50g) - Huevo Frito, 2 huevo",2,232.0,2.0,20.0,14.0,172.0,1.0
+2024-05-24,breakfast,"Supersol - Tortilla De Patatas, 80 g",80,108.0,12.0,5.0,3.0,0.0,0.0
+2024-05-24,breakfast,"Pan - Pan Blanco ✓, 50 g",50,128.0,28.0,0.0,4.0,250.0,3.0
+2024-05-24,breakfast,"Pavo - Pavo Lonchas, 30 gr",30,23.0,0.0,0.0,5.0,0.0,0.0
+2024-05-24,lunch,"Quick Add, 1 serving(s)",1,1095.0,120.0,55.0,30.0,0.0,0.0
+2024-05-24,dinner,"Quick Add, 1 serving(s)",1,1130.0,130.0,50.0,40.0,0.0,0.0
+2024-05-25,breakfast,"Silueta - Pan integral cereales sin corteza, 56 gramo",56,136.0,22.0,2.0,7.0,0.0,0.0
+2024-05-25,breakfast,"mayonesa - Mayonesa, 1 cucharada",1,90.0,0.0,10.0,0.0,0.0,0.0
+2024-05-25,breakfast,"Patatas - Hervidas, 100 gr",100,78.0,17.0,0.0,3.0,0.0,0.0
+2024-05-25,breakfast,"Frinosa atun lata - Atun lata, 48 gramos",48,122.0,0.0,9.0,10.0,90.0,0.0
+2024-05-25,breakfast,"Supersol - Tortilla De Patatas, 60 g",60,81.0,9.0,4.0,2.0,0.0,0.0
+2024-05-25,lunch,"Pan - Pan Blanco ✓, 75 g",75,191.0,42.0,1.0,5.0,375.0,4.0
+2024-05-25,lunch,"Aceite Oliva - Aceite Oliva 7ml, 1.5 cucharadita de café (7ml)",1.5,90.0,0.0,11.0,0.0,0.0,0.0
+2024-05-25,lunch,"tomate rallado natural - tomate rallado natural, 1 rebanada",1,19.0,4.0,1.0,0.0,0.0,0.0
+2024-05-25,lunch,"Findus - Patatas panadera, 100 g",100,143.0,15.0,7.0,2.0,500.0,2.0
+2024-05-25,lunch,"Mercadona - Merluza A La Plancha, 220.0 gr",220.0,251.0,0.0,6.0,49.0,0.0,0.0
+2024-05-25,lunch,"Jamon Serrano - Jamon Serrano Bellota, 20 gr",20,48.0,0.0,3.0,6.0,0.0,0.0
+2024-05-25,lunch,"anchoas - anchoas, 40 gramo",40,71.0,0.0,3.0,10.0,0.0,0.0

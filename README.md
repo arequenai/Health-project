@@ -1,8 +1,10 @@
 ### Health-project
 
 BACKLOG
- - Dashboard: Get front screen with the right metrics
  - Processing: Fix time matching
+ - Data: Report for doctor
+
+ - Dashboard: Get front screen with the right metrics
  - Dashboard: Add glucose visualizations: Curves day vs. meal. Ranking of worse meals and situations
 
 
@@ -17,7 +19,7 @@ Input
 
 Análisis
  - Correlacionar comportamientos con métricas de sueño
- - Correlar TSS con Whoop Strain, por si vale esa
+ - Correlar TSS con Garmin, por si vale esa
 
 Engineering
  - Hosting online, batch

@@ -106,14 +106,22 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
 
     # Now get Strength training data
     s_list = api.get_activities_by_date(start_date, datetime.date.today())
-    df_s = pd.DataFrame(s_list)
-    df_s['typeKey'] = df_s['activityType'].apply(lambda x: x['typeKey'] if 'typeKey' in x else None)
-    df_s = df_s[df_s['typeKey'] == 'strength_training']
-    df_s['date'] = df_s['startTimeLocal'].apply(lambda x: x.split('T')[0])
-    df_s['date'] = pd.to_datetime(df_s['date']).dt.date
-    df_s = df_s[['date', 'duration']]
-    df_s['duration'] = df_s['duration'] / 60
-    df_s.rename(columns={'duration': 'strength_minutes'}, inplace=True)
+
+    # Initialize the DataFrame with empty values if the list is empty
+    if not s_list:
+        df_s = pd.DataFrame({
+            'date': [datetime.date.today()],
+            'strength_minutes': [0]
+        })
+    else:
+        df_s = pd.DataFrame(s_list)
+        df_s['typeKey'] = df_s['activityType'].apply(lambda x: x['typeKey'] if 'typeKey' in x else None)
+        df_s = df_s[df_s['typeKey'] == 'strength_training']
+        df_s['date'] = df_s['startTimeLocal'].apply(lambda x: x.split('T')[0])
+        df_s['date'] = pd.to_datetime(df_s['date']).dt.date
+        df_s = df_s[['date', 'duration']]
+        df_s['duration'] = df_s['duration'] / 60
+        df_s.rename(columns={'duration': 'strength_minutes'}, inplace=True)
 
     # Merge strength training data with main DataFrame
     df['date'] = pd.to_datetime(df['date']).dt.date

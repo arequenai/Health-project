@@ -53,14 +53,26 @@ except KeyError as e:
     st.error(f"KeyError: {e}. Please check if the column exists in the data.")
     st.stop()
 
+# Initialize session state for page navigation
+if 'page' not in st.session_state:
+    st.session_state.page = 'Summary'
+
 # Streamlit app
 st.title('Health Metrics Dashboard')
 
-# Create tabs
-tabs = st.tabs(["Summary", "Training", "Recovery", "Nutrition"])
+# Create sidebar for page navigation
+st.sidebar.title('Navigation')
+if st.sidebar.button('Summary'):
+    st.session_state.page = 'Summary'
+if st.sidebar.button('Training'):
+    st.session_state.page = 'Training'
+if st.sidebar.button('Recovery'):
+    st.session_state.page = 'Recovery'
+if st.sidebar.button('Nutrition'):
+    st.session_state.page = 'Nutrition'
 
-# Summary Tab
-with tabs[0]:
+# Summary Page
+if st.session_state.page == 'Summary':
     st.header('Summary')
     col1, col2, col3 = st.columns([1, 1, 1], gap="large")  # Adjusted column gap
 
@@ -92,20 +104,20 @@ with tabs[0]:
         st.subheader("Key Insights")
         st.write(insights)
 
-# Training Tab
-with tabs[1]:
+# Training Page
+elif st.session_state.page == 'Training':
     st.header('Training')
     fig = create_performance_chart(data)
     st.plotly_chart(fig, use_container_width=True)
 
-# Recovery Tab
-with tabs[2]:
+# Recovery Page
+elif st.session_state.page == 'Recovery':
     st.header('Recovery')
     for fig in create_recovery_charts(data):
         st.plotly_chart(fig, use_container_width=True)
 
-# Nutrition Tab
-with tabs[3]:
+# Nutrition Page
+elif st.session_state.page == 'Nutrition':
     st.header('Nutrition')
     fig = create_nutrition_chart(data)
     st.plotly_chart(fig, use_container_width=True)

@@ -1,6 +1,12 @@
-# Health-git
+### Health-project
 
 BACKLOG
+ - Processing: Fix time matching
+ - Data: Report for doctor
+
+ - Dashboard: Get front screen with the right metrics
+ - Dashboard: Add glucose visualizations: Curves day vs. meal. Ranking of worse meals and situations
+
 
 Dashboard
  - Change ATL for another metric. Strenght and stretch?
@@ -13,7 +19,7 @@ Input
 
 Análisis
  - Correlacionar comportamientos con métricas de sueño
- - Correlar TSS con Whoop Strain, por si vale esa
+ - Correlar TSS con Garmin, por si vale esa
 
 Engineering
  - Hosting online, batch
@@ -31,11 +37,3 @@ TrainingPeaks
 
 Apple Health (food times and weight)
  - iPhone app Salud, foto, Exportar todos los datos de salud
-
- 
-### Process to generate clean data
-
-1. All ETL
-2. DataProcessing - MFP Api.ipynb
-3. DataProcessing - MFP data matching v2.ipynb
-4. IntegrateData.ipynb

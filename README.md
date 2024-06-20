@@ -1,11 +1,11 @@
 ### Health-project
 
 BACKLOG
- - Processing: Fix time matching
- - Data: Report for doctor
+ - Processing: Remove Apple from input, subsittute weight measurements
+ - Nutrition: Add exercises. V2 with custom metrics to choose (HR, stress, etc.)
 
  - Dashboard: Get front screen with the right metrics
- - Dashboard: Add glucose visualizations: Curves day vs. meal. Ranking of worse meals and situations
+ - Dashboard: Ranking of worse meals and situations
 
 
 Dashboard

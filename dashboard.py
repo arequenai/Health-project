@@ -5,7 +5,7 @@ import torch
 from Dashboard.config import status_thresholds, column_name_mapping
 from Dashboard.helpers import get_status_color, format_value, format_trend
 from Dashboard.metrics import calculate_summary
-from Dashboard.charts import create_performance_chart, create_recovery_charts, create_nutrition_chart
+from Dashboard.charts import create_performance_chart, create_recovery_charts, create_nutrition_chart, create_daily_view_chart
 from Dashboard.llm import load_model, generate_insights
 
 # Custom CSS to make the entire dashboard wider, increase the font size, and enlarge the colored dots
@@ -42,6 +42,10 @@ st.markdown(
 # Load data
 data = pd.read_csv('Data/Cleaned/Integrated_data.csv')
 data['date'] = pd.to_datetime(data['date'])
+glucose_data = pd.read_csv('Data/Cleaned/Glucose.csv')
+glucose_data['date'] = pd.to_datetime(glucose_data['date'])
+meals = pd.read_csv('Data/Cleaned/MFP meals scrapped.csv')
+meals['date'] = pd.to_datetime(meals['date'])
 
 # Map column names to human-readable names
 data.rename(columns=column_name_mapping, inplace=True)
@@ -119,5 +123,14 @@ elif st.session_state.page == 'Recovery':
 # Nutrition Page
 elif st.session_state.page == 'Nutrition':
     st.header('Nutrition')
-    fig = create_nutrition_chart(data)
-    st.plotly_chart(fig, use_container_width=True)
+    
+    # Create tabs
+    tab1, tab2 = st.tabs(["Overview", "Daily View"])
+    
+    with tab1:
+        fig = create_nutrition_chart(data)
+        st.plotly_chart(fig, use_container_width=True)
+    
+    with tab2:
+        fig = create_daily_view_chart(data, glucose_data, meals)
+

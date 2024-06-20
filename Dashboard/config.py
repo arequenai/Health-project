@@ -33,7 +33,7 @@ status_thresholds = {
         'delta': {'levels': [-float('inf'), 0, 50], 'colors': ['🟢', '🟡', '🔴']},
     },
     'Mean glucose': {
-        'L2W': {'levels': [0, 90, 100], 'colors': ['🟢', '🟡', '🔴']},
+        'L2W': {'levels': [0, 95, 100], 'colors': ['🟢', '🟡', '🔴']},
         'delta': {'levels': [-float('inf'), 0, 5, float('inf')], 'colors': ['🟢', '🟡', '🔴']}
     },
 

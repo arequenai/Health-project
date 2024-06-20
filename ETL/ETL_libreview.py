@@ -11,7 +11,7 @@ def apply_timezone_offset(row):
     return start_time + timezone_offset
 
 # Function to extract and clean glucose data from a CSV file
-def get_glucose_time(file_path, start_date):
+def get_glucose_time(file_path, start_date = '2024-03-23'):
     # Read the glucose data file
     df = pd.read_csv(file_path, skiprows=1)
     

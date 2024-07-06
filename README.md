@@ -3,7 +3,6 @@
 BACKLOG
 sing: Remove Apple from input, subsittute weight measurements
  - Nutrition: Add exercises. V2 with custom metrics to choose (HR, stress, etc.)
-
  - Dashboard: Get front screen with the right metrics
  - Dashboard: Ranking of worse meals and situations
 
@@ -22,6 +21,7 @@ Análisis
  - Correlar TSS con Garmin, por si vale esa
 
 Engineering
+
  - Hosting online, batch
 
 

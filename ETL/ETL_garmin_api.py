@@ -70,6 +70,10 @@ def init_garmin(email, password):
 
     return garmin
 
+def get_mfa():
+   
+    return input("MFA code: ")
+
 def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
     api = garmin_client
 

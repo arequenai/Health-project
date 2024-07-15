@@ -1,18 +1,19 @@
 ### Health-project
 
 BACKLOG
-sing: Remove Apple from input, subsittute weight measurements
- - Nutrition: Add exercises. V2 with custom metrics to choose (HR, stress, etc.)
- - Dashboard: Get front screen with the right metrics
+ - Password the cloud service
+ - Change the input source to G Drive or something similar
+
+ - Processing: Remove Apple from input, subsittute weight measurements
+ - Nutrition: Change for overall daily view? Add exercises. V2 with custom metrics to choose (HR, stress, etc.)
  - Dashboard: Ranking of worse meals and situations
 
 
 Dashboard
- - Change ATL for another metric. Strenght and stretch?
- - Add TSS, hours of run, hours of strength
+ - Change ATL for another metric. Strenght and stretch
+ - Maybe put as the excel in row with color-coding per day, adding behaviour
 
 Input
- - Revisar food schedule matching
  - MFP function using environment variables, to be able to host
  - JeFit
 

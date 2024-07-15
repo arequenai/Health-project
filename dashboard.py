@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 from Dashboard.config import status_thresholds, column_name_mapping
 from Dashboard.helpers import get_status_color, format_value, format_trend

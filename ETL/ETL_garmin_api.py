@@ -28,6 +28,12 @@ logger = logging.getLogger(__name__)
 email = os.getenv("USERNAME_G")
 password = os.getenv("PASSWORD_G")
 
+def get_credentials():
+    email = input("Enter your Garmin Connect email: ")
+    password = getpass("Enter your Garmin Connect password: ")
+    return email, password
+
+
 def init_garmin(email, password):
     """Initialize Garmin API with your credentials."""
     tokenstore = os.getenv("GARMINTOKENS") or "~/.garminconnect"
@@ -70,9 +76,6 @@ def init_garmin(email, password):
 
     return garmin
 
-def get_mfa():
-   
-    return input("MFA code: ")
 
 def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
     api = garmin_client

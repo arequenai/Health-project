@@ -51,9 +51,18 @@ def get_sleep_recovery_data(client, start_date):
 
     def apply_timezone_offset(row):
         start_time = pd.to_datetime(row['start'])
-        hours, minutes = map(int, row['timezone_offset'].split(':'))
+        offset = row['timezone_offset']
+
+        # If it's just "Z", treat as zero offset
+        if offset == "Z":
+            hours, minutes = (0, 0)
+        else:
+            # Otherwise split normally
+            hours, minutes = map(int, offset.split(':'))
+
         timezone_offset = pd.Timedelta(hours=hours, minutes=minutes)
         return start_time + timezone_offset
+
 
     df_s['start'] = df_s.apply(apply_timezone_offset, axis=1)
 

@@ -8,6 +8,7 @@ from Dashboard.metrics import calculate_summary
 from Dashboard.charts import create_performance_chart, create_recovery_charts, create_nutrition_chart, create_daily_view_chart
 from Dashboard.llm import load_model, generate_insights
 
+
 # Custom CSS to make the entire dashboard wider, increase the font size, and enlarge the colored dots
 st.markdown(
     """

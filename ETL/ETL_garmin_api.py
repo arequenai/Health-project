@@ -78,47 +78,68 @@ def init_garmin(email, password):
 
 
 def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
+    """Get Garmin data from start_date to today."""
     api = garmin_client
-
+    end_date = datetime.date.today()
+    
+    logger.info(f"Getting Garmin data from {start_date} to {end_date}")
+    total_days = (end_date - start_date).days + 1
+    processed_days = 0
+    
     # Initialize empty list to store data
     data_list = []
-
-    # Define start date and today's date
-    end_date = datetime.date.today()
-
+    
     # Loop through dates
     current_date = start_date
     while current_date <= end_date:
-        # Get data for current date
-        stats = api.get_stats(current_date)
-        
-        # Create dictionary with date and stats data
-        data_dict = {'date': current_date.strftime('%Y-%m-%d')}  # Convert date to string format
-        data_dict.update(stats)
-
-        # Append data to list
-        data_list.append(data_dict)
+        try:
+            # Get data for current date
+            stats = api.get_stats(current_date)
+            
+            # Create dictionary with date and stats data
+            data_dict = {'date': current_date.strftime('%Y-%m-%d')}
+            data_dict.update(stats)
+            
+            # Append data to list
+            data_list.append(data_dict)
+            
+            # Update progress
+            processed_days += 1
+            if processed_days % 10 == 0:  # Log every 10 days
+                logger.info(f"Processed {processed_days}/{total_days} days ({(processed_days/total_days)*100:.1f}%)")
+            
+        except Exception as e:
+            logger.warning(f"Failed to get data for {current_date}: {str(e)}")
         
         # Move to next date
         current_date += datetime.timedelta(days=1)
-
+    
+    if not data_list:
+        logger.warning("No Garmin data found for the specified date range")
+        return None
+    
+    logger.info("Processing daily metrics...")
+    
     # Convert list of dictionaries to DataFrame
     df = pd.DataFrame(data_list)
-
+    
     # Keep daily metrics
     df = df[['date',
             'averageStressLevel','restStressPercentage', 'lowStressPercentage', 
             'mediumStressPercentage', 'highStressPercentage', 'stressQualifier',
             'bodyBatteryHighestValue', 'bodyBatteryLowestValue', 'bodyBatteryDuringSleep'
             ]]
-
-    # Get all activities
+    
+    logger.info("Getting activities for the same date range...")
+    
+    # Get activities for the same date range
     activities = api.get_activities_by_date(start_date, end_date)
     
     # Process activities
     activity_data = []
-    for activity in activities:
-        activity_date = pd.to_datetime(activity['startTimeLocal']).date().strftime('%Y-%m-%d')  # Convert to string format
+    total_activities = len(activities)
+    for i, activity in enumerate(activities, 1):
+        activity_date = pd.to_datetime(activity['startTimeLocal']).date().strftime('%Y-%m-%d')
         
         activity_dict = {
             'date': activity_date,
@@ -135,11 +156,15 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
             'tss': activity.get('trainingStressScore', 0)
         }
         activity_data.append(activity_dict)
-
-    # Save detailed activity data for analysis
+        
+        if i % 10 == 0:  # Log every 10 activities
+            logger.info(f"Processed {i}/{total_activities} activities ({(i/total_activities)*100:.1f}%)")
+    
+    logger.info("Processing activity data...")
+    
+    # Save detailed activity data and merge daily totals
     if activity_data:
         activity_df = pd.DataFrame(activity_data)
-        activity_df.to_csv('Data/Cleaned/garmin_activities.csv', index=False)
         
         # Calculate daily totals
         daily_totals = activity_df.groupby('date').agg({
@@ -148,7 +173,7 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
             'duration': 'sum'
         }).reset_index()
         
-        # Also keep strength training minutes as before
+        # Also keep strength training minutes
         strength_data = activity_df[activity_df['type'] == 'strength_training']
         strength_daily = strength_data.groupby('date')['duration'].sum().reset_index()
         strength_daily['duration'] = strength_daily['duration'] / 60  # Convert to minutes
@@ -161,14 +186,27 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
     # Fill NaN values with 0
     df = df.fillna(0)
     
+    # Convert date to datetime for proper sorting
+    df['date'] = pd.to_datetime(df['date'])
+    df = df.sort_values('date')
+    # Convert back to string format
+    df['date'] = df['date'].dt.strftime('%Y-%m-%d')
+    
+    logger.info("Completed Garmin data retrieval and processing")
     return df
 
 def get_garmin_activities(garmin_client, start_date=datetime.date(2024, 3, 16)):
-    """Separate function to get detailed activity data for analysis."""
+    """Get detailed activity data for analysis from start_date to today."""
     api = garmin_client
     end_date = datetime.date.today()
     
-    activities = api.get_activities_by_date(start_date, end_date)
+    logger.info(f"Getting Garmin activities from {start_date} to {end_date}")
+    
+    try:
+        activities = api.get_activities_by_date(start_date, end_date)
+    except Exception as e:
+        logger.error(f"Failed to get activities: {str(e)}")
+        return None
     
     activity_data = []
     for activity in activities:
@@ -190,7 +228,19 @@ def get_garmin_activities(garmin_client, start_date=datetime.date(2024, 3, 16)):
         }
         activity_data.append(activity_dict)
     
-    return pd.DataFrame(activity_data) if activity_data else None
+    if not activity_data:
+        logger.warning("No activities found for the specified date range")
+        return None
+    
+    df = pd.DataFrame(activity_data)
+    
+    # Convert date to datetime for proper sorting
+    df['date'] = pd.to_datetime(df['date'])
+    df = df.sort_values('date')
+    # Convert back to string format
+    df['date'] = df['date'].dt.strftime('%Y-%m-%d')
+    
+    return df
 
 if __name__ == "__main__":
     garmin_client = init_garmin(email, password)

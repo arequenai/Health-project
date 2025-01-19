@@ -5,13 +5,14 @@ import os, datetime
 import pandas as pd
 import logging
 import sys
-from ETL.ETL_general import update_incremental, update_incremental_api, get_most_recent_date, export_to_gsheets
+from ETL.ETL_general import update_incremental, update_incremental_api, get_most_recent_date, export_to_gsheets, get_incremental_data_api
 from ETL.ETL_garmin_api import init_garmin, get_garmin_data, get_garmin_activities
 from ETL.ETL_whoop import init_whoop, get_sleep_recovery_data, get_journal_data
 from ETL.ETL_mfp_api import init_mfp, get_meal_data, get_meal_daily
 from ETL.ETL_libreview import get_glucose_daily, get_glucose_time
 from ETL.ETL_tss_calculation import get_tss_data
 from ETL.ETL_fitbit import init_fitbit, get_body_measurements
+from ETL.ETL_journal import get_journal_data
 
 # Configure logging with a more visible format
 logging.basicConfig(
@@ -27,6 +28,10 @@ def update_clean_files():
     """Update data of intermediate clean files"""
     
     logger.info("Starting to update clean files...")
+    
+    # Load environment variables
+    email_g = os.getenv("USERNAME_G")
+    password_g = os.getenv("PASSWORD_G")
     
     # Weight data update from Fitbit
     weight_file = 'Data/Cleaned/Weight.csv'
@@ -55,34 +60,32 @@ def update_clean_files():
 
     # Garmin update
     logger.info("Starting Garmin update...")
-    garmin_file = 'Data/Cleaned/Garmin_daily.csv'
-    activities_file = 'Data/Cleaned/garmin_activities.csv'
-    try:
-        email_g = os.getenv("USERNAME_G")
-        password_g = os.getenv("PASSWORD_G")
-        logger.info("Initializing Garmin connection...")
-        garmin_client = init_garmin(email_g, password_g)
-        
-        # Get Garmin data and activities
+    logger.info("Initializing Garmin connection...")
+    garmin_client = init_garmin(email_g, password_g)
+    
+    if garmin_client:
         logger.info("Getting Garmin daily data...")
-        df_garmin = get_garmin_data(garmin_client)
-        df_garmin.to_csv(garmin_file, index=False)
-        logger.info(f"{garmin_file}: Data obtained and saved")
+        df_garmin = get_incremental_data_api(garmin_client, 'Data/Cleaned/Garmin_daily.csv', get_garmin_data)
+        if df_garmin is not None and not df_garmin.empty:
+            df_garmin.to_csv('Data/Cleaned/Garmin_daily.csv', index=False)
+            logger.info("Data/Cleaned/Garmin_daily.csv: Data obtained and saved")
+        else:
+            logger.info("No new Garmin daily data to update")
         
         logger.info("Getting Garmin activities...")
-        df_activities = get_garmin_activities(garmin_client)
-        if df_activities is not None:
-            df_activities.to_csv(activities_file, index=False)
-            logger.info(f"{activities_file}: Data obtained and saved")
+        df_activities = get_incremental_data_api(garmin_client, 'Data/Cleaned/garmin_activities.csv', get_garmin_activities)
+        if df_activities is not None and not df_activities.empty:
+            df_activities.to_csv('Data/Cleaned/garmin_activities.csv', index=False)
+            logger.info("Data/Cleaned/garmin_activities.csv: Data obtained and saved")
             
-            # Calculate TSS metrics from Garmin data
+            # Calculate TSS metrics only if we have new activities
             logger.info("Calculating TSS metrics...")
-            tss_file = 'Data/Cleaned/TSS metrics.csv'
-            tss_data = get_tss_data(df_activities)
-            tss_data.to_csv(tss_file, index=False)
-            logger.info(f"{tss_file}: TSS metrics calculated from Garmin data")
-    except Exception as e:
-        logger.error(f"Error in Garmin update: {str(e)}")
+            df_tss = get_tss_data(df_activities)
+            if df_tss is not None and not df_tss.empty:
+                df_tss.to_csv('Data/Cleaned/TSS metrics.csv', index=False)
+                logger.info("Data/Cleaned/TSS metrics.csv: TSS metrics calculated from Garmin data")
+        else:
+            logger.info("No new Garmin activities to update")
 
     # Glucose update
     logger.info("Starting Glucose update...")
@@ -96,19 +99,19 @@ def update_clean_files():
     except Exception as e:
         logger.error(f"Error in Glucose update: {str(e)}")
 
-    # Whoop API update
-    logger.info("Starting Whoop update...")
+    # Replace Whoop journal update with Google Form journal update
+    logger.info("Starting Journal update...")
     try:
-        whoop_file = 'Data/Cleaned/Sleep_and_recovery.csv'
-        journal_file_raw = 'Data/Whoop/journal_entries.csv'
-        journal_file = 'Data/Cleaned/Journal.csv'
-        email_w = os.getenv("USERNAME_W")
-        password_w = os.getenv("PASSWORD_W")
-        whoop_client = init_whoop(email_w, password_w)
-        update_incremental_api(whoop_client, whoop_file, get_sleep_recovery_data)
-        get_journal_data(journal_file_raw, journal_file)
+        JOURNAL_SPREADSHEET_ID = '1E0pWgt9Zifdx3S3iqpyAjTHijn-xZcXYLRXvqwgo-tg'  # Form responses spreadsheet
+        df_journal = get_journal_data(JOURNAL_SPREADSHEET_ID)
+        if df_journal is not None:
+            journal_file = 'Data/Cleaned/Journal.csv'
+            df_journal.to_csv(journal_file, index=False)
+            logger.info(f"{journal_file}: Journal data obtained and saved")
+        else:
+            logger.warning("No new journal data found")
     except Exception as e:
-        logger.error(f"Error in Whoop update: {str(e)}")
+        logger.error(f"Error in Journal update: {str(e)}")
 
     logger.info('Clean data files update completed')
 

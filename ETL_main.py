@@ -3,6 +3,8 @@
 # Import necessary modules and functions
 import os, datetime
 import pandas as pd
+import logging
+import sys
 from ETL.ETL_general import update_incremental, update_incremental_api, get_most_recent_date, export_to_gsheets
 from ETL.ETL_garmin_api import init_garmin, get_garmin_data, get_garmin_activities
 from ETL.ETL_whoop import init_whoop, get_sleep_recovery_data, get_journal_data
@@ -11,71 +13,104 @@ from ETL.ETL_libreview import get_glucose_daily, get_glucose_time
 from ETL.ETL_tss_calculation import get_tss_data
 from ETL.ETL_fitbit import init_fitbit, get_body_measurements
 
+# Configure logging with a more visible format
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s [%(levelname)s] %(message)s',
+    handlers=[
+        logging.StreamHandler(sys.stdout)
+    ]
+)
+logger = logging.getLogger(__name__)
+
 def update_clean_files():
     """Update data of intermediate clean files"""
+    
+    logger.info("Starting to update clean files...")
     
     # Weight data update from Fitbit
     weight_file = 'Data/Cleaned/Weight.csv'
     try:
+        logger.info("Initializing Fitbit connection...")
         tokens = init_fitbit()
         df_weight = get_body_measurements(tokens)
         if not df_weight.empty:
             df_weight.to_csv(weight_file, index=False)
-            print(f"{weight_file}: Data obtained from Fitbit and saved")
+            logger.info(f"{weight_file}: Data obtained from Fitbit and saved")
         else:
-            print("No Fitbit weight data found")
+            logger.warning("No Fitbit weight data found")
     except Exception as e:
-        print(f"Error getting Fitbit weight data: {str(e)}")
+        logger.error(f"Error getting Fitbit weight data: {str(e)}")
 
     # MyFitnessPal API update
+    logger.info("Starting MyFitnessPal update...")
     meals_file = 'Data/Cleaned/MFP meals scrapped.csv'
     meals_daily_file = 'Data/Cleaned/MFP per day scrapped.csv'
-    mfp_client = init_mfp()
-    get_meal_data(mfp_client, meals_file)
-    get_meal_daily(mfp_client, meals_daily_file)
+    try:
+        mfp_client = init_mfp()
+        get_meal_data(mfp_client, meals_file)
+        get_meal_daily(mfp_client, meals_daily_file)
+    except Exception as e:
+        logger.error(f"Error in MyFitnessPal update: {str(e)}")
 
     # Garmin update
+    logger.info("Starting Garmin update...")
     garmin_file = 'Data/Cleaned/Garmin_daily.csv'
     activities_file = 'Data/Cleaned/garmin_activities.csv'
-    email_g = os.getenv("USERNAME_G")
-    password_g = os.getenv("PASSWORD_G")
-    garmin_client = init_garmin(email_g, password_g)
-    
-    # Get Garmin data and activities
-    df_garmin = get_garmin_data(garmin_client)
-    df_garmin.to_csv(garmin_file, index=False)
-    print(f"{garmin_file}: Data obtained and saved")
-    
-    df_activities = get_garmin_activities(garmin_client)
-    if df_activities is not None:
-        df_activities.to_csv(activities_file, index=False)
-        print(f"{activities_file}: Data obtained and saved")
+    try:
+        email_g = os.getenv("USERNAME_G")
+        password_g = os.getenv("PASSWORD_G")
+        logger.info("Initializing Garmin connection...")
+        garmin_client = init_garmin(email_g, password_g)
         
-        # Calculate TSS metrics from Garmin data
-        tss_file = 'Data/Cleaned/TSS metrics.csv'
-        tss_data = get_tss_data(df_activities)
-        tss_data.to_csv(tss_file, index=False)
-        print(f"{tss_file}: TSS metrics calculated from Garmin data")
+        # Get Garmin data and activities
+        logger.info("Getting Garmin daily data...")
+        df_garmin = get_garmin_data(garmin_client)
+        df_garmin.to_csv(garmin_file, index=False)
+        logger.info(f"{garmin_file}: Data obtained and saved")
+        
+        logger.info("Getting Garmin activities...")
+        df_activities = get_garmin_activities(garmin_client)
+        if df_activities is not None:
+            df_activities.to_csv(activities_file, index=False)
+            logger.info(f"{activities_file}: Data obtained and saved")
+            
+            # Calculate TSS metrics from Garmin data
+            logger.info("Calculating TSS metrics...")
+            tss_file = 'Data/Cleaned/TSS metrics.csv'
+            tss_data = get_tss_data(df_activities)
+            tss_data.to_csv(tss_file, index=False)
+            logger.info(f"{tss_file}: TSS metrics calculated from Garmin data")
+    except Exception as e:
+        logger.error(f"Error in Garmin update: {str(e)}")
 
     # Glucose update
-    libreview_file_raw = 'Data/LibreLink/AlbertoRequena Izard_glucose.csv'
-    glucose_daily_file = 'Data/Cleaned/Glucose_daily.csv'
-    glucose_time_file = 'Data/Cleaned/Glucose.csv'
-    glucose_time_raw = 'Data/LibreLink/AlbertoRequena Izard_glucose.csv'
-    update_incremental(libreview_file_raw, glucose_daily_file, get_glucose_daily)
-    get_glucose_time(glucose_time_raw).to_csv(glucose_time_file, index=False)
+    logger.info("Starting Glucose update...")
+    try:
+        libreview_file_raw = 'Data/LibreLink/AlbertoRequena Izard_glucose.csv'
+        glucose_daily_file = 'Data/Cleaned/Glucose_daily.csv'
+        glucose_time_file = 'Data/Cleaned/Glucose.csv'
+        glucose_time_raw = 'Data/LibreLink/AlbertoRequena Izard_glucose.csv'
+        update_incremental(libreview_file_raw, glucose_daily_file, get_glucose_daily)
+        get_glucose_time(glucose_time_raw).to_csv(glucose_time_file, index=False)
+    except Exception as e:
+        logger.error(f"Error in Glucose update: {str(e)}")
 
     # Whoop API update
-    whoop_file = 'Data/Cleaned/Sleep_and_recovery.csv'
-    journal_file_raw = 'Data/Whoop/journal_entries.csv'
-    journal_file = 'Data/Cleaned/Journal.csv'
-    email_w = os.getenv("USERNAME_W")
-    password_w = os.getenv("PASSWORD_W")
-    whoop_client = init_whoop(email_w, password_w)
-    update_incremental_api(whoop_client, whoop_file, get_sleep_recovery_data)
-    get_journal_data(journal_file_raw, journal_file)  # Not incremental for now
+    logger.info("Starting Whoop update...")
+    try:
+        whoop_file = 'Data/Cleaned/Sleep_and_recovery.csv'
+        journal_file_raw = 'Data/Whoop/journal_entries.csv'
+        journal_file = 'Data/Cleaned/Journal.csv'
+        email_w = os.getenv("USERNAME_W")
+        password_w = os.getenv("PASSWORD_W")
+        whoop_client = init_whoop(email_w, password_w)
+        update_incremental_api(whoop_client, whoop_file, get_sleep_recovery_data)
+        get_journal_data(journal_file_raw, journal_file)
+    except Exception as e:
+        logger.error(f"Error in Whoop update: {str(e)}")
 
-    print('Clean data files updated')
+    logger.info('Clean data files update completed')
 
 def integrate_data():
     """Integrate all data sources into a single file and upload to Google Sheets"""

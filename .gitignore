@@ -13,14 +13,26 @@ Data/Apple health/*
 # Credentials and tokens
 Credentials.env
 fitbit_tokens.json
+gsheets key.json
 *.json
 
 # Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
+*.py[cod]
+*$py.class
 
 # Jupyter
 .ipynb_checkpoints/
+*/.ipynb_checkpoints/*
 
 # IDE
 .vscode/
+.idea/
+
+# Logs
+logs/
+*.log

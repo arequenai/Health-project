@@ -93,7 +93,7 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
         stats = api.get_stats(current_date)
         
         # Create dictionary with date and stats data
-        data_dict = {'date': current_date}
+        data_dict = {'date': current_date.strftime('%Y-%m-%d')}  # Convert date to string format
         data_dict.update(stats)
 
         # Append data to list
@@ -105,41 +105,96 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
     # Convert list of dictionaries to DataFrame
     df = pd.DataFrame(data_list)
 
-    # Keep only relevant columns
+    # Keep daily metrics
     df = df[['date',
-            'averageStressLevel','restStressPercentage', 'lowStressPercentage', 'mediumStressPercentage', 'highStressPercentage', 'stressQualifier',
+            'averageStressLevel','restStressPercentage', 'lowStressPercentage', 
+            'mediumStressPercentage', 'highStressPercentage', 'stressQualifier',
             'bodyBatteryHighestValue', 'bodyBatteryLowestValue', 'bodyBatteryDuringSleep'
-                ]]
+            ]]
 
-    # Now get Strength training data
-    s_list = api.get_activities_by_date(start_date, datetime.date.today())
+    # Get all activities
+    activities = api.get_activities_by_date(start_date, end_date)
+    
+    # Process activities
+    activity_data = []
+    for activity in activities:
+        activity_date = pd.to_datetime(activity['startTimeLocal']).date().strftime('%Y-%m-%d')  # Convert to string format
+        
+        activity_dict = {
+            'date': activity_date,
+            'type': activity.get('activityType', {}).get('typeKey', 'unknown'),
+            'duration': activity.get('duration', 0),
+            'training_load': activity.get('activityTrainingLoad', 0),
+            'aerobic_te': activity.get('aerobicTrainingEffect', 0),
+            'anaerobic_te': activity.get('anaerobicTrainingEffect', 0),
+            'avg_hr': activity.get('averageHR', 0),
+            'max_hr': activity.get('maxHR', 0),
+            'avg_power': activity.get('avgPower', 0),
+            'norm_power': activity.get('normPower', 0),
+            'intensity_factor': activity.get('intensityFactor', 0),
+            'tss': activity.get('trainingStressScore', 0)
+        }
+        activity_data.append(activity_dict)
 
-    # Initialize the DataFrame with empty values if the list is empty
-    if not s_list:
-        df_s = pd.DataFrame({
-            'date': [datetime.date.today()],
-            'strength_minutes': [0]
-        })
-    else:
-        df_s = pd.DataFrame(s_list)
-        df_s['typeKey'] = df_s['activityType'].apply(lambda x: x['typeKey'] if 'typeKey' in x else None)
-        df_s = df_s[df_s['typeKey'] == 'strength_training']
-        df_s['date'] = df_s['startTimeLocal'].apply(lambda x: x.split('T')[0])
-        df_s['date'] = pd.to_datetime(df_s['date']).dt.date
-        df_s = df_s[['date', 'duration']]
-        df_s['duration'] = df_s['duration'] / 60
-        df_s.rename(columns={'duration': 'strength_minutes'}, inplace=True)
-
-    # Merge strength training data with main DataFrame
-    df['date'] = pd.to_datetime(df['date']).dt.date
-    df = pd.merge(df, df_s, on='date', how='left')
-    df['strength_minutes'] = df['strength_minutes'].fillna(0)
-
+    # Save detailed activity data for analysis
+    if activity_data:
+        activity_df = pd.DataFrame(activity_data)
+        activity_df.to_csv('Data/Cleaned/garmin_activities.csv', index=False)
+        
+        # Calculate daily totals
+        daily_totals = activity_df.groupby('date').agg({
+            'training_load': 'sum',
+            'tss': 'sum',
+            'duration': 'sum'
+        }).reset_index()
+        
+        # Also keep strength training minutes as before
+        strength_data = activity_df[activity_df['type'] == 'strength_training']
+        strength_daily = strength_data.groupby('date')['duration'].sum().reset_index()
+        strength_daily['duration'] = strength_daily['duration'] / 60  # Convert to minutes
+        strength_daily.rename(columns={'duration': 'strength_minutes'}, inplace=True)
+        
+        # Merge with daily stats
+        df = pd.merge(df, daily_totals, on='date', how='left')
+        df = pd.merge(df, strength_daily, on='date', how='left')
+    
+    # Fill NaN values with 0
+    df = df.fillna(0)
+    
     return df
+
+def get_garmin_activities(garmin_client, start_date=datetime.date(2024, 3, 16)):
+    """Separate function to get detailed activity data for analysis."""
+    api = garmin_client
+    end_date = datetime.date.today()
+    
+    activities = api.get_activities_by_date(start_date, end_date)
+    
+    activity_data = []
+    for activity in activities:
+        activity_date = pd.to_datetime(activity['startTimeLocal']).date().strftime('%Y-%m-%d')
+        
+        activity_dict = {
+            'date': activity_date,
+            'type': activity.get('activityType', {}).get('typeKey', 'unknown'),
+            'duration': activity.get('duration', 0),
+            'training_load': activity.get('activityTrainingLoad', 0),
+            'aerobic_te': activity.get('aerobicTrainingEffect', 0),
+            'anaerobic_te': activity.get('anaerobicTrainingEffect', 0),
+            'avg_hr': activity.get('averageHR', 0),
+            'max_hr': activity.get('maxHR', 0),
+            'avg_power': activity.get('avgPower', 0),
+            'norm_power': activity.get('normPower', 0),
+            'intensity_factor': activity.get('intensityFactor', 0),
+            'tss': activity.get('trainingStressScore', 0)
+        }
+        activity_data.append(activity_dict)
+    
+    return pd.DataFrame(activity_data) if activity_data else None
 
 if __name__ == "__main__":
     garmin_client = init_garmin(email, password)
     df = get_garmin_data(garmin_client)
-    # Write DataFrame to CSV file
-    df.to_csv('Data/Cleaned/Garmin_daily.csv', index=False)
-    print('Garmin data saved to CSV file')
+    # Write DataFrame to a temporary CSV file for testing
+    df.to_csv('Data/Cleaned/Garmin_daily_new.csv', index=False)
+    print('Garmin data saved to temporary CSV file for testing')

@@ -2985,3 +2985,74 @@ date,meal,food,quant,calories,carbs,fat,protein,sodium,sugar
 2025-01-11,lunch,"A-1 - Pollo Al Sillao, 250 gr",250,238.0,3.0,9.0,34.0,450.0,0.0
 2025-01-11,lunch,"Peru - Arroz Chaufa De Pollo, 200 g",200,358.0,56.0,8.0,12.0,486.0,0.0
 2025-01-11,lunch,"Casa - Tallarin Saltado, 200 gramos",200,430.0,34.0,23.0,20.0,710.0,3.0
+2025-01-11,dinner,"Arroz Blanco - Arroz Blanco Cocido, 140 gram",140,260.0,56.0,1.0,5.0,734.0,0.0
+2025-01-11,dinner,"Generic - Cau Cau De Pollo, 1 plato",1,388.0,61.0,9.0,20.0,0.0,0.0
+2025-01-11,dinner,"Camote Cocido - Camote, 80 gr.",80,89.0,16.0,0.0,1.0,0.0,0.0
+2025-01-11,dinner,"Huevo Frito Mediano (50g) - Huevo Frito, 1 huevo",1,116.0,1.0,10.0,7.0,86.0,0.0
+2025-01-12,breakfast,"Avena - Avena Hacendado, 50 gr",50,233.0,37.0,4.0,9.0,0.0,0.0
+2025-01-12,breakfast,"226ERS - Isolate protein, 28.5 g",28.5,105.0,1.0,0.0,25.0,0.0,0.0
+2025-01-12,lunch,"Pan - Pan Blanco ✓, 25 g",25,64.0,14.0,0.0,2.0,125.0,1.0
+2025-01-12,lunch,"Alcachofa - Corazón alcachofa, 150 g",150,39.0,11.0,2.0,3.0,0.0,0.0
+2025-01-12,lunch,"Lomo De Cerdo - Lomo De Cerdo Plancha, 70 g",70,169.0,0.0,10.0,14.0,43.0,0.0
+2025-01-12,lunch,"Aceite Oliva - Aceite Oliva 7ml, 5 milliliter",5,43.0,0.0,5.0,0.0,0.0,0.0
+2025-01-12,lunch,"Txemika-lentejas Con Chorizo - Lentejas Con Chorizo, 550 g",550,666.0,53.0,34.0,34.0,0.0,0.0
+2025-01-12,dinner,"Paletiilla cordero - Paletiilla cordero, 350 gramos",350,578.0,0.0,41.0,63.0,0.0,0.0
+2025-01-12,dinner,"Patata - Patata asada, 300 g",300,279.0,63.0,0.0,8.0,0.0,0.0
+2025-01-12,dinner,"Carrefour« - Salsa para carne«, 70 g",70,118.0,4.0,11.0,1.0,1.0,1.0
+2025-01-12,dinner,"Pan - Pan Blanco ✓, 45 g",45,115.0,25.0,0.0,3.0,225.0,2.0
+2025-01-12,snacks,"Maurten - Gel100, 40 gramos",40,100.0,25.0,0.0,0.0,85.0,25.0
+2025-01-13,breakfast,"Roig - Clara de huevo, 220.0 gr",220.0,110.0,2.0,1.0,22.0,0.0,2.0
+2025-01-13,breakfast,"Sainsbury's smoked salmon - Smoked Salmon, 66 gms",66,145.0,0.0,9.0,15.0,1.0,0.0
+2025-01-13,breakfast,"mollete antequera integral - mollete integral, 70 gramos",70,165.0,33.0,1.0,6.0,0.0,1.0
+2025-01-13,lunch,"Ensalada Polllo Ofi Bain, 0.7 serving",0.7,389.0,17.0,24.0,26.0,46.0,5.0
+2025-01-13,lunch,"Supersol - Tortilla De Patatas, 220.0 g",220.0,297.0,33.0,13.0,9.0,0.0,0.0
+2025-01-13,dinner,"Casa - Tallarin Saltado, 300 gramos",300,645.0,50.0,35.0,30.0,1065.0,4.0
+2025-01-14,breakfast,"226ERS - Isolate protein, 30 g",30,110.0,1.0,0.0,26.0,0.0,0.0
+2025-01-14,breakfast,"mollete antequera integral - mollete integral, 70 gramos",70,165.0,33.0,1.0,6.0,0.0,1.0
+2025-01-14,breakfast,"tomate rallado natural - tomate rallado natural, 2 rebanada",2,38.0,7.0,1.0,0.0,0.0,0.0
+2025-01-14,breakfast,"Aceite Oliva - Aceite Oliva 7ml, 4 milliliter",4,34.0,0.0,4.0,0.0,0.0,0.0
+2025-01-14,breakfast,"Hacendado - Atún Aceite, 1 lata",1,122.0,9.0,9.0,10.0,0.0,0.0
+2025-01-14,lunch,"Hot Pot, 1.35 serving (about 2 cups)",1.35,840.0,47.0,45.0,63.0,2943.0,19.0
+2025-01-14,dinner,"Asparagus, 1 cup, chopped",1,27.0,5.0,0.0,3.0,3.0,3.0
+2025-01-14,dinner,"Potato, 1 medium (2-1/4"""" to 3-1/4"""" dia)",1,164.0,37.0,0.0,4.0,13.0,2.0
+2025-01-14,dinner,"pollo empanado - pollo empanado , 360 gramos",360,374.0,31.0,3.0,57.0,0.0,0.0
+2025-01-14,dinner,"Frutos Secos - Frutos Secos, 36 g",36,194.0,17.0,12.0,5.0,0.0,0.0
+2025-01-15,breakfast,"mollete antequera integral - mollete integral, 70 gramos",70,165.0,33.0,1.0,6.0,0.0,1.0
+2025-01-15,breakfast,"Aceite Oliva - Aceite Oliva 7ml, 4 milliliter",4,34.0,0.0,4.0,0.0,0.0,0.0
+2025-01-15,breakfast,"huevo - Huevo Entero, 1 pieza",1,78.0,1.0,5.0,6.0,0.0,0.0
+2025-01-15,breakfast,"Roig - Clara de huevo, 170 gr",170,85.0,2.0,1.0,17.0,0.0,2.0
+2025-01-15,breakfast,"Sainsbury's smoked salmon - Smoked Salmon, 66 gms",66,145.0,0.0,9.0,15.0,1.0,0.0
+2025-01-15,lunch,"Sushi Combo Sudbury Farms - Sushi, 224 g",224,816.0,43.0,7.0,19.0,2448.0,8.0
+2025-01-15,dinner,"Aji De Gallina, 479.22 gramme",479.22,706.0,48.0,37.0,45.0,520.0,11.0
+2025-01-15,dinner,"Arroz Blanco - Arroz Blanco Cocido, 220 gram",220,408.0,88.0,1.0,8.0,1154.0,0.0
+2025-01-15,snacks,"Carrefour - Barritas Cereales Avellana, 1 barrita",1,85.0,13.0,3.0,2.0,120.0,5.0
+2025-01-16,breakfast,"Supersol - Tortilla De Patatas, 250 g",250,338.0,38.0,15.0,10.0,0.0,0.0
+2025-01-16,breakfast,"Pan - Pan Blanco ✓, 35 g",35,89.0,19.0,0.0,2.0,175.0,2.0
+2025-01-16,lunch,"lentejas de verduras - lentejas con verduras, 332 4/5 grs",332,250.0,27.0,8.0,13.0,0.0,0.0
+2025-01-16,lunch,"eliges judías verdes - judías verdes, 100 gramo",100,26.0,3.0,0.0,2.0,1.0,1.0
+2025-01-16,lunch,"Albondigas, 1.8 cup",1.8,448.0,16.0,29.0,30.0,2473.0,6.0
+2025-01-16,dinner,"Empanada carne - Empanada carne, 250 gramo",250,658.0,73.0,27.0,32.0,0.0,0.0
+2025-01-16,dinner,"Alas de pollo - Alitas de pollo al  horno, 250 gramos",250,465.0,0.0,33.0,45.0,0.0,0.0
+2025-01-17,breakfast,"tomate rallado natural - tomate rallado natural, 2 rebanada",2,38.0,7.0,1.0,0.0,0.0,0.0
+2025-01-17,breakfast,"Aceite Oliva - Aceite Oliva 7ml, 4 milliliter",4,34.0,0.0,4.0,0.0,0.0,0.0
+2025-01-17,breakfast,"Supersol - Tortilla De Patatas, 100 g",100,135.0,15.0,6.0,4.0,0.0,0.0
+2025-01-17,breakfast,"Pan - Pan Blanco ✓, 100 g",100,255.0,56.0,1.0,7.0,500.0,5.0
+2025-01-17,lunch,"Arroz Blanco - Arroz Blanco Cocido, 60 gram",60,111.0,24.0,0.0,2.0,315.0,0.0
+2025-01-17,lunch,"Guisantes Con Jamón - Guisantes Salteados Con Jamón, 1 Ración (284gr)",1,210.0,34.0,3.0,11.0,0.0,0.0
+2025-01-17,lunch,"Chicken Tikka Masala, 1.2 cups",1.2,438.0,13.0,29.0,33.0,1561.0,8.0
+2025-01-17,dinner,"Empanada carne - Empanada carne, 50 gramo",50,132.0,15.0,5.0,6.0,0.0,0.0
+2025-01-17,dinner,"Paella - Seafood Paella, 800 gram",800,1056.0,147.0,30.0,38.0,9.0,3.0
+2025-01-17,dinner,"Generic - Vino Tinto, 1 Copa 150 Cc., 1.5 copa 150 gr.",1.5,161.0,1.0,0.0,1.0,9.0,0.0
+2025-01-18,breakfast,"Empanada carne - Empanada carne, 120 gramo",120,316.0,35.0,13.0,15.0,0.0,0.0
+2025-01-18,lunch,"Homemade - Patatas Fritas, 140 gr",140,364.0,25.0,28.0,4.0,210.0,0.0
+2025-01-18,lunch,"Fried - Fried chicken, 8.4 oz",8.4,644.0,29.0,46.0,28.0,0.0,0.0
+2025-01-18,dinner,"Empanada carne - Empanada carne, 100 gramo",100,263.0,29.0,11.0,13.0,0.0,0.0
+2025-01-18,dinner,"alsur - ensalada de pimientos, 300 grs",300,154.0,31.0,2.0,3.0,0.0,0.0
+2025-01-18,dinner,"Sardina Aragones - Sardina, 100 gr",100,167.0,0.0,7.0,27.0,3.0,0.0
+2025-01-18,dinner,"Empanada - Empanada atun, 80 gr",80,223.0,20.0,13.0,6.0,0.0,3.0
+2025-01-18,snacks,"226ERS - Isolate protein, 30 g",30,110.0,1.0,0.0,26.0,0.0,0.0
+2025-01-18,snacks,"Frutos Secos - Frutos Secos, 36 g",36,194.0,17.0,12.0,5.0,0.0,0.0
+2025-01-19,breakfast,"Plátano - Platano, 1 pieza",1,105.0,27.0,0.0,1.0,0.0,14.0
+2025-01-19,breakfast,"carrefour - cereales barre cacahuete, 1 barre",1,93.0,12.0,4.0,2.0,0.0,6.0
+2025-01-19,lunch,"Rabo de Toro Hacendado - Rabo de toro, 450 g",450,752.0,2.0,42.0,90.0,0.0,0.0
+2025-01-19,lunch,"Arroz Blanco - Arroz Blanco Cocido, 155 gram",155,287.0,62.0,1.0,6.0,813.0,0.0

@@ -1,5 +1,25 @@
-Data/Apple health/exportación.xml
+# Data files
+Data/Cleaned/*
+Data/Raw/*
+
+# API Data
+Data/LibreLink/*
+Data/Whoop/*
+Data/Garmin/*
+Data/MFP/*
+Data/Fitbit/*
+
+# Credentials and tokens
 Credentials.env
-gsheets key.json
-Data/Apple health/exportacion.xml
-Data/Garmin/
+fitbit_tokens.json
+*.json
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/

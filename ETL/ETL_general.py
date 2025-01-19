@@ -108,40 +108,88 @@ def update_incremental_api(client, output_file, get_data_function):
 
 
 def export_to_gsheets(df, sheet_name):
-
+    """Export DataFrame to Google Sheets.
+    
+    Args:
+        df (pd.DataFrame): DataFrame to export
+        sheet_name (str): Name of the sheet to export to
+        
+    Returns:
+        bool: True if successful, False otherwise
+    """
     import pandas as pd
     from googleapiclient.discovery import build
     from google.oauth2 import service_account
+    from google.oauth2.service_account import Credentials
+    import logging
+    import json
+    import os
 
-    # Load service account credentials
-    creds = service_account.Credentials.from_service_account_file('gsheets key.json')
-    scoped_credentials = creds.with_scopes(['https://www.googleapis.com/auth/spreadsheets'])
+    logger = logging.getLogger(__name__)
+    
+    try:
+        # Check if credentials file exists
+        creds_file = 'gsheets key.json'
+        if not os.path.exists(creds_file):
+            logger.error(f"Credentials file '{creds_file}' not found")
+            return False
+            
+        # Load and validate service account credentials
+        try:
+            creds = service_account.Credentials.from_service_account_file(creds_file)
+            scoped_credentials = creds.with_scopes(['https://www.googleapis.com/auth/spreadsheets'])
+        except json.JSONDecodeError:
+            logger.error(f"Invalid JSON in credentials file '{creds_file}'")
+            return False
+        except ValueError as e:
+            logger.error(f"Invalid credentials in '{creds_file}': {str(e)}")
+            return False
+            
+        # Build service with retry
+        try:
+            service = build('sheets', 'v4', credentials=scoped_credentials, cache_discovery=False)
+        except Exception as e:
+            logger.error(f"Failed to build Google Sheets service: {str(e)}")
+            return False
 
-    # Authenticate with Google Sheets API
-    service = build('sheets', 'v4', credentials=scoped_credentials, cache_discovery=False)
-
-    # Spreadsheet ID and range for Health Dashboards
-    SPREADSHEET_ID_input = '197VfZCekvBev0m1vsi8kUHpuO0IoTRA90_bQRGBYYSM'
-
-    # Specify the range including the sheet name
-    range_name = f"{sheet_name}!A1:ZA1000"
-    
-    # Fill NaN values with empty strings
-    df_filled = df.fillna('')
-    
-    # Get DataFrame headers and values
-    headers = [df_filled.columns.tolist()]
-    values = df_filled.values.tolist()
-    
-    # Concatenate headers with values
-    data = headers + values
-    
-    # Update the spreadsheet with DataFrame values including headers
-    response = service.spreadsheets().values().update(
-        spreadsheetId=SPREADSHEET_ID_input,
-        valueInputOption='RAW',
-        range=range_name,
-        body=dict(
-            majorDimension='ROWS',
-            values=data)
-    ).execute()
+        # Spreadsheet ID and range
+        SPREADSHEET_ID = '197VfZCekvBev0m1vsi8kUHpuO0IoTRA90_bQRGBYYSM'
+        range_name = f"{sheet_name}!A1:ZA{len(df) + 1}"  # Dynamic range based on DataFrame size
+        
+        # Prepare data
+        df_filled = df.fillna('')
+        headers = [df_filled.columns.tolist()]
+        values = df_filled.values.tolist()
+        data = headers + values
+        
+        # Clear existing content first
+        try:
+            service.spreadsheets().values().clear(
+                spreadsheetId=SPREADSHEET_ID,
+                range=range_name
+            ).execute()
+            logger.info(f"Cleared existing content in sheet '{sheet_name}'")
+        except Exception as e:
+            logger.error(f"Failed to clear sheet '{sheet_name}': {str(e)}")
+            return False
+        
+        # Update with new data
+        try:
+            response = service.spreadsheets().values().update(
+                spreadsheetId=SPREADSHEET_ID,
+                valueInputOption='RAW',
+                range=range_name,
+                body={'majorDimension': 'ROWS', 'values': data}
+            ).execute()
+            
+            updated_cells = response.get('updatedCells', 0)
+            logger.info(f"Successfully updated {updated_cells} cells in sheet '{sheet_name}'")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to update sheet '{sheet_name}': {str(e)}")
+            return False
+            
+    except Exception as e:
+        logger.error(f"Unexpected error in export_to_gsheets: {str(e)}")
+        return False

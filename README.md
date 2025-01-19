@@ -17,24 +17,27 @@ Input
  - MFP function using environment variables, to be able to host
  - JeFit
 
-Análisis
- - Correlacionar comportamientos con métricas de sueño
- - Correlar TSS con Garmin, por si vale esa
+Analysis
+ - Correlate behaviors with sleep metrics
+ - Validate Garmin TSS calculation against historical data
 
 Engineering
 
  - Hosting online, batch
 
 
+### Data Sources
+1. Weight & Body Composition: Fitbit API
+2. Nutrition & Meals: MyFitnessPal API
+3. Activity & Training Load: Garmin API
+4. Sleep & Recovery: Whoop API
+5. Glucose: LibreView
+6. Journal: Whoop Export
+
+
 ### Manual export process
 Whoop
   - Journal from app: More/App Settings/Data export
 
-LibreLink
+LibreView
   - https://www.libreview.com/
-
-TrainingPeaks
-  - Web / Photo / Settings / Export data / Workout Summary
-
-Apple Health (food times and weight)
- - iPhone app Salud, foto, Exportar todos los datos de salud

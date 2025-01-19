@@ -8,6 +8,7 @@ Data/Whoop/*
 Data/Garmin/*
 Data/MFP/*
 Data/Fitbit/*
+Data/Apple health/*
 
 # Credentials and tokens
 Credentials.env

@@ -1,0 +1,57 @@
+[33mcommit ef7448981221a849c1af5d2b1977e6d5d4a985d8[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: arequenai <requenalberto@gmail.com>
+Date:   Sun Jan 19 17:50:02 2025 +0100
+
+    Refactor project structure:
+    - Updated .gitignore to include new data directories and file types.
+    - Revised README for clarity and updated analysis section.
+    - Removed deprecated WIP.py and ETL scripts for Apple Health and TrainingPeaks.
+    - Enhanced data processing in ETL scripts for Garmin and general data export.
+    - Added new data entries in various cleaned CSV files, including food, glucose, and sleep metrics.
+    - Adjusted requirements and cleaned up unnecessary files
+
+ .gitignore                                         |      28 [32m+[m[31m-[m
+ Data/Apple health/exportacion.xml                  | 1601457 [32m+++++++++++++++++[m
+ Data/Cleaned/Food.csv                              |     606 [32m+[m[31m-[m
+ Data/Cleaned/Garmin_daily.csv                      |     615 [32m+[m[31m-[m
+ Data/Cleaned/Glucose_daily.csv                     |     199 [32m+[m[31m-[m
+ Data/Cleaned/Integrated_data.csv                   |     623 [32m+[m[31m-[m
+ Data/Cleaned/MFP meals scrapped.csv                |      71 [32m+[m
+ Data/Cleaned/MFP per day scrapped.csv              |       8 [32m+[m
+ Data/Cleaned/Sleep_and_recovery.csv                |       8 [32m+[m
+ Data/Cleaned/TSS metrics.csv                       |     677 [32m+[m[31m-[m
+ Data/Cleaned/Weight.csv                            |      37 [32m+[m[31m-[m
+ Data/TrainingPeaks/workouts.csv                    |      92 [32m+[m[31m-[m
+ ETL/ETL_apple_health.py                            |     110 [31m-[m
+ ETL/ETL_fitbit.py                                  |     252 [32m+[m
+ ETL/ETL_garmin_api.py                              |     119 [32m+[m[31m-[m
+ ETL/ETL_general.py                                 |     112 [32m+[m[31m-[m
+ ETL/ETL_trainingpeaks.py                           |      62 [31m-[m
+ ETL/ETL_tss_calculation.py                         |     237 [32m+[m
+ ETL/__pycache__/ETL_apple_health.cpython-312.pyc   |     Bin [31m6070[m -> [32m6058[m bytes
+ ETL/__pycache__/ETL_garmin_api.cpython-312.pyc     |     Bin [31m6382[m -> [32m8669[m bytes
+ ETL/__pycache__/ETL_general.cpython-312.pyc        |     Bin [31m7087[m -> [32m9611[m bytes
+ ETL/__pycache__/ETL_libreview.cpython-312.pyc      |     Bin [31m5770[m -> [32m5758[m bytes
+ ETL/__pycache__/ETL_mfp_api.cpython-312.pyc        |     Bin [31m6156[m -> [32m6144[m bytes
+ ETL/__pycache__/ETL_trainingpeaks.cpython-312.pyc  |     Bin [31m2708[m -> [32m2696[m bytes
+ ETL/__pycache__/ETL_whoop.cpython-312.pyc          |     Bin [31m7923[m -> [32m7984[m bytes
+ ETL/__pycache__/__init__.cpython-312.pyc           |     Bin [31m176[m -> [32m164[m bytes
+ ETL_main.py                                        |     139 [32m+[m
+ OLD/ETL_mfp_apple_matching.py                      |     114 [31m-[m
+ .../ETL_mfp_apple_matching.cpython-312.pyc         |     Bin [31m7599[m -> [32m0[m bytes
+ README.md                                          |      25 [32m+[m[31m-[m
+ TSS_correlation_analysis.ipynb                     |       1 [32m+[m
+ WIP.py                                             |       9 [31m-[m
+ analyze_tss.py                                     |     147 [32m+[m
+ logs/etl_run_20250112_101429.log                   |       0
+ logs/etl_run_20250112_101531.log                   |       0
+ logs/etl_run_20250112_101631.log                   |       0
+ logs/etl_run_20250112_101742.log                   |       0
+ logs/etl_run_20250112_101818.log                   |       0
+ logs/etl_run_20250112_101908.log                   |       0
+ logs/etl_run_20250112_102201.log                   |       0
+ logs/etl_run_20250112_102259.log                   |       0
+ logs/etl_run_20250112_102332.log                   |       0
+ logs/etl_run_20250112_102354.log                   |       0
+ requirements.txt                                   |     Bin [31m6124[m -> [32m5800[m bytes
+ 44 files changed, 1604164 insertions(+), 1584 deletions(-)

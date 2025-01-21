@@ -156,34 +156,40 @@ def init_fitbit():
         logger.error(f"Error initializing Fitbit client: {str(e)}")
         raise
 
+def refresh_token_cb(token_dict):
+    """Callback function to handle token refresh."""
+    # Save the updated tokens
+    with open("fitbit_tokens.json", 'w') as f:
+        json.dump(token_dict, f)
+    return token_dict
+
 def get_body_measurements(tokens):
     """Get weight data from Fitbit."""
-    
-    client = fitbit.Fitbit(
-        tokens['client_id'],
-        tokens['client_secret'],
-        access_token=tokens['access_token'],
-        refresh_token=tokens['refresh_token'],
-        refresh_cb=lambda x: refresh_token_cb(x, tokens)
-    )
-    
-    # Get weight data
-    weight_data = []
     try:
+        client = fitbit.Fitbit(
+            os.getenv("FITBIT_CLIENT_ID"),
+            os.getenv("FITBIT_CLIENT_SECRET"),
+            access_token=tokens['access_token'],
+            refresh_token=tokens['refresh_token'],
+            refresh_cb=refresh_token_cb
+        )
+        
+        # Get weight data
+        weight_data = []
         data = client.get_bodyweight(period='max')
         for entry in data['weight']:
-            date = datetime.datetime.strptime(entry['date'], '%Y-%m-%d').date()
+            date = datetime.strptime(entry['date'], '%Y-%m-%d').date()
             weight_data.append({
                 'date': date.strftime('%Y-%m-%d'),
                 'weight': entry['weight'],
                 'bmi': entry.get('bmi', None),
                 'body_fat': entry.get('fat', None)  # Rename fat to body_fat
             })
+        
+        return pd.DataFrame(weight_data)
     except Exception as e:
         logger.error(f"Error getting weight data: {str(e)}")
         return pd.DataFrame()
-    
-    return pd.DataFrame(weight_data)
 
 def main():
     """Main function to test Fitbit API integration."""

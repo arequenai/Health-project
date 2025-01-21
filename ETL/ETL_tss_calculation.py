@@ -33,6 +33,9 @@ def validate_tss_calculation(daily_data):
     Returns:
         bool: True if validation passes, False if there are critical issues
     """
+    # Create a copy for validation to avoid modifying the original data
+    validation_df = daily_data.copy()
+    
     # Define validation thresholds
     MAX_DAILY_TSS = 400  # Maximum reasonable TSS for a single day
     MIN_DAILY_TSS = 0    # Minimum TSS (should never be negative)
@@ -43,33 +46,33 @@ def validate_tss_calculation(daily_data):
     validation_passed = True
     
     # Check for negative values
-    if (daily_data[['TSS', 'CTL', 'ATL']] < MIN_DAILY_TSS).any().any():
+    if (validation_df[['TSS', 'CTL', 'ATL']] < MIN_DAILY_TSS).any().any():
         logger.error("Found negative values in TSS/CTL/ATL calculations")
         validation_passed = False
     
     # Check for unreasonably high TSS values
-    high_tss = daily_data[daily_data['TSS'] > MAX_DAILY_TSS]
+    high_tss = validation_df[validation_df['TSS'] > MAX_DAILY_TSS]
     if not high_tss.empty:
         logger.warning(f"Found {len(high_tss)} days with unusually high TSS (>{MAX_DAILY_TSS})")
         for _, row in high_tss.iterrows():
             logger.warning(f"High TSS on {row['date']}: {row['TSS']}")
     
     # Check for unreasonably high CTL/ATL values
-    if (daily_data['CTL'] > MAX_DAILY_CTL).any():
+    if (validation_df['CTL'] > MAX_DAILY_CTL).any():
         logger.warning(f"Found CTL values exceeding {MAX_DAILY_CTL}")
-    if (daily_data['ATL'] > MAX_DAILY_ATL).any():
+    if (validation_df['ATL'] > MAX_DAILY_ATL).any():
         logger.warning(f"Found ATL values exceeding {MAX_DAILY_ATL}")
     
     # Check for large day-to-day TSB changes
-    daily_data['TSB_change'] = daily_data['TSB'].diff()
-    large_tsb_changes = daily_data[abs(daily_data['TSB_change']) > MAX_TSB_CHANGE]
-    if not large_tsb_changes.empty:
-        logger.warning(f"Found {len(large_tsb_changes)} days with large TSB changes (>{MAX_TSB_CHANGE})")
-        for _, row in large_tsb_changes.iterrows():
-            logger.warning(f"Large TSB change on {row['date']}: {row['TSB_change']:.1f}")
+    tsb_changes = validation_df['TSB'].diff()
+    large_changes = validation_df[abs(tsb_changes) > MAX_TSB_CHANGE]
+    if not large_changes.empty:
+        logger.warning(f"Found {len(large_changes)} days with large TSB changes (>{MAX_TSB_CHANGE})")
+        for _, row in large_changes.iterrows():
+            logger.warning(f"Large TSB change on {row['date']}: {tsb_changes.loc[row.name]:.1f}")
     
     # Check for missing days
-    dates = pd.to_datetime(daily_data['date'])
+    dates = pd.to_datetime(validation_df['date'])
     date_range = pd.date_range(dates.min(), dates.max())
     actual_dates = set([d.strftime('%Y-%m-%d') for d in dates])
     expected_dates = set([d.strftime('%Y-%m-%d') for d in date_range])

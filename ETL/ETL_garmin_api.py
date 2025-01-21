@@ -33,6 +33,11 @@ def get_credentials():
     password = getpass("Enter your Garmin Connect password: ")
     return email, password
 
+def get_mfa():
+    """Get MFA code from user input."""
+    print("Please enter the MFA code from your Garmin Connect app:")
+    mfa_code = input()
+    return mfa_code
 
 def init_garmin(email, password):
     """Initialize Garmin API with your credentials."""
@@ -78,9 +83,33 @@ def init_garmin(email, password):
 
 
 def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
-    """Get Garmin data from start_date to today."""
+    """Get Garmin data from start_date to today.
+    If the existing data file is mostly empty, it will pull all data since March 16, 2024.
+    Otherwise, it will pull the last week of data and merge it with existing data."""
     api = garmin_client
     end_date = datetime.date.today()
+    data_file = 'Data/Cleaned/Garmin_daily.csv'
+    
+    # Check existing data
+    if os.path.exists(data_file):
+        existing_data = pd.read_csv(data_file)
+        if len(existing_data) > 0:
+            # If we have data, start from the last date minus 7 days
+            last_date = pd.to_datetime(existing_data['date'].max()).date()
+            start_date = last_date - datetime.timedelta(days=7)
+            logger.info(f"Found existing data, pulling from {start_date} onwards")
+            
+            # Remove the last week of data from existing_data to avoid duplicates
+            cutoff_date = start_date.strftime('%Y-%m-%d')
+            existing_data = existing_data[existing_data['date'] < cutoff_date]
+        else:
+            logger.info("Existing data is empty, pulling all data since March 16, 2024")
+            start_date = datetime.date(2024, 3, 16)
+            existing_data = None
+    else:
+        logger.info("No existing data found, pulling all data since March 16, 2024")
+        start_date = datetime.date(2024, 3, 16)
+        existing_data = None
     
     logger.info(f"Getting Garmin data from {start_date} to {end_date}")
     total_days = (end_date - start_date).days + 1
@@ -186,9 +215,13 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
     # Fill NaN values with 0
     df = df.fillna(0)
     
-    # Convert date to datetime for proper sorting
+    # If we have existing data, append the new data
+    if existing_data is not None:
+        df = pd.concat([existing_data, df], ignore_index=True)
+    
+    # Convert date to datetime for proper sorting and deduplication
     df['date'] = pd.to_datetime(df['date'])
-    df = df.sort_values('date')
+    df = df.sort_values('date').drop_duplicates(subset=['date'], keep='last')
     # Convert back to string format
     df['date'] = df['date'].dt.strftime('%Y-%m-%d')
     
@@ -196,9 +229,33 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
     return df
 
 def get_garmin_activities(garmin_client, start_date=datetime.date(2024, 3, 16)):
-    """Get detailed activity data for analysis from start_date to today."""
+    """Get detailed activity data for analysis from start_date to today.
+    If the existing data file is mostly empty, it will pull all data since March 16, 2024.
+    Otherwise, it will pull the last week of data and merge it with existing data."""
     api = garmin_client
     end_date = datetime.date.today()
+    data_file = 'Data/Cleaned/garmin_activities.csv'
+    
+    # Check existing data
+    if os.path.exists(data_file):
+        existing_data = pd.read_csv(data_file)
+        if len(existing_data) > 0:
+            # If we have data, start from the last date minus 7 days
+            last_date = pd.to_datetime(existing_data['date'].max()).date()
+            start_date = last_date - datetime.timedelta(days=7)
+            logger.info(f"Found existing data, pulling from {start_date} onwards")
+            
+            # Remove the last week of data from existing_data to avoid duplicates
+            cutoff_date = start_date.strftime('%Y-%m-%d')
+            existing_data = existing_data[existing_data['date'] < cutoff_date]
+        else:
+            logger.info("Existing data is empty, pulling all data since March 16, 2024")
+            start_date = datetime.date(2024, 3, 16)
+            existing_data = None
+    else:
+        logger.info("No existing data found, pulling all data since March 16, 2024")
+        start_date = datetime.date(2024, 3, 16)
+        existing_data = None
     
     logger.info(f"Getting Garmin activities from {start_date} to {end_date}")
     
@@ -209,7 +266,8 @@ def get_garmin_activities(garmin_client, start_date=datetime.date(2024, 3, 16)):
         return None
     
     activity_data = []
-    for activity in activities:
+    total_activities = len(activities)
+    for i, activity in enumerate(activities, 1):
         activity_date = pd.to_datetime(activity['startTimeLocal']).date().strftime('%Y-%m-%d')
         
         activity_dict = {
@@ -227,6 +285,9 @@ def get_garmin_activities(garmin_client, start_date=datetime.date(2024, 3, 16)):
             'tss': activity.get('trainingStressScore', 0)
         }
         activity_data.append(activity_dict)
+        
+        if i % 10 == 0:  # Log every 10 activities
+            logger.info(f"Processed {i}/{total_activities} activities ({(i/total_activities)*100:.1f}%)")
     
     if not activity_data:
         logger.warning("No activities found for the specified date range")
@@ -234,9 +295,13 @@ def get_garmin_activities(garmin_client, start_date=datetime.date(2024, 3, 16)):
     
     df = pd.DataFrame(activity_data)
     
-    # Convert date to datetime for proper sorting
+    # If we have existing data, append the new data
+    if existing_data is not None:
+        df = pd.concat([existing_data, df], ignore_index=True)
+    
+    # Convert date to datetime for proper sorting and deduplication
     df['date'] = pd.to_datetime(df['date'])
-    df = df.sort_values('date')
+    df = df.sort_values('date').drop_duplicates(subset=['date', 'type', 'duration'], keep='last')
     # Convert back to string format
     df['date'] = df['date'].dt.strftime('%Y-%m-%d')
     

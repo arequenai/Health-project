@@ -10,6 +10,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import parse_qs, urlparse
 import time
 import base64
+import fitbit
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -155,86 +156,34 @@ def init_fitbit():
         logger.error(f"Error initializing Fitbit client: {str(e)}")
         raise
 
-def get_body_measurements(tokens, start_date=None, end_date=None):
-    """Get body measurements from Fitbit API.
+def get_body_measurements(tokens):
+    """Get weight data from Fitbit."""
     
-    Args:
-        tokens (dict): OAuth tokens
-        start_date (datetime, optional): Start date for data retrieval
-        end_date (datetime, optional): End date for data retrieval
+    client = fitbit.Fitbit(
+        tokens['client_id'],
+        tokens['client_secret'],
+        access_token=tokens['access_token'],
+        refresh_token=tokens['refresh_token'],
+        refresh_cb=lambda x: refresh_token_cb(x, tokens)
+    )
     
-    Returns:
-        pd.DataFrame: Body measurements with columns [date, weight, bmi, fat]
-        For each day, keeps the highest weight measurement and its associated metrics.
-    """
-    if not end_date:
-        end_date = datetime.now()
-    if not start_date:
-        start_date = end_date - timedelta(days=30)  # Default to last 30 days
+    # Get weight data
+    weight_data = []
+    try:
+        data = client.get_bodyweight(period='max')
+        for entry in data['weight']:
+            date = datetime.datetime.strptime(entry['date'], '%Y-%m-%d').date()
+            weight_data.append({
+                'date': date.strftime('%Y-%m-%d'),
+                'weight': entry['weight'],
+                'bmi': entry.get('bmi', None),
+                'body_fat': entry.get('fat', None)  # Rename fat to body_fat
+            })
+    except Exception as e:
+        logger.error(f"Error getting weight data: {str(e)}")
+        return pd.DataFrame()
     
-    headers = {
-        'Authorization': f'Bearer {tokens["access_token"]}',
-        'Accept': 'application/json'
-    }
-    
-    # Format dates for API
-    start_str = start_date.strftime('%Y-%m-%d')
-    end_str = end_date.strftime('%Y-%m-%d')
-    
-    # Get weight logs
-    url = f"{BASE_URL}/1/user/-/body/log/weight/date/{start_str}/{end_str}.json"
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()
-    weight_data = response.json().get('weight', [])
-    
-    # Process weight data to keep highest measurement per day
-    date_data = {}
-    for entry in weight_data:
-        date = entry['date']
-        weight = entry['weight']
-        
-        # If this date hasn't been seen or this weight is higher than previous
-        if date not in date_data or weight > date_data[date]['weight']:
-            date_data[date] = {
-                'weight': weight,
-                'bmi': entry.get('bmi'),
-                'fat': entry.get('fat'),
-                'logId': entry.get('logId')  # Store logId to match with body fat entries
-            }
-    
-    # Get body fat logs
-    url = f"{BASE_URL}/1/user/-/body/log/fat/date/{start_str}/{end_str}.json"
-    response = requests.get(url, headers=headers)
-    response.raise_for_status()
-    fat_data = response.json().get('fat', [])
-    
-    # Process body fat data - only update if it's associated with the highest weight measurement
-    for entry in fat_data:
-        date = entry['date']
-        if date in date_data:
-            # If this fat measurement is from the same log entry as the weight
-            if entry.get('logId') == date_data[date].get('logId'):
-                date_data[date]['fat'] = entry.get('fat')
-    
-    # Convert to DataFrame
-    if not date_data:
-        logger.info(f"No body measurement data found between {start_str} and {end_str}")
-        return pd.DataFrame(columns=['date', 'weight', 'bmi', 'fat'])
-    
-    df = pd.DataFrame.from_dict(date_data, orient='index').reset_index()
-    df.rename(columns={'index': 'date'}, inplace=True)
-    
-    # Drop logId column as it's no longer needed
-    df = df.drop('logId', axis=1, errors='ignore')
-    
-    # Convert weight from pounds to kg if needed
-    if df['weight'].mean() > 100:  # Assume pounds if average weight > 100
-        df['weight'] = df['weight'] * 0.45359237
-    
-    # Sort by date
-    df = df.sort_values('date').reset_index(drop=True)
-    
-    return df
+    return pd.DataFrame(weight_data)
 
 def main():
     """Main function to test Fitbit API integration."""

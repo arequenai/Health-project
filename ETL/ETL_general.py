@@ -101,26 +101,20 @@ def get_incremental_data_api(client, output_file, get_data_function):
         DataFrame with new data, or None if no new data
     """
     try:
-        # Get the most recent date from the output file
-        last_date = get_most_recent_date(output_file)
-        if last_date is None:
-            # If file doesn't exist, use a default start date
-            start_date = datetime.date(2024, 3, 16)
-            logger.info(f"No existing data found, starting from {start_date}")
-        else:
-            # Start from the day after the last date
-            start_date = last_date + datetime.timedelta(days=1)
-            logger.info(f"Getting data since {start_date}")
-        
-        # If start date would be in the future, there's no new data to get
-        if start_date > datetime.date.today():
-            logger.info("No new data to fetch - already up to date")
-            return None
-            
-        # Get the data
-        df = get_data_function(client, start_date)
+        # Let the data function handle the start date logic
+        df = get_data_function(client)
         if df is not None and not df.empty:
-            logger.info(f"Got new data from {start_date} to {datetime.date.today()}")
+            logger.info(f"Got new data from API")
+            
+            # If we have existing data, merge with it
+            if os.path.exists(output_file):
+                df_existing = pd.read_csv(output_file)
+                df_combined = pd.concat([df_existing, df], ignore_index=True)
+                # Sort by date and remove duplicates, keeping latest version
+                df_combined['date'] = pd.to_datetime(df_combined['date'])
+                df_combined = df_combined.sort_values('date').drop_duplicates(subset=['date'], keep='last')
+                df_combined['date'] = df_combined['date'].dt.strftime('%Y-%m-%d')
+                df = df_combined
         else:
             logger.info("No new data found")
         return df

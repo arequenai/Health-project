@@ -11,6 +11,7 @@ from urllib.parse import parse_qs, urlparse
 import time
 import base64
 import fitbit
+from ETL import config
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -62,19 +63,29 @@ def get_auth_code(client_id):
     server = HTTPServer(('localhost', 8080), TokenHandler)
     server.auth_code = None
     server.should_stop = False
+    server.timeout = 1  # Set socket timeout to 1 second
     
     # Open browser for authorization
     webbrowser.open(auth_url)
+    logger.info("Opened browser for Fitbit authorization. Please authorize the app...")
     
     # Wait for callback with timeout
-    timeout = time.time() + 60  # 60 seconds timeout
-    while not server.should_stop and time.time() < timeout:
-        server.handle_request()
+    start_time = time.time()
+    timeout = 60  # 60 seconds timeout
     
-    server.server_close()
+    try:
+        while not server.should_stop and time.time() - start_time < timeout:
+            try:
+                server.handle_request()
+            except Exception as e:
+                logger.error(f"Error handling request: {str(e)}")
+                break
+    finally:
+        server.server_close()
+        logger.info("Authorization server closed")
     
     if not server.auth_code:
-        raise TimeoutError("Authorization timed out. Please try again.")
+        raise TimeoutError("Authorization timed out or failed. Please try again.")
     
     return server.auth_code
 
@@ -174,21 +185,55 @@ def get_body_measurements(tokens):
             refresh_cb=refresh_token_cb
         )
         
-        # Get weight data
+        # Use config start date and current date
+        end_date = datetime.now().date()
+        start_date = config.DATA_START_DATE
+        logger.info(f"Fetching weight data from {start_date} to {end_date}")
+        
+        # Get weight data using time series API
         weight_data = []
-        data = client.get_bodyweight(period='max')
-        for entry in data['weight']:
-            date = datetime.strptime(entry['date'], '%Y-%m-%d').date()
+        
+        # Get weight time series
+        data = client.time_series('body/weight', base_date=start_date.strftime('%Y-%m-%d'),
+                                end_date=end_date.strftime('%Y-%m-%d'))
+        entries = data.get('body-weight', [])
+        logger.info(f"Retrieved {len(entries)} weight entries")
+        
+        # Get body fat time series
+        fat_data = client.time_series('body/fat', base_date=start_date.strftime('%Y-%m-%d'),
+                                    end_date=end_date.strftime('%Y-%m-%d'))
+        fat_entries = fat_data.get('body-fat', [])
+        logger.info(f"Retrieved {len(fat_entries)} body fat entries")
+        
+        # Create a dictionary to store body fat values by date
+        fat_by_date = {
+            entry['dateTime']: float(entry['value'])
+            for entry in fat_entries
+        }
+        
+        # Process weight entries and combine with body fat data
+        for entry in entries:
+            date = entry['dateTime']
             weight_data.append({
-                'date': date.strftime('%Y-%m-%d'),
-                'weight': entry['weight'],
-                'bmi': entry.get('bmi', None),
-                'body_fat': entry.get('fat', None)  # Rename fat to body_fat
+                'date': date,
+                'weight': float(entry['value']),
+                'body_fat': fat_by_date.get(date)  # Add body fat if available for this date
             })
         
-        return pd.DataFrame(weight_data)
+        # Convert to DataFrame and sort
+        df = pd.DataFrame(weight_data)
+        if not df.empty:
+            df = df.sort_values('date')
+            logger.info(f"Final dataset: {len(df)} entries from {df['date'].min()} to {df['date'].max()}")
+        else:
+            logger.warning("No weight data found")
+        
+        return df
     except Exception as e:
         logger.error(f"Error getting weight data: {str(e)}")
+        if hasattr(e, 'response'):
+            logger.error(f"Response status: {e.response.status_code}")
+            logger.error(f"Response text: {e.response.text}")
         return pd.DataFrame()
 
 def main():

@@ -65,13 +65,11 @@ def get_form_data(spreadsheet_id):
         
         # Create column map based on actual form columns
         column_map = {
-            'Timestamp': 'Timestamp',
             'Day logging (if empty, yesterday)': 'date',
             'Avoid processed foods?': 'avoid_processed_foods',
             'Eat close to bedtime?': 'bed_full',
             'Feeling sick or ill?': 'sick_or_ill',
             'Consume alcohol?': 'alcohol',
-            'How many drinks': 'drinks',
             'Read non-screen in bed?': 'read_bed',
             'Stretch?': 'stretch',
             'Screen in bed?': 'screen_bed'
@@ -84,22 +82,15 @@ def get_form_data(spreadsheet_id):
         # Rename columns
         df = df.rename(columns=column_map)
         
-        # Drop unnecessary columns
-        keep_cols = list(column_map.values())
-        df = df[keep_cols]
+        # Keep only mapped columns
+        df = df[list(column_map.values())]
         
         # Convert date to date format
         df['date'] = df['date'].dt.date
-        
-        # Handle drinks column if it exists
-        if 'drinks' in df.columns:
-            df['drinks'] = pd.to_numeric(df['drinks'], errors='coerce').fillna(0)
-            df.loc[df['alcohol'] == 'No', 'drinks'] = 0
             
         # Sort by date
         df = df.sort_values('date')
         
-        logger.info("Form data processed successfully")
         return df
         
     except Exception as e:

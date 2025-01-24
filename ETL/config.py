@@ -19,6 +19,8 @@ MFP_DAILY_FILE = f'{CLEANED_DATA_DIR}/MFP per day scrapped.csv'
 GLUCOSE_DAILY_FILE = f'{CLEANED_DATA_DIR}/Glucose_daily.csv'
 WEIGHT_FILE = f'{CLEANED_DATA_DIR}/Weight.csv'
 TSS_METRICS_FILE = f'{CLEANED_DATA_DIR}/TSS metrics.csv'
+INTEGRATED_DATA_PATH = f'{CLEANED_DATA_DIR}/Integrated_data.csv'
+DASHBOARD_DATA_PATH = f'{CLEANED_DATA_DIR}/daily_dashboard_data.csv'
 
 # Google Sheets settings
 JOURNAL_SPREADSHEET_ID = '1E0pWgt9Zifdx3S3iqpyAjTHijn-xZcXYLRXvqwgo-tg'

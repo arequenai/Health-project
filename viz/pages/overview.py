@@ -282,7 +282,11 @@ def render_metric_card(title, df, metric_name, col):
         # Create sparkline
         if not recent_data.empty and not recent_data.isna().all():
             fig = create_sparkline(recent_data, metric_name)
-            st.plotly_chart(fig, use_container_width=True, config={'displayModeBar': False})
+            st.plotly_chart(fig, use_container_width=True, config={
+                'displayModeBar': False,
+                'staticPlot': True,  # This disables all interactivity
+                'showTips': False
+            })
         else:
             st.markdown("*No data available for trend*")
 

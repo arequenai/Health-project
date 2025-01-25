@@ -25,6 +25,7 @@ st.set_page_config(
 # Set dark theme
 st.markdown("""
     <style>
+    /* Dark theme */
     [data-testid="stAppViewContainer"] {
         background-color: #0E1117;
         color: white;
@@ -32,15 +33,26 @@ st.markdown("""
     [data-testid="stSidebar"] {
         background-color: #262730;
     }
+    
+    /* Hide Streamlit elements */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
+    /* Disable hover effects and tooltips */
+    .stPlotlyChart {pointer-events: none;}
+    [data-testid="StyledFullScreenButton"] {display: none;}
+    .modebar {display: none !important;}
+    .js-plotly-plot .plotly .modebar {display: none !important;}
+    iframe {pointer-events: none;}
+    
+    /* General styling */
     .main {
         padding: 1rem;
     }
     .stButton>button {
         width: 100%;
     }
-    header {visibility: hidden;}
     </style>
 """, unsafe_allow_html=True)
 

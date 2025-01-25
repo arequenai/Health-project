@@ -1,0 +1,24 @@
+Running performance:
+ - Key indicator: Predicted marathon time
+ - Other important KPIs: VO2max, CTL, Predicted 5k
+ - Drivers: KM run, meters elevation gain, ATL
+Strength:
+ - Key indicator: Muscle mass
+ - Other important KPIs: Bench 1RM, Pull-ups num, Squat 1RM
+ - Drivers: number of Jefit entries, time in strength activity, protein
+Recovery:
+ - Key indicator: Recovery score
+ - Other important KPIs: RHR, HRV, TSB
+ - Drivers: Alcohol, stretch, Stress
+Glucose:
+ - Key indicator: Fasting glucose
+ - Other important KPIs: Mean glucose, max glucose, glucose variability
+ - Drivers: Sugar, Carbs, Snacks
+Body composition:
+ - Key indicator: Body fat %
+ - Other important KPIs: Total weight, Fat wegith, IMC
+ - Drivers: Caloric deficit, processed foods, fat intake
+Sleep:
+ - Key indicator: Sleep score
+ - Other important KPIs: time in bed, efficiency, body battery high
+ - Drivers: Bed full, read in bed, sleep start time

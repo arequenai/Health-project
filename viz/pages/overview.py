@@ -11,14 +11,13 @@ sys.path.append(str(root_dir))
 
 from viz import config
 
-def format_marathon_change(minutes):
-    """Format marathon time difference in HH:MM format."""
-    if pd.isna(minutes) or minutes == 0:
+def format_marathon_change(seconds):
+    """Format marathon time difference in minutes."""
+    if pd.isna(seconds) or seconds == 0:
         return "N/A"
     try:
-        hours = int(minutes // 60)
-        mins = int(minutes % 60)
-        return f"{hours:02d}:{mins:02d}"
+        minutes = int(round(seconds / 60))  # Convert seconds to rounded minutes
+        return f"{minutes}min"
     except:
         return "N/A"
 
@@ -198,13 +197,14 @@ def get_metric_info(metric_name):
     return info.get(metric_name, {'units': '', 'description': metric_name})
 
 def format_marathon_time(value):
-    """Helper function to format marathon time."""
+    """Helper function to format marathon time from seconds to 'Xh:YY'."""
     if pd.isna(value) or value == 0:
         return "N/A"
     try:
-        hours = int(value // 60)
-        minutes = int(value % 60)
-        return f"{hours:02d}:{minutes:02d}"
+        total_minutes = value / 60  # Convert seconds to minutes
+        hours = int(total_minutes // 60)
+        minutes = int(total_minutes % 60)
+        return f"{hours}h{minutes:02d}"
     except:
         return "N/A"
 

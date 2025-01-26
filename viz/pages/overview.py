@@ -11,6 +11,17 @@ sys.path.append(str(root_dir))
 
 from viz import config
 
+def format_marathon_change(minutes):
+    """Format marathon time difference in HH:MM format."""
+    if pd.isna(minutes) or minutes == 0:
+        return "N/A"
+    try:
+        hours = int(minutes // 60)
+        mins = int(minutes % 60)
+        return f"{hours:02d}:{mins:02d}"
+    except:
+        return "N/A"
+
 def create_sparkline(data, metric_name, height=80):
     """Create a sparkline plot for the metric with weekly averages."""
     fig = go.Figure()
@@ -84,7 +95,7 @@ def create_sparkline(data, metric_name, height=80):
                 
                 # Format change text with absolute difference
                 if metric_name == 'predicted_marathon':
-                    change_text = f"{'+' if not is_improvement else '-'}{abs_diff:.0f}min"
+                    change_text = f"{'+' if not is_improvement else '-'}{format_marathon_change(abs_diff)}"
                 elif metric_name in ['body_fat']:
                     change_text = f"{'+' if not is_improvement else '-'}{abs_diff:.1f}%"
                 else:
@@ -193,7 +204,7 @@ def format_marathon_time(value):
     try:
         hours = int(value // 60)
         minutes = int(value % 60)
-        return f"{hours}:{minutes:02d}"
+        return f"{hours:02d}:{minutes:02d}"
     except:
         return "N/A"
 

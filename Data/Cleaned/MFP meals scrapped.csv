@@ -3082,5 +3082,43 @@ date,meal,food,quant,calories,carbs,fat,protein,sodium,sugar
 2025-01-22,breakfast,"Recondo - Pan tostado 100% integral, 22 gramos",22,86.0,13.0,2.0,3.0,0.0,1.0
 2025-01-22,breakfast,"Aceite Oliva - Aceite Oliva 7ml, 4 milliliter",4,34.0,0.0,4.0,0.0,0.0,0.0
 2025-01-22,breakfast,"Roig - Clara de huevo, 170 gr",170,85.0,2.0,1.0,17.0,0.0,2.0
+2025-01-22,lunch,"Pan - Pan Blanco ✓, 25 g",25,64.0,14.0,0.0,2.0,125.0,1.0
+2025-01-22,lunch,"Salchichón Lupa - Salchichón, 30 gramo",30,118.0,1.0,9.0,8.0,0.0,0.0
+2025-01-22,lunch,"Pescado - Lenguado Plancha, 250 g",250,210.0,1.0,3.0,44.0,250.0,0.0
+2025-01-22,lunch,"Alcachofa - Corazón alcachofa, 150 g",150,39.0,11.0,2.0,3.0,0.0,0.0
+2025-01-22,dinner,"Home - Hamburguesa, 1.2 piece",1.2,594.0,48.0,30.0,32.0,0.0,0.0
+2025-01-22,dinner,"Homemade - Patatas Fritas, 100 gr",100,260.0,18.0,20.0,3.0,150.0,0.0
+2025-01-22,dinner,"mayonesa - Mayonesa, 1 cucharada",1,90.0,0.0,10.0,0.0,0.0,0.0
+2025-01-22,dinner,"Alas de pollo - Alitas de pollo al  horno, 200 gramos",200,372.0,0.0,26.0,36.0,0.0,0.0
 2025-01-22,snacks,"Carrefour - Barritas Cereales Avellana, 1 barrita",1,85.0,13.0,3.0,2.0,120.0,5.0
 2025-01-22,snacks,"IKEA Macedonia - Macedonia de frutas, 200 g",200,95.0,21.0,0.0,1.0,0.0,0.0
+2025-01-22,snacks,"trigo sarraceno - trigo, 40 gramo",40,145.0,30.0,1.0,4.0,0.0,0.0
+2025-01-23,breakfast,"Supersol - Tortilla De Patatas, 220.0 g",220.0,297.0,33.0,13.0,9.0,0.0,0.0
+2025-01-23,breakfast,"Pan - Pan Blanco ✓, 25 g",25,64.0,14.0,0.0,2.0,125.0,1.0
+2025-01-23,lunch,"Ensalada Polllo Ofi Bain, 1 serving",1,556.0,24.0,35.0,38.0,66.0,7.0
+2025-01-23,lunch,"huevo - Huevo Entero, 1 pieza",1,78.0,1.0,5.0,6.0,0.0,0.0
+2025-01-23,dinner,"Quick Add, 1 serving(s)",1,1265.0,120.0,65.0,50.0,0.0,0.0
+2025-01-24,breakfast,"Empanada carne - Empanada carne, 60 gramo",60,158.0,17.0,6.0,8.0,0.0,0.0
+2025-01-24,breakfast,"Atun - Atún natural, 80 gramo",80,81.0,0.0,0.0,19.0,0.0,0.0
+2025-01-24,breakfast,"tomate rallado natural - tomate rallado natural, 2 rebanada",2,38.0,7.0,1.0,0.0,0.0,0.0
+2025-01-24,breakfast,"Pan - Pan Blanco ✓, 50 g",50,128.0,28.0,0.0,4.0,250.0,3.0
+2025-01-24,breakfast,"Aceite Oliva - Aceite Oliva 7ml, 4 milliliter",4,34.0,0.0,4.0,0.0,0.0,0.0
+2025-01-24,lunch,"Pan - Pan Blanco ✓, 50 g",50,128.0,28.0,0.0,4.0,250.0,3.0
+2025-01-24,lunch,"puré de patatas día - puré de patata, 125 gramos",125,161.0,29.0,2.0,5.0,0.0,4.0
+2025-01-24,lunch,"Pulpo - Pulpo a feira, 140 gr",140,120.0,1.0,1.0,27.0,1.0,0.0
+2025-01-24,lunch,"Merluza - Filete De Merluza A La Plancha, 280 gramos",280,370.0,1.0,12.0,60.0,1140.0,0.0
+2025-01-24,lunch,"Ali Oli Auchan - Salsa Ali Oli, 1.5 cucharadita",1.5,75.0,0.0,8.0,0.0,156.0,0.0
+2025-01-24,dinner,"Xian - Biang Biang Noodle, 225 g",225,780.0,83.0,41.0,16.0,0.0,0.0
+2025-01-25,breakfast,"Pan - Pan Blanco ✓, 70 g",70,179.0,39.0,1.0,5.0,350.0,4.0
+2025-01-25,breakfast,"Huevo - Huevo Revuelto, 80 gramos",80,130.0,1.0,10.0,9.0,0.0,0.0
+2025-01-25,breakfast,"Honeydew melon, 0.5 cup",0.5,28.0,7.0,0.0,0.0,14.0,6.0
+2025-01-25,lunch,"Palacios - cuartos asados pollo, 1 racion",1,658.0,3.0,25.0,81.0,0.0,1.0
+2025-01-25,lunch,"Homemade - Patatas Fritas, 80 gr",80,208.0,14.0,16.0,2.0,120.0,0.0
+2025-01-25,lunch,"Peru - Arroz Chaufa De Pollo, 120 g",120,215.0,34.0,5.0,7.0,292.0,0.0
+2025-01-25,lunch,"Ceviche De Pescado, 1.25 taza",1.25,206.0,7.0,3.0,39.0,1090.0,3.0
+2025-01-25,lunch,"La Sarita - Aji de polleria, 25 gramo",25,59.0,1.0,6.0,0.0,1.0,0.0
+2025-01-25,dinner,"Generic - Huevo A La Plancha, 2 huevo",2,200.0,1.0,9.0,11.0,124.0,1.0
+2025-01-25,dinner,"Hero Tomate Frito - Tomate Frito, 100 gr",100,80.0,12.0,3.0,2.0,0.0,0.0
+2025-01-25,dinner,"Arroz Blanco - Arroz Blanco Cocido, 185 gram",185,343.0,74.0,1.0,7.0,970.0,0.0
+2025-01-25,snacks,"trigo sarraceno - trigo, 50 gramo",50,181.0,38.0,1.0,5.0,0.0,0.0
+2025-01-26,breakfast,"Avena - Avena Hacendado, 60 gr",60,279.0,44.0,5.0,11.0,0.0,0.0

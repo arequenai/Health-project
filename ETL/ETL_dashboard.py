@@ -98,13 +98,15 @@ def create_dashboard_data():
         'protein': 0,
         'carbs': 0,
         'fat': 0,
-        'sugar': 0
+        'sugar': 0,
+        
+        # New Garmin metrics
+        'vo2max': 1,              # 1 decimal for VO2max
+        'predicted_5k': 0,        # 0 decimals for race times (in minutes)
+        'predicted_10k': 0,
+        'predicted_half': 0,
+        'predicted_marathon': 0
     }
-    
-    # Apply rounding
-    for col, decimals in rounding_rules.items():
-        if col in df.columns:
-            df[col] = df[col].round(decimals)
     
     # Define all required columns in order
     required_columns = [
@@ -138,8 +140,9 @@ def create_dashboard_data():
         
         # Running metrics
         'predicted_marathon',  # key
-        'vO2MaxValue', 'lactateThresholdBpm', 'predicted_5k',
-        'distance', 'elevationGain', 'CTL'
+        'vo2max', 'predicted_5k', 'predicted_10k',
+        'predicted_half', 'distance', 'elevationGain',
+        'CTL'
     ]
     
     # Create DataFrame with required columns
@@ -149,6 +152,11 @@ def create_dashboard_data():
     for col in required_columns:
         if col in df.columns:
             dashboard_df[col] = df[col]
+    
+    # Apply rounding rules
+    for col, decimals in rounding_rules.items():
+        if col in dashboard_df.columns:
+            dashboard_df[col] = dashboard_df[col].round(decimals)
     
     # Ensure date is in correct format
     dashboard_df['date'] = pd.to_datetime(dashboard_df['date']).dt.strftime('%Y-%m-%d')

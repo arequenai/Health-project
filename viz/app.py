@@ -5,6 +5,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 import sys
 from pathlib import Path
+import os
 
 # Add the project root to the Python path
 root_dir = Path(__file__).parent.parent
@@ -58,7 +59,9 @@ st.markdown("""
 
 def load_data():
     """Load and preprocess data."""
-    df = pd.read_csv(config.DASHBOARD_DATA_PATH)
+    # Construct absolute path
+    data_path = os.path.join(root_dir, config.DASHBOARD_DATA_PATH)
+    df = pd.read_csv(data_path)
     df['date'] = pd.to_datetime(df['date'])
     df = df.sort_values('date')
     return df

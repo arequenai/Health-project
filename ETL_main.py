@@ -13,6 +13,7 @@ from ETL.ETL_libreview import get_glucose_daily, get_glucose_time
 from ETL.ETL_tss_calculation import get_tss_data
 from ETL.ETL_fitbit import init_fitbit, get_body_measurements
 from ETL.ETL_journal import get_journal_data
+from ETL.ETL_dashboard import create_dashboard_data
 from ETL import config
 
 # Configure logging with a more visible format
@@ -311,4 +312,14 @@ if __name__ == "__main__":
     print("Starting ETL process...")
     update_clean_files()
     integrate_data()
+    
+    # Create dashboard data
+    print("\nCreating dashboard data...")
+    dashboard_df = create_dashboard_data()
+    if dashboard_df is not None:
+        dashboard_df.to_csv(config.DASHBOARD_DATA_PATH, index=False)
+        print(f"Dashboard data saved to {config.DASHBOARD_DATA_PATH}")
+    else:
+        print("Failed to create dashboard data")
+    
     print("ETL process completed!") 

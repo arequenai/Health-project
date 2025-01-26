@@ -81,6 +81,26 @@ def init_garmin(email, password):
 
     return garmin
 
+def process_vo2max(all_data):
+    """Post-process VO2max data:
+    - If no VO2max data or no run for a day, use previous day's VO2max
+    - If there's a run and VO2max data, use that value
+    """
+    prev_vo2max = None
+    dates = sorted(all_data.keys())
+    
+    for date in dates:
+        current_vo2max = all_data[date]['vo2max']
+        has_run = all_data[date].get('distance', 0) > 0
+        
+        if has_run and current_vo2max is not None:
+            # If there's a run and VO2max data, use it
+            prev_vo2max = current_vo2max
+        elif prev_vo2max is not None:
+            # If no run or no VO2max data, use previous value
+            all_data[date]['vo2max'] = prev_vo2max
+            
+    return all_data
 
 def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
     """Get Garmin data from start_date to today.
@@ -129,6 +149,31 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
             data_dict = {'date': current_date.strftime('%Y-%m-%d')}
             data_dict.update(stats)
             
+            # Get race predictions
+            try:
+                race_predictions = api.get_race_predictions(
+                    startdate=current_date,
+                    enddate=current_date,
+                    _type='daily'
+                )
+                if race_predictions:
+                    data_dict.update({
+                        'predicted_5k': race_predictions[0].get('time5K', 0),
+                        'predicted_10k': race_predictions[0].get('time10K', 0),
+                        'predicted_half': race_predictions[0].get('timeHalfMarathon', 0),
+                        'predicted_marathon': race_predictions[0].get('timeMarathon', 0)
+                    })
+            except Exception as e:
+                logger.warning(f"Failed to get race predictions for {current_date}: {str(e)}")
+            
+            # Get VO2max
+            try:
+                max_metrics = api.get_max_metrics(current_date.strftime('%Y-%m-%d'))
+                if max_metrics and max_metrics[0].get('generic', {}).get('vo2MaxValue'):
+                    data_dict['vo2max'] = max_metrics[0]['generic']['vo2MaxValue']
+            except Exception as e:
+                logger.warning(f"Failed to get max metrics for {current_date}: {str(e)}")
+            
             # Append data to list
             data_list.append(data_dict)
             
@@ -156,7 +201,9 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
     df = df[['date',
             'averageStressLevel','restStressPercentage', 'lowStressPercentage', 
             'mediumStressPercentage', 'highStressPercentage', 'stressQualifier',
-            'bodyBatteryHighestValue', 'bodyBatteryLowestValue', 'bodyBatteryDuringSleep'
+            'bodyBatteryHighestValue', 'bodyBatteryLowestValue', 'bodyBatteryDuringSleep',
+            'predicted_5k', 'predicted_10k', 'predicted_half', 'predicted_marathon',
+            'vo2max'
             ]]
     
     logger.info("Getting activities for the same date range...")
@@ -182,7 +229,9 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
             'avg_power': activity.get('avgPower', 0),
             'norm_power': activity.get('normPower', 0),
             'intensity_factor': activity.get('intensityFactor', 0),
-            'tss': activity.get('trainingStressScore', 0)
+            'tss': activity.get('trainingStressScore', 0),
+            'distance': activity.get('distance', 0),
+            'elevation_gain': activity.get('elevationGain', 0)
         }
         activity_data.append(activity_dict)
         
@@ -199,7 +248,9 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
         daily_totals = activity_df.groupby('date').agg({
             'training_load': 'sum',
             'tss': 'sum',
-            'duration': 'sum'
+            'duration': 'sum',
+            'distance': 'sum',
+            'elevation_gain': 'sum'
         }).reset_index()
         
         # Also keep strength training minutes
@@ -211,6 +262,12 @@ def get_garmin_data(garmin_client, start_date=datetime.date(2024, 3, 16)):
         # Merge with daily stats
         df = pd.merge(df, daily_totals, on='date', how='left')
         df = pd.merge(df, strength_daily, on='date', how='left')
+    
+    # Post-process VO2max data (moved here after activities are merged)
+    if 'vo2max' in df.columns:
+        all_data = {row['date']: row.to_dict() for _, row in df.iterrows()}
+        all_data = process_vo2max(all_data)
+        df = pd.DataFrame(all_data.values())
     
     # Fill NaN values with 0
     df = df.fillna(0)
@@ -310,6 +367,8 @@ def get_garmin_activities(garmin_client, start_date=datetime.date(2024, 3, 16)):
 if __name__ == "__main__":
     garmin_client = init_garmin(email, password)
     df = get_garmin_data(garmin_client)
-    # Write DataFrame to a temporary CSV file for testing
-    df.to_csv('Data/Cleaned/Garmin_daily_new.csv', index=False)
-    print('Garmin data saved to temporary CSV file for testing')
+    if df is not None:
+        df.to_csv('Data/Cleaned/Garmin_daily.csv', index=False)
+        logger.info('Garmin data saved to Data/Cleaned/Garmin_daily.csv')
+    else:
+        logger.error('Failed to get Garmin data')

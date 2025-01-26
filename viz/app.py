@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 import sys
 from pathlib import Path
 import os
+import subprocess
 
 # Add the project root to the Python path
 root_dir = Path(__file__).parent.parent
@@ -57,6 +58,23 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+def update_data():
+    """Run the ETL process to update all data."""
+    try:
+        # Run ETL_main.py from the project root
+        etl_script = os.path.join(root_dir, 'ETL_main.py')
+        result = subprocess.run([sys.executable, etl_script], 
+                              capture_output=True, 
+                              text=True)
+        if result.returncode == 0:
+            st.sidebar.success("Data updated successfully!")
+            # Force a rerun of the app to load new data
+            st.rerun()
+        else:
+            st.sidebar.error(f"Error updating data: {result.stderr}")
+    except Exception as e:
+        st.sidebar.error(f"Error running update: {str(e)}")
+
 def load_data():
     """Load and preprocess data."""
     # Construct absolute path
@@ -68,6 +86,10 @@ def load_data():
 
 def main():
     """Main application function."""
+    # Add update button in sidebar
+    if st.sidebar.button("🔄 Update Data"):
+        update_data()
+    
     # Load data
     df = load_data()
     

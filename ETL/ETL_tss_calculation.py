@@ -115,14 +115,12 @@ def calculate_tss(activity_data):
         'avg_hr': 'mean'
     }).reset_index()
     
-    # Create a complete date range
-    date_range = pd.date_range(
-        start=daily_data['date'].min(),
-        end=daily_data['date'].max(),
-        freq='D'
-    )
+    # Create a complete date range including today
+    start_date = daily_data['date'].min()
+    end_date = pd.Timestamp.today().normalize()  # Use today's date
+    date_range = pd.date_range(start=start_date, end=end_date, freq='D')
     
-    # Create a DataFrame with all dates
+    # Create a DataFrame with all dates including today
     complete_daily_data = pd.DataFrame({'date': date_range.strftime('%Y-%m-%d')})
     
     # Merge with actual data, filling missing values

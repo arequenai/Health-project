@@ -3,9 +3,26 @@ import datetime
 import csv
 import os
 from ETL.ETL_general import get_most_recent_date, delete_data_from_date
+from dotenv import load_dotenv
 
 def init_mfp():
     """Initialize and return a MyFitnessPal client."""
+    load_dotenv("Credentials.env")
+    username = os.getenv("USERNAME_MFP")
+    password = os.getenv("PASSWORD_MFP")
+    
+    if not username or not password:
+        raise ValueError("MyFitnessPal credentials not found in environment variables. Please set USERNAME_MFP and PASSWORD_MFP in Credentials.env")
+    
+    # Create configuration file with credentials
+    config_dir = os.path.expanduser("~/.config/python-myfitnesspal")
+    os.makedirs(config_dir, exist_ok=True)
+    
+    config_file = os.path.join(config_dir, "config")
+    with open(config_file, "w") as f:
+        f.write(f"username: {username}\npassword: {password}\n")
+    
+    # Initialize client which will use the config file
     return myfitnesspal.Client()
 
 # Function to get meal data from MyFitnessPal and append to a CSV file

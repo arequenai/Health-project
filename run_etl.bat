@@ -25,3 +25,6 @@ echo ETL process completed successfully at %date% %time%
 
 :: Deactivate virtual environment
 deactivate 
+
+echo Pulling latest updates from Github
+git pull

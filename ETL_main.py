@@ -319,6 +319,13 @@ if __name__ == "__main__":
     if dashboard_df is not None:
         dashboard_df.to_csv(config.DASHBOARD_DATA_PATH, index=False)
         print(f"Dashboard data saved to {config.DASHBOARD_DATA_PATH}")
+
+        # Export DataFrame to Google Sheets
+        print('\nUploading Dashboard data to Google Sheets...')
+        sheet_name = 'Dashboard_data'
+        export_to_gsheets(dashboard_df, sheet_name)
+        print(f"Successfully uploaded to Google Sheets sheet: {sheet_name}")
+
     else:
         print("Failed to create dashboard data")
     

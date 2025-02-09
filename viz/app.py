@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 import os
 import subprocess
+import hashlib
 
 # Add the project root to the Python path
 root_dir = Path(__file__).parent.parent
@@ -14,6 +15,34 @@ sys.path.append(str(root_dir))
 
 from viz import config
 from viz.pages.overview import render_overview
+
+def check_password():
+    """Returns `True` if the user had the correct password."""
+
+    def password_entered():
+        """Checks whether a password entered by the user is correct."""
+        if st.session_state["password"] == st.secrets["password"]:
+            st.session_state["password_correct"] = True
+            del st.session_state["password"]  # Don't store the password
+        else:
+            st.session_state["password_correct"] = False
+
+    # First run or password not correct
+    if "password_correct" not in st.session_state:
+        st.text_input(
+            "Password", type="password", on_change=password_entered, key="password"
+        )
+        return False
+    
+    # Password correct
+    elif not st.session_state["password_correct"]:
+        st.text_input(
+            "Password", type="password", on_change=password_entered, key="password"
+        )
+        st.error("😕 Password incorrect")
+        return False
+    
+    return True
 
 # Page config
 st.set_page_config(
@@ -86,6 +115,11 @@ def load_data():
 
 def main():
     """Main application function."""
+    
+    # Check password
+    if not check_password():
+        return
+
     # Add update button in sidebar
     if st.sidebar.button("🔄 Update Data"):
         update_data()
